@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.polarsys.kitalpha.pdt.metamodel.model/src"
+    editDirectory="/org.polarsys.kitalpha.pdt.metamodel.edit/src" editorDirectory="/org.polarsys.kitalpha.pdt.metamodel.editor/src"
+    modelPluginID="org.polarsys.kitalpha.pdt.metamodel.model" modelName="Platform"
+    editPluginClass="org.polarsys.kitalpha.pdt.metamodel.edit.provider.PlatformEditPlugin"
+    editorPluginClass="org.polarsys.kitalpha.pdt.metamodel.editor.presentation.PlatformEditorPlugin"
+    testSuiteClass="org.polarsys.kitalpha.pdt.metamodel.tests.PlatformAllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" providerRootExtendsClass="" editPluginID="org.polarsys.kitalpha.pdt.metamodel.edit"
+    editorPluginID="org.polarsys.kitalpha.pdt.metamodel.editor" classNamePattern="">
+  <foreignModel>platform.ecore</foreignModel>
+  <genPackages prefix="Platform" basePackage="org.polarsys.kitalpha.pdt.metamodel.model"
+      resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
+      childCreationExtenders="true" contentTypeIdentifier="" ecorePackage="platform.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform.ecore#//ConfigurationElementAttributeKind">
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ConfigurationElementAttributeKind/String"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ConfigurationElementAttributeKind/Java"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ConfigurationElementAttributeKind/Resource"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ConfigurationElementAttributeKind/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ConfigurationElementAttributeKind/Identifier"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ConfigurationElementAttributeKind/Integer"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform.ecore#//ComplexCompositorKind">
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ComplexCompositorKind/SEQUENCE"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//ComplexCompositorKind/CHOICE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform.ecore#//MatchRule">
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//MatchRule/UNSET"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//MatchRule/COMPATIBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//MatchRule/EQUIVALENT"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//MatchRule/GREATER_OR_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//MatchRule/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//MatchRule/PERFECT"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//MatchRule/PREFIX"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform.ecore#//InclusionKind">
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//InclusionKind/UNSET"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//InclusionKind/INCLUSIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//InclusionKind/EXCLUSIVE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform.ecore#//RepositoryKind">
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//RepositoryKind/Platform"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//RepositoryKind/Workspace"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//RepositoryKind/PlatformAndWorkspace"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//RepositoryKind/UpdateSite"/>
+      <genEnumLiterals ecoreEnumLiteral="platform.ecore#//RepositoryKind/Other"/>
+    </genEnums>
+    <genClasses ecoreClass="platform.ecore#//Plugin">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Plugin/extensionPoints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Plugin/extensions"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference platform.ecore#//Plugin/pluginDependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Plugin/exportedPackages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Plugin/executionEnvironmnents"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ExtensionPoint">
+      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//ExtensionPoint/schemaElements"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="List of Extensions that contribute to the current ExtensionPoint"
+          propertyMultiLine="true" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//ExtensionPoint/contributors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//ExtensionPoint/extensionSchemaElement"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//Extension">
+      <genFeatures notify="false" createChild="false" propertyDescription="The Extension Point contribued by the selected Extension"
+          propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//Extension/extensionPoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Extension/configuredSchemaElement"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//Repository">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Repository/packages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Repository/plugins"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Repository/features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//Repository/repositoryKind"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ConfiguredSchemaElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//ConfiguredSchemaElement/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//ConfiguredSchemaElement/schemaElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//ConfiguredSchemaElement/configurationElements"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ConfigurationElementAttribute">
+      <genFeatures createChild="false" propertyCategory="" propertyDescription="Type of the selected Configuration Element Attribute"
+          ecoreFeature="ecore:EAttribute platform.ecore#//ConfigurationElementAttribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//ConfigurationElementAttribute/basedOn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//ConfigurationElementAttribute/translatable"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ComplexCompositor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//ComplexCompositor/complexCompositorKind"/>
+      <genFeatures children="true" createChild="true" propertyCategory="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference platform.ecore#//ComplexCompositor/complexCompositorChildren"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//ComplexCompositor/elementReferences"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//SchemaElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//SchemaElement/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//SchemaElement/complexCompositor"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//Feature">
+      <genFeatures createChild="false" propertyCategory="Description" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute platform.ecore#//Feature/featureDescription"/>
+      <genFeatures createChild="false" propertyCategory="Copyright" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute platform.ecore#//Feature/copyrightNotice"/>
+      <genFeatures createChild="false" propertyCategory="Copyright" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute platform.ecore#//Feature/licenseAgreement"/>
+      <genFeatures createChild="false" propertyCategory="Informations" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute platform.ecore#//Feature/sitesToVisit"/>
+      <genFeatures createChild="false" propertyCategory="Copyright" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute platform.ecore#//Feature/provider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Feature/featureInclusions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Feature/pluginDependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Feature/includedPlugins"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Feature/featureDependencies"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//PluginDependency">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//PluginDependency/target"/>
+      <genFeatures createChild="false" propertyDescription="Minimum available version for the selected plug-in"
+          ecoreFeature="ecore:EAttribute platform.ecore#//PluginDependency/minimumVersion"/>
+      <genFeatures createChild="false" propertyDescription="Maximum available version for the selected plug-in"
+          ecoreFeature="ecore:EAttribute platform.ecore#//PluginDependency/maximumVersion"/>
+      <genFeatures createChild="false" propertyDescription="Type of Inclusion of the lowest version required "
+          ecoreFeature="ecore:EAttribute platform.ecore#//PluginDependency/minimumInclusion"/>
+      <genFeatures createChild="false" propertyDescription="Type of Inclusion of the highest version required "
+          ecoreFeature="ecore:EAttribute platform.ecore#//PluginDependency/maximumInclusion"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//FeatureDependency">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//FeatureDependency/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//FeatureDependency/matchRule"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          ecoreFeature="ecore:EReference platform.ecore#//Package/subPackages"/>
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          propertyDescription="" ecoreFeature="ecore:EReference platform.ecore#//Package/plugins"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//Package/features"/>
+      <genFeatures property="Readonly" createChild="false" propertyCategory="Identification"
+          ecoreFeature="ecore:EAttribute platform.ecore#//Package/absoluteName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform.ecore#//IdentifiedElement">
+      <genFeatures createChild="false" propertyCategory="Identification" propertyDescription="ID of the selected item"
+          ecoreFeature="ecore:EAttribute platform.ecore#//IdentifiedElement/id"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//FeatureInclusion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//FeatureInclusion/optional"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//FeatureInclusion/includedFeature"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ConfigurationElementAttributeInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//ConfigurationElementAttributeInstance/attributeDefinition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//ConfigurationElementAttributeInstance/containedValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform.ecore#//IdentifiedVersionnedElement"/>
+    <genClasses image="false" ecoreClass="platform.ecore#//NamedElement">
+      <genFeatures createChild="false" propertyCategory="Identification" propertyDescription="Name of the selected Object"
+          ecoreFeature="ecore:EAttribute platform.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//StringValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//StringValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//JavaClassValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//JavaClassValue/className"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//BooleanValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//BooleanValue/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform.ecore#//AbstractValue"/>
+    <genClasses image="false" ecoreClass="platform.ecore#//VersionnedElement">
+      <genFeatures createChild="false" propertyCategory="Identification" propertyDescription="Version of the selected item"
+          ecoreFeature="ecore:EAttribute platform.ecore#//VersionnedElement/version"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//Cardinality">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//Cardinality/minCard"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//Cardinality/maxCard"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//Cardinality/unbounded"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//SchemaElementReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//SchemaElementReference/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//EclipseElement">
+      <genFeatures property="Readonly" notify="false" children="true" createChild="false"
+          ecoreFeature="ecore:EReference platform.ecore#//EclipseElement/eclipseElementIntrospectionErrors"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//FeatureToPluginDependency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//FeatureToPluginDependency/matchRule"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform.ecore#//FeatureToPluginDependency/target"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//PluginExtensions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//PluginExtensions/extensions"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//PluginExtensionPoints">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//PluginExtensionPoints/extensionPoints"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//PluginDependencies">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//PluginDependencies/pluginDependencies"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//FeatureDependencies">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//FeatureDependencies/featureDependencies"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//FeatureInclusions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//FeatureInclusions/featureInclusions"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//FeaturePluginDependencies">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//FeaturePluginDependencies/pluginDependencies"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//IncludedPlugins">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//IncludedPlugins/includedPlugins"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//EclipseModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//EclipseModel/repositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//EclipseModel/introspectionErrors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//EclipseModel/qualifierIgnored"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ExportedPackage"/>
+    <genClasses ecoreClass="platform.ecore#//ExportedPackages">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//ExportedPackages/exportedPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//IntrospectionError">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute platform.ecore#//IntrospectionError/summary"/>
+      <genFeatures property="Readonly" createChild="false" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute platform.ecore#//IntrospectionError/details"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference platform.ecore#//IntrospectionError/target"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ExecutionEnvironments">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//ExecutionEnvironments/executionEnvironments"/>
+    </genClasses>
+    <genClasses ecoreClass="platform.ecore#//ExecutionEnvironment"/>
+    <genClasses ecoreClass="platform.ecore#//IntrospectionErrors">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform.ecore#//IntrospectionErrors/introspectionErrors"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore"
+    xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod" xmlns:ftask="http://www.eclipse.org/egf/1.0.0/ftask"
+    xmlns:types="http://www.eclipse.org/egf/1.0.0/types">
+  <fcore:FactoryComponent xmi:id="_Q2ZXkDXtEeW2BJdjJYJ-QQ" name="IntrospectionLauncher">
+    <contractContainer xmi:id="_R981gDXtEeW2BJdjJYJ-QQ">
+      <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_VBvWoDXtEeW2BJdjJYJ-QQ"
+          name="projectName" invocationContracts="#_AmBD4DXuEeW2BJdjJYJ-QQ">
+        <type xmi:type="types:TypeString" xmi:id="_W7lNIDXtEeW2BJdjJYJ-QQ"/>
+      </contracts>
+      <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_VlI-oDXtEeW2BJdjJYJ-QQ"
+          name="outputFolder" invocationContracts="#_BM_kUDXuEeW2BJdjJYJ-QQ">
+        <type xmi:type="types:TypeString" xmi:id="_XU324DXtEeW2BJdjJYJ-QQ"/>
+      </contracts>
+    </contractContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_SeFuIDXtEeW2BJdjJYJ-QQ">
+      <invocations xmi:id="_mAzf0DXtEeW2BJdjJYJ-QQ" invokedActivity="#_meHG4DXtEeW2BJdjJYJ-QQ">
+        <invocationContractContainer xmi:id="_AOzdwDXuEeW2BJdjJYJ-QQ">
+          <invocationContracts xmi:id="_AmBD4DXuEeW2BJdjJYJ-QQ" factoryComponentContract="#_VBvWoDXtEeW2BJdjJYJ-QQ"
+              invokedContract="#_1Ry9oDXtEeW2BJdjJYJ-QQ"/>
+          <invocationContracts xmi:id="_BM_kUDXuEeW2BJdjJYJ-QQ" factoryComponentContract="#_VlI-oDXtEeW2BJdjJYJ-QQ"
+              invokedContract="#_1hto8DXtEeW2BJdjJYJ-QQ"/>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <ftask:Task xmi:id="_meHG4DXtEeW2BJdjJYJ-QQ" name="Introspection Launch" kind="java"
+      implementation="org.polarsys.kitalpha.pdt.introspector.core.launcher.Introspection">
+    <contractContainer xmi:id="_08OWQDXtEeW2BJdjJYJ-QQ">
+      <contracts xmi:id="_1Ry9oDXtEeW2BJdjJYJ-QQ" name="projectName">
+        <type xmi:type="types:TypeString" xmi:id="_3oNbYDXtEeW2BJdjJYJ-QQ"/>
+      </contracts>
+      <contracts xmi:id="_1hto8DXtEeW2BJdjJYJ-QQ" name="outputFolder">
+        <type xmi:type="types:TypeString" xmi:id="_397MsDXtEeW2BJdjJYJ-QQ"/>
+      </contracts>
+    </contractContainer>
+  </ftask:Task>
+</xmi:XMI>

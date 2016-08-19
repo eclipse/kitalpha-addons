@@ -1,0 +1,6 @@
+package platform
+context ExtensionPoint
+
+inv extensionSchemaElement_exists : not self.extensionSchemaElement.oclIsUndefined()
+
+endpackage

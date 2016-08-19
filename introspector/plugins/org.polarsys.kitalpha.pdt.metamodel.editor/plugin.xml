@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated platform -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.polarsys.kitalpha.pdt.metamodel.model.platform.presentation.PlatformModelWizardID"
+            name="%_UI_PlatformModelWizard_label"
+            class="org.polarsys.kitalpha.pdt.metamodel.model.platform.presentation.PlatformModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PlatformModelFile.gif">
+         <description>%_UI_PlatformModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated platform -->
+      <editor
+            id="org.polarsys.kitalpha.pdt.metamodel.model.platform.presentation.PlatformEditorID"
+            name="%_UI_PlatformEditor_label"
+            icon="icons/full/obj16/PlatformModelFile.gif"
+            extensions="platform"
+            class="org.polarsys.kitalpha.pdt.metamodel.model.platform.presentation.PlatformEditor"
+            contributorClass="org.polarsys.kitalpha.pdt.metamodel.model.platform.presentation.PlatformActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

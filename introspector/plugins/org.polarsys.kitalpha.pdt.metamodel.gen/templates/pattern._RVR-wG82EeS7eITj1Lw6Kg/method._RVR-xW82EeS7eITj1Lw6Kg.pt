@@ -1,0 +1,11 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		String label = ((StringValue) object).getValue();
+		if(label != null)
+			return "Value = " + label;
+		else 
+			return "Value = ";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.polarsys.kitalpha.pdt.metamodel.validation.internal.constraints.Startup"></startup>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <binding
+            category="Platform"
+            context="org.polarsys.kitalpha.pdt.metamodel.validation.clientContext">
+      </binding>
+      <clientContext
+            id="org.polarsys.kitalpha.pdt.metamodel.validation.clientContext">
+         <enablement>
+            <instanceof
+                  value="org.eclipse.emf.ecore.EObject">
+            </instanceof>
+         </enablement>
+      </clientContext>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider
+            cache="true"
+            class="org.polarsys.kitalpha.pdt.metamodel.validation.constraints.contributions.EclipsePlatformConstraintProvider"
+            mode="Batch">
+         <package
+               namespaceUri="http://www.polarsys.org/kitalpha/pdt/platform/1.0.0">
+         </package>
+      </constraintProvider>
+   </extension>
+
+</plugin>

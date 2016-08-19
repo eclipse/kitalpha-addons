@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.polarsys.kitalpha.pdt.introspector.feature"
+      label="%featureName"
+      version="1.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.example.com/description">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.polarsys.kitalpha.resourcereuse.emfscheme.feature" version="1.0.0.qualifier"/>
+      <import feature="org.polarsys.kitalpha.pdt.modeler.feature" version="1.0.0.qualifier"/>
+   </requires>
+
+   <plugin
+         id="org.polarsys.kitalpha.pdt.introspector.preferences"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.kitalpha.pdt.introspector.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

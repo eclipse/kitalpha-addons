@@ -1,0 +1,15 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		
+		
+		ConfiguredSchemaElement configuredSchemaElement = (ConfiguredSchemaElement) object;
+				String label = configuredSchemaElement.getName();
+				if(label != null)
+					return label + " [Configured Schema Element]";
+				else
+					return " [Configured Schema Element]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/
+		

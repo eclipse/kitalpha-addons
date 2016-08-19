@@ -1,0 +1,41 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: Eclipse - IDE Lib
+Element-Type: context
+Element-Version: 2.0
+Id: _xOyqAKfiEeW1v5EVWLgPjA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 8/3/16 5:42 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc "saveAll" {
+	// Check if the save all button is enabled
+	if [get-button "Save All (M1+M2+S)" | get-property enablement -raw | equals true ] {
+		get-button "Save All (M1+M2+S)" | click
+	}
+}
+
+proc maximizeEditor [ val name ] {
+	with [ get-tab-folder -index 2 ]
+	{
+		double-click
+		get-tab-item $name| click
+	}
+}
+
+proc minimizeEditor [ val name ] {
+	with [ get-tab-folder ]
+	{
+		double-click
+		get-tab-item $name| click
+	}
+}
+
+proc linkwithEditor [ val explorerName "Project Explorer"] {
+	get-view $explorerName | get-button "Link with Editor" | click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

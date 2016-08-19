@@ -1,0 +1,29 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: Shared_SiriusDiagramTool
+Element-Type: context
+Element-Version: 2.0
+Id: _J0_w8FQMEeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/27/16 5:10 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc useToolWithSelection [val name]  [val diagramName] [val selection ""]
+{
+	// Insert Plugin tool
+	clickOnTool -toolName $name -diagramName $diagramName
+	gotoDiagram -diagramName $diagramName | clickOn
+	
+	if [ $selection | not-eq ""]
+	{
+		with [get-window "Selection Wizard"] {
+	   		get-tree | select $selection
+	    	get-button Finish | click
+		}
+	}
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

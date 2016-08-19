@@ -1,0 +1,46 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.InclusionKind");%>
+
+		/**
+		 * CUSTOM_CODE_BEGIN
+		 **/
+		String firstBracket = "|";
+		String lastBracket = "|";
+		PluginDependency dependency = (PluginDependency) object;
+		String id = "";
+		String minimumVersion = "UNDEFINED";
+		String maximumVersion = "UNDEFINED";
+		
+		// brackets
+		if (dependency.getMinimumInclusion().getName() == InclusionKind.INCLUSIVE.getLiteral())
+			firstBracket = "[";
+		else if (dependency.getMinimumInclusion().getName() == InclusionKind.EXCLUSIVE.getLiteral())
+			firstBracket = "]";
+		else
+			firstBracket = "|";
+		if (dependency.getMaximumInclusion().getName() == InclusionKind.INCLUSIVE.getLiteral())
+			lastBracket = "]";
+		else if (dependency.getMaximumInclusion().getName() == InclusionKind.EXCLUSIVE.getLiteral())
+			lastBracket = "[";
+		else
+			lastBracket = "|";
+
+		//versions
+		String modelMinimumVersion = dependency.getMinimumVersion();
+		if ((modelMinimumVersion != null)&&(!modelMinimumVersion.isEmpty()))
+			minimumVersion = modelMinimumVersion;
+		
+		String modelMaximumVersion = dependency.getMaximumVersion();
+		if ((modelMaximumVersion != null)&&(!modelMaximumVersion.isEmpty()))
+			maximumVersion = modelMaximumVersion;
+		
+		
+		//dependency
+		if (dependency.getTarget() != null) {
+			id = dependency.getTarget().getId();
+		}
+		
+		return "" + id + " " + firstBracket + minimumVersion + " ; "
+				+ maximumVersion + lastBracket+" [Plugin Dependency]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

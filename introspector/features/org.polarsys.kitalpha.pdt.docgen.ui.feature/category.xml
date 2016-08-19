@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.polarsys.kitalpha.pdt.docgen.ui.feature_1.0.0.qualifier.jar" id="org.polarsys.kitalpha.pdt.docgen.ui.feature" version="1.0.0.qualifier">
+      <category name="org.polarsys.kitalpha.pdt.docgen"/>
+   </feature>
+   <category-def name="org.polarsys.kitalpha.pdt.docgen" label="Eclipse Platform HTML Generation"/>
+</site>

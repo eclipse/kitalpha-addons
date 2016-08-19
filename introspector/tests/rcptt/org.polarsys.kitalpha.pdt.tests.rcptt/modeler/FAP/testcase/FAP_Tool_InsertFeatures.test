@@ -1,0 +1,31 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _YfaD4FMwEeamI7Iw-qIwEA
+Element-Name: FAP_Tool_InsertFeatures
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _-4UgQFPEEeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/28/16 4:14 PM
+Testcase-Type: ecl
+Verifications: _JAaxoFPFEeamI7Iw-qIwEA
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+openSession -projectName $TestProjectName -airdName $TestAirdName
+
+createRepresentation -projectName $TestProjectName 
+					 -airdName $TestAirdName
+					 -representationFQN $FAPDiagramFQN
+					 -representationName $FAPDiagramName
+					 -newRepresentationName $TestDiagramName
+saveAll
+
+// Insert Plugin tool
+FAP_InsertTool -name "Insert Existing Features"
+
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

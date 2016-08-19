@@ -1,0 +1,30 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.MatchRule");%>
+
+		/**
+		 * CUSTOM_CODE_BEGIN
+		 **/
+		String id = " ";
+		String versionToMatch = "";
+		String label = "";
+		MatchRule matchRule = MatchRule.UNSET;
+
+		FeatureToPluginDependency dependency = (FeatureToPluginDependency) object;
+
+		if (dependency.getTarget() != null) {
+			id = dependency.getTarget().getId();
+			label += id;
+		}
+		if (dependency.getTarget() != null) {
+			versionToMatch = dependency.getVersion();
+			if (versionToMatch != null){
+				label += " -> v" + versionToMatch;
+				matchRule = dependency.getMatchRule();
+				if(matchRule != MatchRule.UNSET){
+					label += " : " + matchRule;  
+				}
+			}
+		}
+		return label + " [Plugin Dependency]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

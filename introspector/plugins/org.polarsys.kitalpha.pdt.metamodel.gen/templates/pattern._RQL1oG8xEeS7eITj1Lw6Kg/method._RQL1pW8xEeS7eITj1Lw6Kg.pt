@@ -1,0 +1,21 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.ExtensionPoint");%>
+
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		String label = "";
+		Extension extension = (Extension) object;
+		ExtensionPoint extensionPoint = extension.getExtensionPoint();
+		if (extension != null) {
+			if (extension.getId() != null)
+				label = "" + extension.getId() + " ";
+		}
+
+		if (extensionPoint != null)
+			label += " -> " + extensionPoint.getId()+" ";
+		
+		
+		return label+"["+ getString("_UI_Extension_type") + "]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

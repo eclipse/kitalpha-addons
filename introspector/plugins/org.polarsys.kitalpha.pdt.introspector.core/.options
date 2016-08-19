@@ -1,0 +1,4 @@
+org.polarsys.kitalpha.pdt.introspector.core/debug/all=false
+org.polarsys.kitalpha.pdt.introspector.core/debug/plugins=false
+org.polarsys.kitalpha.pdt.introspector.core/debug/features=false
+org.polarsys.kitalpha.pdt.introspector.core/info=true

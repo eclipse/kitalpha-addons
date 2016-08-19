@@ -1,0 +1,33 @@
+<%
+ List<Object> model = (List<Object>) ctx.getValue(PatternContext.DOMAIN_OBJECTS);
+ String fileName = "";
+ String buffer = "";
+ EclipseModel rootModel;
+ List<String> domainList = (List<String>) ctx.getValue("domainList");
+ int modelsNumber = model.size();
+for(Object currentObject : model) {
+	if(currentObject instanceof EclipseModel) {
+		fileName = org.polarsys.kitalpha.pdt.docgen.helpers.EclipseModelHelpers.getEclipseModelName((EclipseModel)currentObject);
+		//org.polarsys.kitalpha.pdt.docgen.helpers.EclipseModelHelpers.getReferencedEclipseModelsCount((EclipseModel)currentObject);
+		rootModel = (EclipseModel)currentObject;
+		buffer = org.polarsys.kitalpha.pdt.docgen.helpers.ModelIndexHelpers.getModelIndexContent(rootModel,fileName,domainList);
+		org.polarsys.kitalpha.pdt.docgen.helpers.ModelIndexHelpers.clearModelIndexBuffer(modelsNumber);
+		model.remove(currentObject);
+		break;
+	}
+}
+%>
+
+<%/*%>
+<%
+
+for (String domain : domainList){
+%>
+		<li>
+			<div style="float:left; margin-left:5px; font-size:12px; font-family:Arial">
+				<a href="<%=domain%>/<%=fileName%>.html" target="_top"><%=fileName%></a>
+			</div>
+		</li>
+<%}%>
+<%*/%>
+<%=buffer%>

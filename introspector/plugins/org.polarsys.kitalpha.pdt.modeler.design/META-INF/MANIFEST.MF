@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: org.polarsys.kitalpha.pdt.modeler.design;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.polarsys.kitalpha.pdt.internal.modeler.Activator
+Bundle-Vendor: %Bundle-Vendor
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.sirius,
+ org.polarsys.kitalpha.pdt.metamodel.model,
+ org.polarsys.kitalpha.pdt.modeler.utils,
+ org.eclipse.sirius.common.acceleo.aql;bundle-version="4.1.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.kitalpha.pdt.modeler.services
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

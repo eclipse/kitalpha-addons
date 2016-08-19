@@ -1,0 +1,11 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		String label = ((SchemaElement) object).getName();
+		if(label != null)
+			return label + " [Schema Element]";
+		else 
+			return "[Schema Element]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

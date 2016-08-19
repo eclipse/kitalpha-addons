@@ -1,0 +1,36 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.ConfigurationElementAttributeKind");%>
+//INJECTED-CODE-BEGIN : ConfigurationElementAttributeInstance#overlayImage()
+/**
+* This adds an overlay to the given image if the object is controlled.
+*/
+@Override
+protected Object overlayImage(Object object, Object image) {	
+		/**
+		 * CUSTOM_CODE_BEGIN : [Image provider of ConfigurationElementAttribute]
+		 **/
+		ConfigurationElementAttribute CEA = (ConfigurationElementAttribute) object;
+		if (CEA.getType() == ConfigurationElementAttributeKind.RESOURCE) {
+			return super.overlayImage(
+					object,
+					getResourceLocator()
+							.getImage(
+									"full/obj16/ConfigurationElementAttribute_resource"));
+		} else if (CEA.getType() == ConfigurationElementAttributeKind.BOOLEAN) {
+			return super.overlayImage(
+					object,
+					getResourceLocator().getImage(
+							"full/obj16/ConfigurationElementAttribute_boolean"));
+		} else if (CEA.getType() == ConfigurationElementAttributeKind.JAVA) {
+			return super.overlayImage(
+					object,
+					getResourceLocator().getImage(
+							"full/obj16/ConfigurationElementAttribute_java"));
+		} else
+			return super.overlayImage(
+					object,
+					getResourceLocator().getImage(
+							"full/obj16/ConfigurationElementAttribute_string"));
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/
+		 }

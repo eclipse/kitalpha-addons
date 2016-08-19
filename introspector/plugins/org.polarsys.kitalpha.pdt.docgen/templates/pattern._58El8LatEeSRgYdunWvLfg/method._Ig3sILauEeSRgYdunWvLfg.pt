@@ -1,0 +1,45 @@
+<%
+String outputFolder = ctx.getValue("outputFolder").toString();
+String projectName = ctx.getValue("projectName").toString();
+String text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers.getLabel((EclipseElement)element);
+try {
+	text = EscapeChars.forHTML(text);
+} catch (NullPointerException e) {
+	System.err.println("Caught exception while converting text into html:" + e.getMessage());
+	text = "";
+}
+%><div style="position: fixed; top: 0; left: 1%; width: 98%; z-index: 2; background-color: white; ";>
+<%
+String hyperlink = "";
+EObject parent = element.eContainer();
+if (parent != null && parent instanceof EclipseElement) {
+	hyperlink = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers
+			.getTypeHyperLink((EclipseElement) parent, Helpers.getLabel((EclipseElement) parent));
+	String parentClassName = parent.eClass().getName();%>
+	<p><strong><%=parentClassName%> :</strong> <%=hyperlink%></p><%
+}
+%>
+<%String imageFileName = LabelProviderHelper.getImageFileName(element,
+						projectName, outputFolder);%>
+<h1><img src="../icon/<%=imageFileName%>" alt="" /> <%=text%></h1>
+<hr style="width:98%; align : center; " /> 
+</div>
+
+<div style="position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;">
+
+<%
+String repoName = ((Repository) element).getName();
+if (repoName == null) {
+	repoName = "Repository Name not found";
+}
+
+%>
+
+<%
+ String repositoryPage = org.polarsys.kitalpha.pdt.docgen.helpers.RepositoryHelpers.getRepositoryPage((Repository) element, projectName, outputFolder,1);
+%>
+
+<%=repositoryPage%>
+
+
+

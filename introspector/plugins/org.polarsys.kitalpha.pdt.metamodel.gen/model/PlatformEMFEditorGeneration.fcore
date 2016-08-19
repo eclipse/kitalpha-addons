@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fcore:FactoryComponent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
+    xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
+    xmlns:ftask="http://www.eclipse.org/egf/1.0.0/ftask" xmlns:types="http://www.eclipse.org/egf/1.0.0/types"
+    xmi:id="_nDff8W_sEeSa-aDvM6B6iA" name="PlatformEMFEditorGeneration">
+  <contractContainer xmi:id="_vRetsG_vEeSa-aDvM6B6iA">
+    <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_K7rucG_xEeSa-aDvM6B6iA"
+        name="version" mandatory="true" invocationContracts="#_LhOhYNF3EeWW24r44ga24w">
+      <type xmi:type="types:TypeString" xmi:id="_MJ8RUG_xEeSa-aDvM6B6iA" value="1.0.0.qualifier"/>
+    </contracts>
+  </contractContainer>
+  <viewpointContainer xmi:id="_tI0fcG_sEeSa-aDvM6B6iA">
+    <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_tI0fcW_sEeSa-aDvM6B6iA">
+      <domains xmi:type="domain:EMFDomain" xmi:id="_tI0fcm_sEeSa-aDvM6B6iA" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+          uri="platform:/resource/org.polarsys.kitalpha.pdt.metamodel/model/platform.genmodel"/>
+    </viewpoints>
+  </viewpointContainer>
+  <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_nqnxYG_sEeSa-aDvM6B6iA">
+    <invocations xmi:id="_o27zgG_sEeSa-aDvM6B6iA" name="EMF Editor Pattern invocation"
+        invokedActivity="fcore:FactoryComponent platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_PkqGcDG0Ed-kc8dEZsdm2w">
+      <invocationContractContainer xmi:id="_o27zgW_sEeSa-aDvM6B6iA">
+        <invocationContracts xmi:id="_o27zgm_sEeSa-aDvM6B6iA" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_Prg8ezG0Ed-kc8dEZsdm2w">
+          <type xmi:type="domain:TypeDomain" xmi:id="_o27zg2_sEeSa-aDvM6B6iA" domain="#_tI0fcm_sEeSa-aDvM6B6iA"/>
+        </invocationContracts>
+      </invocationContractContainer>
+    </invocations>
+    <invocations xmi:id="_EYVzINF3EeWW24r44ga24w" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_HCbnYNFiEeWW24r44ga24w">
+      <invocationContractContainer xmi:id="_IdJFUNF3EeWW24r44ga24w">
+        <invocationContracts xmi:id="_JXUOkNF3EeWW24r44ga24w" invokedContract="platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_5XrRINFtEeWW24r44ga24w">
+          <type xmi:type="types:TypeString" xmi:id="_K7co4NF5EeWW24r44ga24w" value="org.polarsys.kitalpha.pdt.metamodel.editor"/>
+        </invocationContracts>
+        <invocationContracts xmi:id="_LhOhYNF3EeWW24r44ga24w" factoryComponentContract="#_K7rucG_xEeSa-aDvM6B6iA"
+            invokedContract="platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#__QxygNFtEeWW24r44ga24w"/>
+        <invocationContracts xmi:id="_NN--INF3EeWW24r44ga24w" invokedContract="platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_M4_UoNFuEeWW24r44ga24w">
+          <type xmi:type="types:TypeString" xmi:id="_PEapYNF5EeWW24r44ga24w"/>
+        </invocationContracts>
+      </invocationContractContainer>
+    </invocations>
+  </orchestration>
+</fcore:FactoryComponent>

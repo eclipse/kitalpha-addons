@@ -1,0 +1,363 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: Sirius - Diagrams Lib
+Element-Type: context
+Element-Version: 2.0
+Id: _-ijpIKfBEeWPmoMACNli2g
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 8/4/16 8:52 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+global [val ProjectExplorerName "Project Explorer"]
+	   [val OpenSessionActionName "Open"]
+	   
+proc sirius_init [val projectExplorerName ] [val openSessionActionName ]{
+	global [val ProjectExplorerName [ $projectExplorerName ] ] -override
+	global [val OpenSessionActionName [ $openSessionActionName] ] -override
+}
+
+/****************************************************************************************************************/
+/***************************************** Private begin ********************************************************/
+/****************************************************************************************************************/
+global [val context null ]
+
+proc clickOnNodeElementFromDiagram [val nodeName ] [val diagramName ] {
+	with [get-editor $diagramName | get-diagram -index 1 | get-edit-part -name $diagramName] {
+	    with [get-edit-part -name $nodeName | get-edit-part -className SquareEditPart] {
+			clickOn
+	    }
+	}
+}
+
+proc gotoDiagramElementFromContext [ val diagramElementName ] [ val diagramElementType ""] [ val index 0 ]{
+	if [$diagramElementType | not-eq ""]
+	{
+		if [$index | eq "-1"] 
+		{
+			get-edit-part -name $diagramElementName | get-edit-part -className $diagramElementType
+		}
+		-else
+		{
+			get-edit-part -name $diagramElementName -index $index | get-edit-part -className $diagramElementType
+		}
+		
+	}
+	-else
+	{
+		if [$index | eq "-1"] 
+		{
+			get-edit-part -name $diagramElementName 
+		}
+		-else
+		{
+			get-edit-part -name $diagramElementName -index $index 
+		}
+	}
+}
+
+proc getFirstParent [ val allParents ] { 
+	$allParents | invoke substring 0 [ $allParents | invoke indexOf ";"]
+}
+
+proc getLastParent [ val allParents ] { 
+	$allParents | invoke substring [ $allParents | invoke lastIndexOf ";" | plus 1] [ $allParents | invoke length]
+}
+
+proc getParentsWithoutFirst [ val allParents ] { 
+	$allParents | invoke substring [ $allParents | invoke indexOf ";" | plus 1] [ $allParents | invoke length]
+}
+
+proc getParentsWithoutLast [ val allParents ] { 
+	$allParents | invoke substring 0 [ $allParents | invoke lastIndexOf ";" ]
+}
+
+proc getParentCount [ val allParents ] { 
+	$allParents | split -sep ";" -trimResults | invoke length
+}
+
+proc hasMoreThanOneParent [ val allParents ] {
+	//emit[ getParentsWithoutLast -allParents $allParents ] | invoke contains "" 
+	$allParents | invoke lastIndexOf ";" | not-eq [ $allParents | invoke indexOf ";" ]
+}
+
+/****************************************************************************************************************/
+/****************************************** Private end *********************************************************/
+/****************************************************************************************************************/
+
+proc openSession [val projectName] [val airdName] {
+	with [ get-view $ProjectExplorerName | get-tree ] {
+		select [concat $projectName "/" $airdName]
+		if [ get-menu $OpenSessionActionName | get-property enablement -raw | equals true ]
+		{
+			get-menu $OpenSessionActionName | click
+		}
+	}
+}
+
+proc createRepresentation [ val projectName ] [ val airdName ] [ val representationFQN ] [ val representationName "" ] 
+						  [ val modelElementName -value "*"] [ val modelElementPath -value ""] [ val newRepresentationName -value "" ] {
+	get-view $ProjectExplorerName | get-tree | select [concat $projectName "/" $airdName] | get-menu "Create Representation" | click
+	    
+	with [get-window "Create Representation Wizard"] {
+	    get-tree | select $representationFQN
+	    get-button "Next >" | click
+    }
+    
+    with [get-window "Create Representation"] {
+    
+    	if [$modelElementName | not-eq "*"] 
+    	{
+    		get-editbox | set-text $modelElementName
+    	}
+    	-else
+    	{
+	    	if [$modelElementPath | not-eq ""] 
+	    	{
+	    		get-tree | select $modelElementPath
+	    	}
+    	}
+    
+	    get-button Finish | click
+	    
+	    if [$newRepresentationName | not-eq "" ] 
+	    {
+	    	if [ $representationName | not-eq "" ]
+	    	{
+	    		get-window [ concat "New " $representationName ] | get-editbox -after [get-label "Name:"] | set-text $newRepresentationName
+	    	}
+	    	-else
+	    	{
+	    		get-window "New Representation" | get-editbox -after [get-label "Name:"] | set-text $newRepresentationName
+	    	}
+	    } 
+	    
+	    if [ $representationName | not-eq "" ]
+    	{
+    		get-window [ concat "New " $representationName ] | get-button OK | click
+    	}
+    	-else
+    	{
+    		get-window "New Representation" | get-button OK | click
+    	}
+	}
+}
+
+proc openDiagram [val projectName] [val airdName] [val modelElementPath] [val diagramName]{
+	get-view $ProjectExplorerName
+		| get-tree 
+		| select [concat $projectName "/" $airdName "/" $modelElementPath "/" $diagramName] 
+		| double-click
+}
+
+proc activateLayer [val diagramName] [val layerName]{
+	get-editor $diagramName | get-button Layers | click
+	if [get-menu $layerName | get-property selection -raw | equals false ]
+	{
+		get-menu $layerName | click
+		saveAll
+	}
+}
+
+proc desactivateLayer [val diagramName] [val layerName]{
+	get-editor $diagramName | get-button Layers | click
+	if [get-menu $layerName | get-property selection -raw | equals true ]
+	{
+		get-menu $layerName | click
+		saveAll
+	}
+}
+
+proc clickOn [val withCTRL false] {
+	if [$withCTRL]
+	{
+		mouse-move 1 1 button1 CTRL -height [ get-property height -raw ] -width [ get-property width -raw ]
+	    mouse-press 1 1 button1 CTRL -height [ get-property height -raw ] -width [ get-property width -raw ]
+	    mouse-release 1 1 button1 CTRL -height [ get-property height -raw ] -width [ get-property width -raw ]
+	}
+	-else
+	{
+		mouse-move 1 1 button1 -height [ get-property height -raw ] -width [ get-property width -raw ]
+	    mouse-press 1 1 button1 -height [ get-property height -raw ] -width [ get-property width -raw ]
+	    mouse-release 1 1 button1 -height [ get-property height -raw ] -width [ get-property width -raw ]
+	}
+}
+
+/** The parent type can be one of the one defined in the Sirius EditPart Properties */
+/** TODO: Handle the case when bordered node parent is not directely on the diagram. **/
+proc gotoBorderedNodeFromDiagram [ val diagramName ] [ val diagramElementName "" ] [val index "-1" ] [ val diagramElementParent "" ] [val nodeType ""]{
+	if [ hasMoreThanOneParent -allParents $diagramElementParent ]
+	{
+		with [gotoContainerFromDiagram -diagramName $diagramName 
+								-diagramElementName [getLastParent -allParents [ getParentsWithoutLast -allParents $diagramElementParent ] ]
+								-diagramElementParent [getParentsWithoutLast -allParents [ getParentsWithoutLast -allParents $diagramElementParent ] ] ] 
+		{
+			// Direct parent
+			with [ gotoDiagramElementFromContext -diagramElementName [ getLastParent -allParents $diagramElementParent ] ]
+			{
+				if [$nodeType | not-eq ""]
+				{
+					gotoDiagramElementFromContext -diagramElementName $diagramElementName -diagramElementType $nodeType -index $index
+				}
+				-else
+				{
+					gotoDiagramElementFromContext -diagramElementName $diagramElementName -index $index
+				}
+			}
+		}
+	} 
+	-else
+	{
+		with [get-editor $diagramName | get-diagram -index 1 | get-edit-part -name  $diagramName ] 
+		{
+			with [ gotoDiagramElementFromContext -diagramElementName $diagramElementParent ]
+			{
+				gotoDiagramElementFromContext -diagramElementName $diagramElementName -diagramElementType $nodeType -index $index
+			}
+		}
+	}
+}
+
+proc gotoSquareBorderedNodeFromDiagram [ val diagramName ] [ val diagramElementName ] [val index "-1" ] [ val diagramElementParent ] {
+	gotoBorderedNodeFromDiagram -diagramName $diagramName 
+								-diagramElementName $diagramElementName 
+								-index $index 
+								-diagramElementParent $diagramElementParent 
+								-nodeType $Square
+}
+
+proc gotoRotativeImageBorderedNodeFromDiagram [ val diagramName ] [ val diagramElementName ] [val index "-1" ] [ val diagramElementParent ] {
+	gotoBorderedNodeFromDiagram -diagramName $diagramName 
+								-diagramElementName $diagramElementName 
+								-index $index 
+								-diagramElementParent $diagramElementParent 
+								-nodeType $RotativeImage
+}
+
+/** The both parameters diagramElementName and index can be used separatelly or in the same time. **/
+proc gotoNodeFromDiagram [ val diagramName ] [ val diagramElementName "" ] [val index 0] [ val diagramElementParent "" ] [val nodeType]{
+	if [$diagramElementParent | not-eq ""]
+	{
+		with [gotoContainerFromDiagram -diagramName $diagramName 
+								-diagramElementName [getLastParent -allParents $diagramElementParent]
+								-diagramElementParent [getParentsWithoutLast -allParents $diagramElementParent] ] {
+			gotoDiagramElementFromContext -diagramElementName $diagramElementName -diagramElementType $nodeType	-index $index					
+		}
+	} 
+	-else
+	{
+		with [get-editor $diagramName | get-diagram -index 1 | get-edit-part -name  $diagramName ] 
+		{
+			gotoDiagramElementFromContext -diagramElementName $diagramElementName -diagramElementType $nodeType	-index $index
+		}
+	}
+}
+
+proc gotoSquareNodeFromDiagram [ val diagramName ] [ val diagramElementName "" ] [val index 0] [ val diagramElementParent "" ]{
+ 	gotoNodeFromDiagram -diagramName $diagramName 
+ 						-diagramElementName $diagramElementName 
+ 						-diagramElementParent $diagramElementParent 
+ 						-index $index 
+ 						-nodeType $Square
+}
+
+proc gotoDiagram [ val diagramName ] [ val gotoEditPart "true"] {
+//	if [ $gotoEditPart | eq "1"]
+	if [ bool $gotoEditPart ]
+	{
+		get-editor $diagramName | get-diagram -index 1 | get-edit-part -name $diagramName 
+	}
+	-else
+	{
+		get-editor $diagramName | get-diagram -index 1
+	}
+}
+
+proc gotoContainerFromDiagram [ val diagramName ] [ val diagramElementName ] [ val diagramElementParent "" ]{
+	with [get-editor $diagramName | get-diagram -index 1 | get-edit-part -name  $diagramName ] 
+	{
+		if [$diagramElementParent | equals ""]
+		{
+			gotoDiagramElementFromContext -diagramElementName $diagramElementName -diagramElementType $FlatContainer 
+		} 
+		-else 
+		{
+			if [ $diagramElementParent | invoke contains ";" ]
+			{
+				// 1- extract the first parent and goto into
+			    global [val context [gotoDiagramElementFromContext -diagramElementName [ getFirstParent -allParents $diagramElementParent] -diagramElementType $FlatContainer ] ] -override
+			    
+				// 2- loop over the others parents and goto into
+				getParentsWithoutFirst -allParents $diagramElementParent | split -sep ";" -trimResults | foreach [val parent]
+				{
+					with [ $context ] 
+					{
+						global [val context [ gotoDiagramElementFromContext -diagramElementName $parent -diagramElementType $SubFlatContainer ] ] -override
+					}
+				}
+			}
+			-else 
+			{ 
+				global [val context [ gotoDiagramElementFromContext -diagramElementName $diagramElementParent -diagramElementType $FlatContainer ] ] -override
+			} 
+			
+			with [ $context ] 
+			{
+				gotoDiagramElementFromContext -diagramElementName $diagramElementName -diagramElementType $SubFlatContainer
+			}
+		}
+	}
+}
+
+proc clickOnTool [val toolName ] [val diagramName ] {
+	get-editor $diagramName | get-palette | get-palette-entry $toolName | clickOn
+}
+
+
+/** Toolbar tools*/
+proc displayShowHideDialog [ val diagramName] [ val ation "Expand All" ] [ val close "false" ] {
+	gotoDiagram -diagramName $diagramName | clickOn
+	get-editor $diagramName | get-button "Show/Hide" | click 
+	if [ $ation | not-eq ""]
+	{
+		get-window "Diagram elements visibility" | get-button $ation | click
+		
+		if [ bool $close ]
+		{
+			get-window "Diagram elements visibility" | get-button "OK" | click
+		}
+	}
+	
+}
+
+proc applyAutoSize [val diagramName ] {
+	if [ get-editor $diagramName | get-button "Auto Size" | get-property enablement -raw ]
+	{
+		get-editor $diagramName | get-button "Auto Size" | click
+	}
+	-else
+	{
+		log "Can't applay Auto Size"
+	}
+}
+
+proc applyArrangeAll [val diagramName ] {
+	gotoDiagram -diagramName $diagramName | clickOn
+	applyDiagramTool -diagramName $diagramName -toolName "Arrange All"
+}
+
+proc applyDiagramTool [val diagramName] [val toolName]{
+	if [ get-editor $diagramName | get-button $toolName | get-property enablement -raw ]
+	{
+		get-editor $diagramName | get-button $toolName | click
+	}
+	-else
+	{
+		log [ concat "Can't applay " $toolName ]
+	}
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

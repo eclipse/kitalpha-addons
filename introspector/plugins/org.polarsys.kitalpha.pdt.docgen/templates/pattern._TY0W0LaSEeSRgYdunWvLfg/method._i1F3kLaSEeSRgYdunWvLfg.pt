@@ -1,0 +1,8 @@
+<%
+element = parameter;
+fileName = fileNameService.getFileName(element);
+helper = new DefaultSiriusDiagramHelper();
+title = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers.getLabel(element);
+String className = element.eClass().getName();
+iconPath = "../icon/" + className + ".png";
+%>

@@ -1,0 +1,38 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.SchemaElement");%>
+
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		SchemaElementReference schemaElementReference = (SchemaElementReference) object;
+		SchemaElement referencedElement = schemaElementReference.getReference();
+		String referencedElementName = (referencedElement != null) ? referencedElement
+				.getName() : null;
+
+		String referencedElementString = ((referencedElementName != null) && (!referencedElementName
+				.isEmpty())) ? referencedElementName : "";
+				
+		String result = "";
+	
+		String label = schemaElementReference.getName();
+		String maxCard = "";
+		if (schemaElementReference.isUnbounded()) {
+			maxCard = "*";
+			if(label != null)
+				result= label + " [" + schemaElementReference.getMinCard() + ";"
+						+ maxCard + "]";
+			else 
+				result =  " [" + schemaElementReference.getMinCard() + ";"
+				+ maxCard + "]";
+		} else
+			if(label != null)
+				result =  label + " [" + schemaElementReference.getMinCard() + ";"
+						+ schemaElementReference.getMaxCard() + "]";
+			else 
+				result =  " [" + schemaElementReference.getMinCard() + ";"
+				+ schemaElementReference.getMaxCard() + "]";
+		
+		return result = referencedElementString.isEmpty() ? result : result +" -> "+referencedElementString;
+		
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

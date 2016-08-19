@@ -1,0 +1,10 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		String label = ((Feature) object).getId();
+		if(label != null)
+			return label + " [Feature]";
+		else return " [Feature]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

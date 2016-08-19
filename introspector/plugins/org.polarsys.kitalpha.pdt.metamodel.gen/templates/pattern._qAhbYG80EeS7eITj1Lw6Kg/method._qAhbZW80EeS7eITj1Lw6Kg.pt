@@ -1,0 +1,13 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		String label = " [Feature Inclusion]";
+		FeatureInclusion inclusion = (FeatureInclusion) object;
+		if (inclusion.getIncludedFeature() != null)
+			label = "" + inclusion.getIncludedFeature().getId() + " [Feature Inclusion]";
+		return label;
+		// end-extension-code
+		
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

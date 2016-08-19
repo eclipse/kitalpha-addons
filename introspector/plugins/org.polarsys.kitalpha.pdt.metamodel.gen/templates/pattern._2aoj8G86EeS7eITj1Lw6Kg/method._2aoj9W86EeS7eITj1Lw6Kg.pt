@@ -1,0 +1,9 @@
+	/**
+		 * CUSTOM_CODE_BEGIN
+		 **/
+
+		String label = ((Repository)object).getName();
+		return label;
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

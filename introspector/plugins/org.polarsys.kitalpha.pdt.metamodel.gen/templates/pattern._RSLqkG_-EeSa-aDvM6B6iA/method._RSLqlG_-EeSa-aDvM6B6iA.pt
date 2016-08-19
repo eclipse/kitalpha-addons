@@ -1,0 +1,3 @@
+		boolean isPackage = genClass.getEcoreClass().getName().equals("Package");
+		boolean isAbsoluteNameFeature = genFeature.getName().equals("absoluteName");
+		return isPackage&&isAbsoluteNameFeature;

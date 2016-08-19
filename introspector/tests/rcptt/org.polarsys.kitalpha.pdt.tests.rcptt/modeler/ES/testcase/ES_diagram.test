@@ -1,0 +1,41 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _YOlZkFP0EeamI7Iw-qIwEA
+Element-Name: ES_diagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _bsH3cFP0EeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/28/16 4:13 PM
+Testcase-Type: ecl
+Verifications: _a6NK8FP3EeamI7Iw-qIwEA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Not tested Mappings:
+1- E.ConfiguredSchemaElementToChildren
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+openSession -projectName $TestProjectName -airdName $TestAirdName
+
+createRepresentation -projectName $TestProjectName 
+					 -airdName $TestAirdName
+					 -representationFQN $ESDiagramFQN
+					 -representationName $ESDiagramName
+					 -newRepresentationName $TestDiagramName
+saveAll
+
+take-screenshot
+
+// Apply some asserts to verify labels and colors
+checkDiagramElements
+
+// Open Show/Hide dialog to check if all elements are created by tools
+displayShowHideDialog -diagramName $TestDiagramName
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="platform" nsURI="http://www.polarsys.org/kitalpha/pdt/platform/1.0.0"
+    nsPrefix="platform">
+  <eAnnotations source="http://www.thalesgroup.com/mde/2010/extension">
+    <details key="useUUIDs" value="true"/>
+    <details key="useIDAttributes" value="false"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Plugin" eSuperTypes="#//IdentifiedVersionnedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPoints" lowerBound="1"
+        eType="#//PluginExtensionPoints" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" lowerBound="1"
+        eType="#//PluginExtensions" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pluginDependencies" lowerBound="1"
+        eType="#//PluginDependencies" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exportedPackages" lowerBound="1"
+        eType="#//ExportedPackages" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionEnvironmnents"
+        lowerBound="1" eType="#//ExecutionEnvironments" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtensionPoint" eSuperTypes="#//IdentifiedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schemaElements" upperBound="-1"
+        eType="#//SchemaElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contributors" upperBound="-1"
+        eType="#//Extension" eOpposite="#//Extension/extensionPoint"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionSchemaElement"
+        eType="#//SchemaElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Extension" eSuperTypes="#//IdentifiedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPoint" lowerBound="1"
+        eType="#//ExtensionPoint" eOpposite="#//ExtensionPoint/contributors"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuredSchemaElement"
+        upperBound="-1" eType="#//ConfiguredSchemaElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1"
+        eType="#//Package" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plugins" upperBound="-1"
+        eType="#//Plugin" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryKind" lowerBound="1"
+        eType="#//RepositoryKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfiguredSchemaElement" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ConfiguredSchemaElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schemaElement" lowerBound="1"
+        eType="#//SchemaElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configurationElements"
+        upperBound="-1" eType="#//ConfigurationElementAttributeInstance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationElementAttribute" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ConfigurationElementAttributeKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basedOn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="translatable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConfigurationElementAttributeKind">
+    <eLiterals name="String"/>
+    <eLiterals name="Java" value="1"/>
+    <eLiterals name="Resource" value="2"/>
+    <eLiterals name="Boolean" value="3"/>
+    <eLiterals name="Identifier" value="4"/>
+    <eLiterals name="Integer" value="5" literal="Integer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComplexCompositorKind">
+    <eLiterals name="SEQUENCE" value="1"/>
+    <eLiterals name="CHOICE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComplexCompositor" eSuperTypes="#//Cardinality">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="complexCompositorKind"
+        eType="#//ComplexCompositorKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="complexCompositorChildren"
+        upperBound="-1" eType="#//ComplexCompositor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementReferences" lowerBound="1"
+        upperBound="-1" eType="#//SchemaElementReference" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SchemaElement" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//ConfigurationElementAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="complexCompositor" eType="#//ComplexCompositor"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//IdentifiedVersionnedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="copyrightNotice" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="licenseAgreement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sitesToVisit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="provider" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureInclusions" lowerBound="1"
+        eType="#//FeatureInclusions" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pluginDependencies" lowerBound="1"
+        eType="#//FeaturePluginDependencies" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includedPlugins" lowerBound="1"
+        eType="#//IncludedPlugins" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureDependencies" lowerBound="1"
+        eType="#//FeatureDependencies" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MatchRule">
+    <eLiterals name="UNSET"/>
+    <eLiterals name="COMPATIBLE" value="1"/>
+    <eLiterals name="EQUIVALENT" value="2"/>
+    <eLiterals name="GREATER_OR_EQUAL" value="3"/>
+    <eLiterals name="NONE" value="4"/>
+    <eLiterals name="PERFECT" value="5"/>
+    <eLiterals name="PREFIX" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PluginDependency" eSuperTypes="#//EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Plugin"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimumVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximumVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimumInclusion" eType="#//InclusionKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximumInclusion" eType="#//InclusionKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureDependency" eSuperTypes="#//VersionnedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="matchRule" lowerBound="1"
+        eType="#//MatchRule" defaultValueLiteral="NONE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subPackages" upperBound="-1"
+        eType="#//Package" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plugins" upperBound="-1"
+        eType="#//Plugin" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="absoluteName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifiedElement" abstract="true" eSuperTypes="#//EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureInclusion" eSuperTypes="#//VersionnedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includedFeature" lowerBound="1"
+        eType="#//Feature"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InclusionKind">
+    <eLiterals name="UNSET"/>
+    <eLiterals name="INCLUSIVE" value="1" literal="INCLUSIVE"/>
+    <eLiterals name="EXCLUSIVE" value="2" literal="EXCLUSIVE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationElementAttributeInstance"
+      eSuperTypes="#//ConfigurationElementAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeDefinition" lowerBound="1"
+        eType="#//ConfigurationElementAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedValue" lowerBound="1"
+        eType="#//AbstractValue" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifiedVersionnedElement" abstract="true"
+      eSuperTypes="#//IdentifiedElement #//VersionnedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaClassValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//AbstractValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractValue" abstract="true" eSuperTypes="#//EclipseElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VersionnedElement" abstract="true" eSuperTypes="#//EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cardinality" eSuperTypes="#//EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minCard" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCard" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbounded" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SchemaElementReference" eSuperTypes="#//Cardinality #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+        eType="#//SchemaElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eclipseElementIntrospectionErrors"
+        upperBound="-1" eType="#//IntrospectionError" changeable="false" derived="true"
+        eOpposite="#//IntrospectionError/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureToPluginDependency" eSuperTypes="#//VersionnedElement #//EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="matchRule" lowerBound="1"
+        eType="#//MatchRule" defaultValueLiteral="NONE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Plugin"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PluginExtensions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
+        eType="#//Extension" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PluginExtensionPoints">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPoints" upperBound="-1"
+        eType="#//ExtensionPoint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PluginDependencies">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pluginDependencies" upperBound="-1"
+        eType="#//PluginDependency" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureDependencies">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureDependencies" upperBound="-1"
+        eType="#//FeatureDependency" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureInclusions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureInclusions" upperBound="-1"
+        eType="#//FeatureInclusion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturePluginDependencies">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pluginDependencies" upperBound="-1"
+        eType="#//FeatureToPluginDependency" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IncludedPlugins">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includedPlugins" upperBound="-1"
+        eType="#//Plugin"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RepositoryKind">
+    <eLiterals name="Platform"/>
+    <eLiterals name="Workspace" value="1"/>
+    <eLiterals name="PlatformAndWorkspace" value="2"/>
+    <eLiterals name="UpdateSite" value="3"/>
+    <eLiterals name="Other" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EclipseModel" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repositories" upperBound="-1"
+        eType="#//Repository" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="introspectionErrors" upperBound="-1"
+        eType="#//IntrospectionErrors" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifierIgnored" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExportedPackage" eSuperTypes="#//IdentifiedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExportedPackages" eSuperTypes="#//EclipseElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exportedPackages" upperBound="-1"
+        eType="#//ExportedPackage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntrospectionError">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="summary" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="details" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//EclipseElement" eOpposite="#//EclipseElement/eclipseElementIntrospectionErrors"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEnvironments">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionEnvironments"
+        upperBound="-1" eType="#//ExecutionEnvironment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEnvironment" eSuperTypes="#//IdentifiedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntrospectionErrors" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="introspectionErrors" upperBound="-1"
+        eType="#//IntrospectionError" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

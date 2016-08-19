@@ -1,0 +1,10 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : [ConfigurationElementAtributeItem]
+		 **/
+		String label = "";
+		ConfigurationElementAttribute CEA = (ConfigurationElementAttribute) object;
+		label = "" + CEA.getName() + " : " + CEA.getType();
+		return label;
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

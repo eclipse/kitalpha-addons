@@ -1,0 +1,8 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		BooleanValue booleanValue = (BooleanValue) object;
+		return "Value = " + booleanValue.isValue();
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

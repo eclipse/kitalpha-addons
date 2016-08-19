@@ -1,0 +1,2 @@
+	String label = ((IntrospectionError)object).getSummary();
+	return label;

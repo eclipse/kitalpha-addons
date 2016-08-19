@@ -1,0 +1,34 @@
+<%
+	String projectName= ctx.getValue("projectName").toString();
+	String outputFolder = ctx.getValue("outputFolder").toString();
+	String text = "";
+	EclipseElement  eclipseElement = (EclipseElement) currentObject;
+	text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers.getLabel(eclipseElement);
+	Pattern p = Pattern.compile("\\(.+?\\)");
+		Matcher m = p.matcher(text);
+		if (text != null) {
+			if (currentObject instanceof Extension
+					&& m.find()) {
+				String group = m.group(0);
+				String substring = group.substring(1, group.length()-1);
+				String replace = text.replace("(no name)", substring);
+				text = replace;
+			}
+			text = EscapeChars.forHTML(text);
+		}
+%>
+
+<%String imageFileName = "";
+try {
+	imageFileName = LabelProviderHelper.getImageFileName(currentObject,
+			projectName, outputFolder);
+} catch (ExceptionInInitializerError e) {
+	e.printStackTrace();
+} catch (PatternRuntimeException e2) {
+	e2.printStackTrace();
+}%>
+<%
+	ObjectHelpers oh = new ObjectHelpers(); 
+%>
+<img src="../icon/<%=imageFileName%>" alt="<%=currentObject.eClass().getName()%>"/> <a href="../<%= DocGenHtmlUtil.getModelName(currentObject)%>/<%=oh.getFileName(currentObject)%>.html" target="content"><%= text %></a>
+

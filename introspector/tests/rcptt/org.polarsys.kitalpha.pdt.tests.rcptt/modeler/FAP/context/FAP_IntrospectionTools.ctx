@@ -1,0 +1,49 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: FAP_IntrospectionTools
+Element-Type: context
+Element-Version: 2.0
+Id: _WWVLoFM9EeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/27/16 5:10 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc FAP_InsertTool [val name]  [val selection ""]
+{
+	// Insert Plugin tool
+	clickOnTool -toolName $name -diagramName $TestDiagramName
+	gotoDiagram -diagramName $TestDiagramName | clickOn
+	
+	if [ $selection | not-eq ""]
+	{
+		with [get-window "Selection Wizard"] {
+	   		get-tree | select $selection
+	    	get-button Finish | click
+		}
+	}
+}
+
+
+proc FAP_IncomingOutgoingLinks [ val diagramElementName ] [ val incoming "true"] {
+	gotoDiagram -diagramName $TestDiagramName 
+				| gotoDiagramElementFromContext -diagramElementName $diagramElementName -index "-1" 
+				| clickOn
+	
+	if [ $incoming ] 
+	{
+		gotoDiagram -diagramName $TestDiagramName -gotoEditPart "false" 
+						| get-menu "Eclipse Platform Modeler/Show incoming Links (dependencies\\/inclusions)" | click		
+	}
+	-else
+	{
+		gotoDiagram -diagramName $TestDiagramName -gotoEditPart "false" 
+						| get-menu "Eclipse Platform Modeler/Show outgoing Links (dependencies\\/inclusions)" | click
+	} 
+	
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

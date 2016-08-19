@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fcore:FactoryComponent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
+    xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
+    xmlns:ftask="http://www.eclipse.org/egf/1.0.0/ftask" xmlns:jetpattern="http://www.eclipse.org/egf/1.0.0/jetpattern"
+    xmlns:pattern="http://www.eclipse.org/egf/1.0.0/pattern" xmlns:types="http://www.eclipse.org/egf/1.0.0/types"
+    xmi:id="_S9xz8EfhEeSv5MHvK4YJtw" name="Platform EMF Model Generation">
+  <contractContainer xmi:id="_GarTUG_vEeSa-aDvM6B6iA">
+    <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_HdLSIG_vEeSa-aDvM6B6iA"
+        description="version (with optional '.qualifier')" name="version" mandatory="true"
+        invocationContracts="#_qUG_wNF3EeWW24r44ga24w">
+      <type xmi:type="types:TypeString" xmi:id="_JMAygG_vEeSa-aDvM6B6iA" value=""/>
+    </contracts>
+  </contractContainer>
+  <viewpointContainer xmi:id="_sIDEAEfhEeSv5MHvK4YJtw">
+    <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_s88rsEfhEeSv5MHvK4YJtw">
+      <domains xmi:type="domain:EMFDomain" xmi:id="_veUcQEfhEeSv5MHvK4YJtw" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+          uri="platform:/resource/org.polarsys.kitalpha.pdt.metamodel/model/platform.genmodel"/>
+    </viewpoints>
+    <viewpoints xmi:type="pattern:PatternViewpoint" xmi:id="_4LLjwGQyEeS72ZaibsZ-wQ">
+      <libraries xmi:id="_4qbEgGQyEeS72ZaibsZ-wQ" name="org.polarsys.kitalpha.pdt.metamodel.gen.model.resourceimpl">
+        <elements xmi:id="_Jq5i8GQzEeS72ZaibsZ-wQ" name="PlatformResourceImpl_UseUUIDs"
+            superPattern="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_PgoiEDG0Ed-kc8dEZsdm2w"
+            headerMethod="#_Jq5i8mQzEeS72ZaibsZ-wQ" conditionMethod="#_Jq5i9GQzEeS72ZaibsZ-wQ"
+            initMethod="#_Jq5i82QzEeS72ZaibsZ-wQ" footerMethod="#_Jq5i9mQzEeS72ZaibsZ-wQ">
+          <nature xmi:type="jetpattern:JetNature" xmi:id="_Jq5i8WQzEeS72ZaibsZ-wQ"
+              name="JET"/>
+          <methods xmi:id="_Jq5i8mQzEeS72ZaibsZ-wQ" name="header" patternFilePath="templates/pattern._Jq5i8GQzEeS72ZaibsZ-wQ/method._Jq5i8mQzEeS72ZaibsZ-wQ.pt"/>
+          <methods xmi:id="_Jq5i82QzEeS72ZaibsZ-wQ" name="init" patternFilePath="templates/pattern._Jq5i8GQzEeS72ZaibsZ-wQ/method._Jq5i82QzEeS72ZaibsZ-wQ.pt"/>
+          <methods xmi:id="_Jq5i9GQzEeS72ZaibsZ-wQ" name="preCondition" patternFilePath="templates/pattern._Jq5i8GQzEeS72ZaibsZ-wQ/method._Jq5i9GQzEeS72ZaibsZ-wQ.pt"/>
+          <methods xmi:id="_Jq5i9mQzEeS72ZaibsZ-wQ" name="footer" patternFilePath="templates/pattern._Jq5i8GQzEeS72ZaibsZ-wQ/method._Jq5i9mQzEeS72ZaibsZ-wQ.pt"/>
+          <methods xmi:id="_WcfIkGUDEeS72ZaibsZ-wQ" name="doGenerate" patternFilePath="templates/pattern._Jq5i8GQzEeS72ZaibsZ-wQ/method._WcfIkGUDEeS72ZaibsZ-wQ.pt"/>
+          <orchestration xmi:type="pattern:SuperCall" xmi:id="_D3LaUGUDEeS72ZaibsZ-wQ"/>
+        </elements>
+      </libraries>
+      <libraries xmi:id="_Hgo4AG_-EeSa-aDvM6B6iA" name="org.polarsys.kitalpha.pdt.metamodel.gen.model.derivedAttributes">
+        <elements xmi:id="_RSLqkG_-EeSa-aDvM6B6iA" name="PackageImpl_GetAbsoluteName"
+            superPattern="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw"
+            headerMethod="#_RSLqkm_-EeSa-aDvM6B6iA" conditionMethod="#_RSLqlG_-EeSa-aDvM6B6iA"
+            initMethod="#_RSLqk2_-EeSa-aDvM6B6iA" footerMethod="#_RSLqlm_-EeSa-aDvM6B6iA">
+          <nature xmi:type="jetpattern:JetNature" xmi:id="_RSLqkW_-EeSa-aDvM6B6iA"
+              name="JET"/>
+          <methods xmi:id="_RSLqkm_-EeSa-aDvM6B6iA" name="header" patternFilePath="templates/pattern._RSLqkG_-EeSa-aDvM6B6iA/method._RSLqkm_-EeSa-aDvM6B6iA.pt"/>
+          <methods xmi:id="_RSLqk2_-EeSa-aDvM6B6iA" name="init" patternFilePath="templates/pattern._RSLqkG_-EeSa-aDvM6B6iA/method._RSLqk2_-EeSa-aDvM6B6iA.pt"/>
+          <methods xmi:id="_RSLqlG_-EeSa-aDvM6B6iA" name="preCondition" patternFilePath="templates/pattern._RSLqkG_-EeSa-aDvM6B6iA/method._RSLqlG_-EeSa-aDvM6B6iA.pt"/>
+          <methods xmi:id="_RSLqlW_-EeSa-aDvM6B6iA" name="body" patternFilePath="templates/pattern._RSLqkG_-EeSa-aDvM6B6iA/method._RSLqlW_-EeSa-aDvM6B6iA.pt"/>
+          <methods xmi:id="_RSLqlm_-EeSa-aDvM6B6iA" name="footer" patternFilePath="templates/pattern._RSLqkG_-EeSa-aDvM6B6iA/method._RSLqlm_-EeSa-aDvM6B6iA.pt"/>
+          <orchestration xmi:type="pattern:MethodCall" xmi:id="_RRL6IHAAEeSa-aDvM6B6iA"
+              called="#_RSLqlW_-EeSa-aDvM6B6iA"/>
+        </elements>
+      </libraries>
+    </viewpoints>
+  </viewpointContainer>
+  <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_sgL3MEfhEeSv5MHvK4YJtw">
+    <invocations xmi:id="_-qHRAEfhEeSv5MHvK4YJtw" name="EMF Model Pattern invocation"
+        invokedActivity="fcore:FactoryComponent platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_Pcm9sDG0Ed-kc8dEZsdm2w">
+      <invocationContractContainer xmi:id="_-qHRAUfhEeSv5MHvK4YJtw">
+        <invocationContracts xmi:id="_-qHRAkfhEeSv5MHvK4YJtw" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_Prg8ZTG0Ed-kc8dEZsdm2w">
+          <type xmi:type="domain:TypeDomain" xmi:id="_-qHRA0fhEeSv5MHvK4YJtw" domain="#_veUcQEfhEeSv5MHvK4YJtw"/>
+        </invocationContracts>
+        <invocationContracts xmi:id="_KEljIGTUEeS72ZaibsZ-wQ" invokedContract="fcore:FactoryComponentContract platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_OVsagFHVEd-dr9AWwNwIMQ">
+          <type xmi:type="pattern:TypePatternSubstitution" xmi:id="_LvHyUGTUEeS72ZaibsZ-wQ">
+            <substitutions xmi:id="_L-Js0GTUEeS72ZaibsZ-wQ" name="PlatformResourceImpl_UseUUIDs"
+                replacedElement="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_PgoiEDG0Ed-kc8dEZsdm2w"
+                replacement="#_Jq5i8GQzEeS72ZaibsZ-wQ"/>
+            <substitutions xmi:id="_00NGsHAAEeSa-aDvM6B6iA" replacedElement="platform:/plugin/org.eclipse.egf.emf.pattern/egf/EMF_Pattern.fcore#_0lbPAWJ-Ed-FqczH3ESmRw"
+                replacement="#_RSLqkG_-EeSa-aDvM6B6iA"/>
+          </type>
+        </invocationContracts>
+      </invocationContractContainer>
+    </invocations>
+    <invocations xmi:id="_gpfUkNF3EeWW24r44ga24w" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_HCbnYNFiEeWW24r44ga24w">
+      <invocationContractContainer xmi:id="_i33QoNF3EeWW24r44ga24w">
+        <invocationContracts xmi:id="_j6OFgNF3EeWW24r44ga24w" invokedContract="platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_5XrRINFtEeWW24r44ga24w">
+          <type xmi:type="types:TypeString" xmi:id="_lhUmMNF3EeWW24r44ga24w" value="org.polarsys.kitalpha.pdt.metamodel.model"/>
+        </invocationContracts>
+        <invocationContracts xmi:id="_qUG_wNF3EeWW24r44ga24w" factoryComponentContract="#_HdLSIG_vEeSa-aDvM6B6iA"
+            invokedContract="platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#__QxygNFtEeWW24r44ga24w"/>
+        <invocationContracts xmi:id="_saTQMNF3EeWW24r44ga24w" invokedContract="platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_M4_UoNFuEeWW24r44ga24w">
+          <type xmi:type="types:TypeString" xmi:id="_uKxIQNF3EeWW24r44ga24w"/>
+        </invocationContracts>
+      </invocationContractContainer>
+    </invocations>
+  </orchestration>
+</fcore:FactoryComponent>

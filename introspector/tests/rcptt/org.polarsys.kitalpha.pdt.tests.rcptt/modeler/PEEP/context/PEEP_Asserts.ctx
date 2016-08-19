@@ -1,0 +1,40 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: PEEP_Asserts
+Element-Type: context
+Element-Version: 2.0
+Id: _PxqvAFShEeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/28/16 2:36 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc checkDefautlDiagramName {
+	linkwithEditor
+	
+	get-view $ProjectExplorerName | get-tree 
+   		 | get-item "org.polarsys.kitalpha.pdt.example/models/Kitalpha_20160726_141010.aird/Kitalpha_20160726_141010.platform - \\[platform:\\/resource\\/org.polarsys.kitalpha.pdt.example\\/models\\/Kitalpha_20160726_141010.platform\\]/Kitalpha/Running Platform/new Plug-in Extensions and Extension Points" 
+    	 | get-property caption | equals "new Plug-in Extensions and Extension Points" | verify-true
+}
+
+proc checkDiagramElements {
+	with [get-editor $TestDiagramName | get-diagram -index 1 | get-edit-part -name $TestDiagramName] {
+	    with [get-edit-part -name "org.polarsys.kitalpha.ad.ta"] {
+	        get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part -name "Version : 1.0.0" 
+	            | get-property "element.name" | equals "Version : 1.0.0" | verify-true
+	        get-edit-part -className DNodeListNameEditPart | get-property "element.name" 
+	            | equals "org.polarsys.kitalpha.ad.ta" | verify-true
+	        get-edit-part -name "org.polarsys.kitalpha.ad.ta.definition" | get-edit-part 
+	            -name "org.polarsys.kitalpha.ad.ta.definition" | get-property "element.name" 
+	            | equals "org.polarsys.kitalpha.ad.ta.definition" | verify-true
+	    }
+	    get-edit-part -name "org.polarsys.kitalpha.ad.ta.emf" | get-edit-part 
+	        -name "(no name) : org.polarsys.kitalpha.ad.ta.definition" | get-edit-part 
+	        -name "(no name) : org.polarsys.kitalpha.ad.ta.definition" | get-property "element.name" 
+	        | equals "(no name) : org.polarsys.kitalpha.ad.ta.definition" | verify-true
+	}
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

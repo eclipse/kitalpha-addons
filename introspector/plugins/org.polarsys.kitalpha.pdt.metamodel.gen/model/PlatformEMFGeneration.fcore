@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fcore:FactoryComponent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore"
+    xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod" xmlns:types="http://www.eclipse.org/egf/1.0.0/types"
+    xmi:id="_gVbZQEfbEeSv5MHvK4YJtw" name="Platform EMF Generation">
+  <contractContainer xmi:id="_ZVhzwG_vEeSa-aDvM6B6iA">
+    <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_ZoH_oG_vEeSa-aDvM6B6iA"
+        name="version" invocationContracts="#_XSBD4G_vEeSa-aDvM6B6iA #_AqJCoW_wEeSa-aDvM6B6iA #_UynXUG_xEeSa-aDvM6B6iA">
+      <type xmi:type="types:TypeString" xmi:id="_bXGp8G_vEeSa-aDvM6B6iA" value="1.0.0.qualifier"/>
+    </contracts>
+  </contractContainer>
+  <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_gVbZREfbEeSv5MHvK4YJtw">
+    <invocations xmi:id="_B2WHAEfjEeSv5MHvK4YJtw" name="Platform Model Pattern Invocation"
+        invokedActivity="fcore:FactoryComponent platform:/plugin/org.polarsys.kitalpha.pdt.metamodel.gen/model/PlatformEMFModelGeneration.fcore#_S9xz8EfhEeSv5MHvK4YJtw">
+      <invocationContractContainer xmi:id="_W_ty8G_vEeSa-aDvM6B6iA">
+        <invocationContracts xmi:id="_XSBD4G_vEeSa-aDvM6B6iA" factoryComponentContract="#_ZoH_oG_vEeSa-aDvM6B6iA"
+            invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.kitalpha.pdt.metamodel.gen/model/PlatformEMFModelGeneration.fcore#_HdLSIG_vEeSa-aDvM6B6iA"/>
+      </invocationContractContainer>
+    </invocations>
+    <invocations xmi:id="_F_j_IEfjEeSv5MHvK4YJtw" name="Platform Edit Pattern Invocation"
+        invokedActivity="fcore:FactoryComponent platform:/plugin/org.polarsys.kitalpha.pdt.metamodel.gen/model/PlatformEMFEditGeneration.fcore#_V3SXsEfhEeSv5MHvK4YJtw">
+      <invocationContractContainer xmi:id="_AqJCoG_wEeSa-aDvM6B6iA">
+        <invocationContracts xmi:id="_AqJCoW_wEeSa-aDvM6B6iA" factoryComponentContract="#_ZoH_oG_vEeSa-aDvM6B6iA"
+            invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.kitalpha.pdt.metamodel.gen/model/PlatformEMFEditGeneration.fcore#_l-JEoG_wEeSa-aDvM6B6iA"/>
+      </invocationContractContainer>
+    </invocations>
+    <invocations xmi:id="_yNlZ0G_sEeSa-aDvM6B6iA" name="Platform Editor Pattern Invocation"
+        invokedActivity="fcore:FactoryComponent platform:/plugin/org.polarsys.kitalpha.pdt.metamodel.gen/model/PlatformEMFEditorGeneration.fcore#_nDff8W_sEeSa-aDvM6B6iA">
+      <invocationContractContainer xmi:id="_UPgqQG_xEeSa-aDvM6B6iA">
+        <invocationContracts xmi:id="_UynXUG_xEeSa-aDvM6B6iA" factoryComponentContract="#_ZoH_oG_vEeSa-aDvM6B6iA"
+            invokedContract="fcore:FactoryComponentContract platform:/plugin/org.polarsys.kitalpha.pdt.metamodel.gen/model/PlatformEMFEditorGeneration.fcore#_K7rucG_xEeSa-aDvM6B6iA"/>
+      </invocationContractContainer>
+    </invocations>
+  </orchestration>
+</fcore:FactoryComponent>

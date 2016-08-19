@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.egf.core.fcore">
+      <fcore
+            id="platform:/plugin/org.polarsys.kitalpha.pdt.docgen/model/PlatformHtmlDocGen.fcore">
+      </fcore>
+      <fcore
+            id="model/PlatformHtmlDocGen.fcore">
+      </fcore>
+   </extension>
+
+</plugin>

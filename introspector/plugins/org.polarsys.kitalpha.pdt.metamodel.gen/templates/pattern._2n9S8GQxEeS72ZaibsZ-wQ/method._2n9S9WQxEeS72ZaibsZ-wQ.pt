@@ -1,0 +1,14 @@
+		// begin-extension-code
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor
+				// end-extension-code
+				(((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_ExtensionPoint_contributors_feature"),
+						getString("_UI_ExtensionPoint_contributors_description"),
+						PlatformPackage.Literals.EXTENSION_POINT__CONTRIBUTORS,
+						true, true, false, null, null,
+						// begin-extension-code
+						null));
+		// end-extension-code

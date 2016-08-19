@@ -1,0 +1,6 @@
+package platform
+context EclipseElement
+
+inv no_errors_related : eclipseElementIntrospectionErrors->isEmpty()
+
+endpackage

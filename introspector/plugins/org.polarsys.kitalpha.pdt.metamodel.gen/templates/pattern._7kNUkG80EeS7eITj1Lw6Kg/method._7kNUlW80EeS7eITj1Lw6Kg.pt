@@ -1,0 +1,11 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		String label = ((ExtensionPoint) object).getId();
+		if(label != null)
+			return label + " [Extension Point]";
+		else
+			return "[Extension Point]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

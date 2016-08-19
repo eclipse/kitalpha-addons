@@ -1,0 +1,6 @@
+package platform
+context IdentifiedVersionnedElement
+
+inv version_exists : self.version->notEmpty()
+
+endpackage

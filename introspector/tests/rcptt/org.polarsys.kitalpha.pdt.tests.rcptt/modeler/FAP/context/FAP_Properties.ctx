@@ -1,0 +1,48 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: FAP_Properties
+Element-Type: context
+Element-Version: 2.0
+Id: _zljIcFmLEeaQX85cFsu4pg
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 8/3/16 5:24 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc changeFeatureID [ val oldName ] [ val newName ] {
+	gotoDiagram -diagramName $TestDiagramName 
+		| gotoDiagramElementFromContext -diagramElementName $oldName 
+										-diagramElementType $ListContainer | clickOn
+	with [get-view Properties] {
+	    get-property-tab Semantic | click
+	    with [get-tree] {
+	        select [ concat $oldName " [Feature]/Id"] | activate-cell-edit -column 1
+	        with [get-editbox] {
+	            set-text $newName
+	            key-type "NUMPAD_ENTER" "\\u000D"
+	        }
+	        apply-cell-edit -deactivate
+	    }
+	}
+}
+
+proc changePluginID [ val oldName ] [ val newName ] [ val version "1.0.0" ] {
+	gotoDiagram -diagramName $TestDiagramName 
+		| gotoDiagramElementFromContext -diagramElementName $oldName 
+										-diagramElementType $ListContainer | clickOn
+	with [get-view Properties] {
+	    get-property-tab Semantic | click
+	    with [get-tree] {
+	        select [ concat $oldName " v" $version " [Plugin]/Id"] | activate-cell-edit -column 1
+	        with [get-editbox] {
+	            set-text $newName
+	            key-type "NUMPAD_ENTER" "\\u000D"
+	        }
+	        apply-cell-edit -deactivate
+	    }
+	}
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

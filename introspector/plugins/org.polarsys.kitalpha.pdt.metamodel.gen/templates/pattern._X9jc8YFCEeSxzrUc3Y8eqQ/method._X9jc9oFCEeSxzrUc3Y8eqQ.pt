@@ -1,0 +1,10 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.ExecutionEnvironment");%>
+
+		/**
+		 * CUSTOM_CODE_BEGIN
+		 **/
+			String label = ((ExecutionEnvironment)object).getId();
+			return label;
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

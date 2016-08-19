@@ -1,0 +1,4 @@
+@Override
+	public Object overlayImage(Object object, Object image) {
+		return super.overlayImage(object, getResourceLocator().getImage("full/obj16/FeatureFolder"));
+	}

@@ -1,0 +1,29 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.parameters
+Element-Name: Shared_Parameters
+Element-Type: context
+Element-Version: 2.0
+Id: _yrQewFPKEeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/28/16 4:12 PM
+
+------=_.parameters.context-2e023de5-3294-36a9-ac1d-6701f05a40ee
+Content-Type: text/properties
+Entry-Name: .parameters.context
+
+#Thu Jul 28 16:12:02 CEST 2016
+PEEPDiagramFQN=Eclipse Model/Plug-in Extensions and Extension Points
+PEEPDiagramName=Plug-in Extensions and Extension Points
+FAPDiagramFQN=Eclipse Model/Features and Plugins
+EPSDiagramFQN=Eclipse Model/Extension Point schema
+ESDiagramName=Extension Schema
+TestAirdEmpyName=models/NewProduct.aird
+FAPDiagramName=Features and Plugins
+TestAirdName=models/Kitalpha_20160726_141010.aird
+TestProjectName=org.polarsys.kitalpha.pdt.example
+TestDiagramName=Example - diagram
+ESDiagramFQN=Eclipse Model/Extension Schema
+EPSDiagramName=Extension Point schema
+
+------=_.parameters.context-2e023de5-3294-36a9-ac1d-6701f05a40ee--

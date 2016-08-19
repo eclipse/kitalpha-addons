@@ -1,0 +1,5 @@
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>result/publish/**</artifacts>
+      <excludes>result/publish/MA/**/*</excludes>
+      <latestOnly>false</latestOnly>
+    </hudson.tasks.ArtifactArchiver>

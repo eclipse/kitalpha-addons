@@ -1,0 +1,16 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.ComplexCompositorKind");%>
+@Override
+	public Object overlayImage(Object object, Object image) {
+		ComplexCompositor currentCompositor = (ComplexCompositor) object;
+		if (currentCompositor.getComplexCompositorKind().equals(
+				ComplexCompositorKind.SEQUENCE))
+			return super.overlayImage(
+					object,
+					getResourceLocator().getImage(
+							"full/obj16/ComplexSchemaElement_sequence"));
+		else
+			return super.overlayImage(
+					object,
+					getResourceLocator().getImage(
+							"full/obj16/ComplexSchemaElement_choice"));
+	}

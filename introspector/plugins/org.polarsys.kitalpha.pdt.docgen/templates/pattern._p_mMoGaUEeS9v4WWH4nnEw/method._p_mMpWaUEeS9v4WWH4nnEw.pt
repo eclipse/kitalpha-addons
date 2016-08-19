@@ -1,0 +1,112 @@
+<%
+String outputFolder = ctx.getValue("outputFolder").toString();
+String projectName = ctx.getValue("projectName").toString();
+boolean diagramsInclusion = Helpers.diagramsInclusionIsChecked();
+String text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers.getLabel((EclipseElement)element);
+Collection<DRepresentation> diagramList = new ArrayList<DRepresentation>();
+try {
+	text = EscapeChars.forHTML(text);
+} catch (NullPointerException e) {
+	System.err.println("Caught exception while converting text into html:" + e.getMessage());
+	text = "";
+}
+%><div style="position: fixed; top: 0; left: 1%; width: 98%; z-index: 2; background-color: white; ";>
+<%
+String hyperlink = "";
+EObject parent = element.eContainer();
+if (parent != null && parent instanceof EclipseElement) {
+	hyperlink = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers
+			.getTypeHyperLink((EclipseElement) parent, Helpers.getLabel((EclipseElement) parent));
+	String parentClassName = parent.eClass().getName();%>
+	<p><strong><%=parentClassName%> :</strong> <%=hyperlink%></p><%
+}
+%>
+<%String imageFileName = LabelProviderHelper.getImageFileName(element,
+						projectName, outputFolder);%>
+<hr style="width:98%; align : center; " /> 
+</div>
+
+<div style="position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;">
+
+<%
+String pluginId = ((Plugin) element).getId();
+
+
+if (pluginId == null) {
+	pluginId = "Plugin Id not found";
+}
+String pluginVersion = ((Plugin) element).getVersion();
+if (pluginVersion == null) {
+	pluginVersion = "Plugin version not found";
+}
+%>
+
+<%
+ String pluginPage = org.polarsys.kitalpha.pdt.docgen.helpers.PluginHelpers.getPluginPage((Plugin) element, projectName, outputFolder,1);
+%>
+<%=pluginPage%>
+
+<%
+if(diagramsInclusion){
+ 	diagramList =  org.polarsys.kitalpha.pdt.docgen.services.GenerateDiagramsService.generateDiagramsForTheGivenObject((Plugin) element);
+ 	}
+%>
+
+<%
+List<Extension> extensions = new ArrayList<Extension>();
+if(((Plugin)element).getExtensions().getExtensions() != null){
+	extensions = ((Plugin)element).getExtensions().getExtensions();
+	if(extensions != null){
+	for(Extension currentExtension : extensions){
+				String extensionPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.getExtensionsPage(currentExtension, projectName, outputFolder,1);
+				String pageKey = currentExtension.getId() +"_"+ currentExtension.getExtensionPoint().getId();
+				org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.addExtensionPage(pageKey, extensionPage);
+			}
+		}		
+}
+
+List<ExtensionPoint> extensionPoints = new ArrayList<ExtensionPoint>();
+if(((Plugin)element).getExtensionPoints().getExtensionPoints() != null){
+	extensionPoints = ((Plugin)element).getExtensionPoints().getExtensionPoints();
+	if(extensionPoints != null){
+	for(ExtensionPoint currentExtensionPoint : extensionPoints){
+				String extensionPointPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.getExtensionPointsPage(currentExtensionPoint, projectName, outputFolder,1);
+				String pageKey = currentExtensionPoint.getId();
+				org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.addExtensionPointPage(pageKey, extensionPointPage);
+			}
+		}		
+}
+%>
+
+<%
+if (diagramList.size() >= 1){%>
+<h2>Representations</h2>
+<%}%>
+
+</p>
+<%
+
+for (DRepresentation diagram : diagramList){
+	if((diagram instanceof DSemanticDiagram) && (((((DSemanticDiagram) diagram).getDescription().getName().equals("Features and Plugins"))) || (((DSemanticDiagram) diagram).getDescription().getName().equals("Plug-in Extensions and Extension Points"))) ) {
+	String generatedFolder = fileNameService.getFileName(((DSemanticDiagram)diagram).getTarget());%>
+	<p><strong><%=((DSemanticDiagram) diagram).getDescription().getName()%></strong></p>
+	<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.core/egf/HTMLDocGenCommon.fcore#LogicalName=org.polarsys.kitalpha.doc.gen.business.core.sirius.DiagramGenerator" args="diagram:diagram, outputFolder:outputFolder, projectName:projectName, generatedFolder:generatedFolder, fileNameService:fileNameService, helper:helper"%>
+	<%}
+	else if((diagram instanceof DSemanticDiagram) && (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Schema"))){
+		String diagramKey = ((DSemanticDiagram)diagram).getName();
+		org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.addExtensionDiagrams(diagramKey, diagram);
+	}
+	
+	else if((diagram instanceof DSemanticDiagram) && (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Point schema"))){
+		String diagramKey = ((DSemanticDiagram)diagram).getName();
+		org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.addExtensionPointsDiagrams(diagramKey, diagram);
+	}
+}
+
+
+//je n'ai pas d'extension, d'extension point et que j'ai bien des diagrammes je clear donc mon aird ici
+if(extensions.isEmpty() && extensionPoints.isEmpty() && diagramsInclusion){
+	AIRDHelpers.INSTANCE.clearCurrentAird();
+	AIRDHelpers.INSTANCE.cleanAllMaps();
+	}
+%>

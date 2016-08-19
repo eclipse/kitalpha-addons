@@ -1,0 +1,60 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _YfaD4FMwEeamI7Iw-qIwEA
+Element-Name: FAP_Introspection
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _PjbAUFMwEeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/28/16 4:14 PM
+Testcase-Type: ecl
+Verifications: _Yq7VYFNGEeamI7Iw-qIwEA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Not tested mappins:
+1- F.FeatureToPluginDependency
+2- F.FeatureToFeatureDependency
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+openSession -projectName $TestProjectName -airdName $TestAirdName
+
+createRepresentation -projectName $TestProjectName 
+					 -airdName $TestAirdName
+					 -representationFQN $FAPDiagramFQN
+					 -representationName $FAPDiagramName
+					 -newRepresentationName $TestDiagramName
+saveAll
+
+// Insert Plugin tool
+FAP_InsertTool -name "Insert Existing Plug-ins" -selection "org.polarsys.kitalpha.ad.ta.emf v1.0.0 [Plugin]"
+// Incoming/Outgoing tools applied on a Plug-in
+FAP_IncomingOutgoingLinks -diagramElementName "org.polarsys.kitalpha.ad.ta.emf" -incoming "true"
+FAP_IncomingOutgoingLinks -diagramElementName "org.polarsys.kitalpha.ad.ta.emf" -incoming "false"
+
+// Insert Feature tool
+FAP_InsertTool -name "Insert Existing Features" -selection "org.polarsys.kitalpha.emde.genchain.feature [Feature]"
+// Incoming/Outgoing tools applied on a Feature
+FAP_IncomingOutgoingLinks -diagramElementName "org.polarsys.kitalpha.emde.genchain.feature" -incoming "true"
+FAP_IncomingOutgoingLinks -diagramElementName "org.polarsys.kitalpha.emde.genchain.feature" -incoming "false"
+
+// Arrange all 
+applyArrangeAll -diagramName $TestDiagramName
+
+saveAll
+
+maximizeEditor -name $TestDiagramName
+take-screenshot
+
+// Apply some asserts to verify labels and colors
+checkDiagramElement
+
+// Open Show/Hide dialog to check if all elements are created by tools
+displayShowHideDialog -diagramName $TestDiagramName
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

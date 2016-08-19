@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+Copyright (c) 2016 Thales Global Services S.A.S.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+ Thales Global Services S.A.S - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.kitalpha.common.sirius.extension.rotativeimage">
+      <imageid
+            id="/org.polarsys.kitalpha.pdt.modeler.resources/icons/ports/ext_point_obj.gif"
+            kind="4images">
+      </imageid>
+      <imageid
+            id="/org.polarsys.kitalpha.pdt.modeler.resources/icons/ports/extension_obj.gif"
+            kind="4images">
+      </imageid>
+   </extension>
+
+</plugin>

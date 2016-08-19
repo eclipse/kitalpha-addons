@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="11.0.0.201601261200">
+  <ownedViewpoints name="Eclipse Model" modelFileExtension="platform">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@toolSections.1/@subSections[name='DragAndDrop']/@ownedTools[name='Feature'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@toolSections.1/@subSections[name='DragAndDrop']/@ownedTools[name='Plugin']" name="Features and Plugins" titleExpression="aql:self.getNameForEclipseElement().add(' - features and plugins diagram')" domainClass="platform.EclipseElement" preconditionExpression="aql:self.oclIsKindOf(platform::Package) or self.oclIsKindOf(platform::Repository) or self.oclIsKindOf(platform::Plugin) or self.oclIsKindOf(platform::Feature)" reusedMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']" enablePopupBars="true" DomainClass="platform.EclipseElement">
+      <metamodel href="../../org.polarsys.kitalpha.pdt.metamodel/model/platform.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="F.FeatureToPluginDependency" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" targetFinderExpression="feature:target" sourceFinderExpression="aql:self.eContainer().eContainer()" domainClass="FeatureToPluginDependency" useDomainElement="true" DomainClass="platform.FeatureToPluginDependency">
+          <style lineStyle="dash" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="service:getVersionShortStringLabel()">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="F.FeatureToFeatureDependency" label="F.FeatureToFeatureDependency" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" targetFinderExpression="feature:target" sourceFinderExpression="aql:self.eContainer().eContainer()" domainClass="FeatureDependency" useDomainElement="true" DomainClass="platform.FeatureDependency">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.getVersionShortStringLabel().add(' : ').add(self.matchRule)">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="F.FeatureToIncludedFeature" label="F.FeatureToIncludedFeature" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" targetFinderExpression="feature:includedFeature" sourceFinderExpression="aql:self.eContainer().eContainer()" domainClass="FeatureInclusion" useDomainElement="true" DomainClass="platform.FeatureInclusion">
+          <style sourceArrow="FillDiamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:'&lt;&lt;includes>>\nOptional : '.add(self.optional).add('\n').add(self.getVersionShortString())">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="P.PluginToPluginDependency" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" targetFinderExpression="feature:target" sourceFinderExpression="aql:self.eContainer().eContainer()" domainClass="PluginDependency" useDomainElement="true" DomainClass="platform.PluginDependency">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="aql:'&lt;&lt;depends>>\n'.add(self.getVersionAndInclusionDependenciesString())">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="F.FeatureToIncludedPlugin" deletionDescription="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']/@toolSections.0/@ownedTools[name='FeaturePluginDependecies']" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" targetFinderExpression="feature:includedPlugins" sourceFinderExpression="feature:eContainer" domainClass="IncludedPlugins" useDomainElement="true" DomainClass="platform.IncludedPlugins">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="&lt;&lt;includes>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="F.Feature" createElements="false" domainClass="Feature" childrenPresentation="List" DomainClass="platform.Feature">
+          <subNodeMappings name="F.Version" semanticCandidatesExpression="var:self" domainClass="Feature" DomainClass="platform.Feature">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Version : '.concat(self.version)" labelAlignment="LEFT" sizeComputationExpression="aql:self.version.size()" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='FeatureBorder']" labelExpression="feature:id" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='FeatureTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='FeatureBottom']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="P.Plugin" detailDescriptions="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@toolSections.0/@subSections[name='Navigation']/@ownedTools[name='Plugin%20Dependencies']" createElements="false" domainClass="Plugin" childrenPresentation="List" DomainClass="platform.Plugin">
+          <subNodeMappings name="PD.Version" semanticCandidatesExpression="var:self" domainClass="Plugin" DomainClass="platform.Plugin">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Version : '.concat(self.version)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginBorder']" labelExpression="feature:id" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginBottom']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="F.Insertion" label="Insertion">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Insert Existing Plug-ins" forceRefresh="true" candidatesExpression="service:getAllPlugins()" multiple="true" message="Select plug-ins to display" iconPath="/org.polarsys.kitalpha.pdt.modeler.resources/icons/req_plugins_obj.gif">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" containerViewExpression="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Insert Existing Features" forceRefresh="true" candidatesExpression="service:getAllFeatures()" multiple="true" message="Select features to display" iconPath="/org.polarsys.kitalpha.pdt.modeler.resources/icons/feature_obj.gif">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Show_Outgoing_Selection" label="Show dependencies/inclusions ..." precondition="aql:(self.oclIsTypeOf(platform::Feature) or self.oclIsTypeOf(platform::Plugin)) and self->size()=1 " forceRefresh="true" candidatesExpression="aql:self.getLinkedElement(diagram)" rootExpression="aql:eContainer(platform::Repository)" childrenExpression="feature:eContents">
+            <element name="element"/>
+            <containerView name="views"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:For" expression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:i.oclIsKindOf(platform::Plugin)">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" containerViewExpression="aql:views.eContainer(diagram::DDiagram)"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:i.oclIsKindOf(platform::Feature)">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="aql:views.eContainer(diagram::DDiagram)"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="F.InvisibleTools" label="InvisibleTools">
+          <ownedTools xsi:type="tool:PopupMenu" name="Eclipse Platform Modeler" forceRefresh="true">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Show_Outgoing" label="Show outgoing Links (dependencies/inclusions)" precondition="aql:(self.oclIsTypeOf(platform::Feature) or self.oclIsTypeOf(platform::Plugin)) and views->asSequence()->size()=1" forceRefresh="true" icon="/org.polarsys.kitalpha.pdt.modeler.resources/icons/req_plugins_obj.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(platform::Feature)">
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.featureDependencies.featureDependencies.target">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.includedPlugins.includedPlugins">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.featureInclusions.featureInclusions.includedFeature">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.pluginDependencies.pluginDependencies.target">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(platform::Plugin)">
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.pluginDependencies.pluginDependencies.target">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Show_Incoming" label="Show incoming Links (dependencies/inclusions)" precondition="aql:(self.oclIsTypeOf(platform::Feature) or self.oclIsTypeOf(platform::Plugin)) and views->asSequence()->size()=1" forceRefresh="true" icon="/org.polarsys.kitalpha.pdt.modeler.resources/icons/req_plugins_obj.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(platform::Feature)">
+                    <subModelOperations xsi:type="tool:For" expression="service:getDependenciesOrInclusionsForGivenElement()">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="service:getDependenciesOrInclusionsForGivenElement()">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(platform::Plugin)">
+                    <subModelOperations xsi:type="tool:For" expression="service:getDependenciesOrInclusionsForGivenElement()">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(platform::Feature)">
+                        <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(platform::Plugin)">
+                        <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="service:getDependenciesOrInclusionsForGivenElement()">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <subSections name="DragAndDrop">
+            <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Feature" precondition="aql:self.oclIsKindOf(platform::Feature)" forceRefresh="true" mappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']" dragSource="PROJECT_EXPLORER">
+              <oldContainer name="oldSemanticContainer"/>
+              <newContainer name="newSemanticContainer"/>
+              <element name="element"/>
+              <newViewContainer name="newContainerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:current"/>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Plugin" precondition="aql:self.oclIsKindOf(platform::Plugin)" forceRefresh="true" mappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']" dragSource="PROJECT_EXPLORER">
+              <oldContainer name="oldSemanticContainer"/>
+              <newContainer name="newSemanticContainer"/>
+              <element name="element"/>
+              <newViewContainer name="newContainerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:current"/>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+          <subSections name="Navigation"/>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Edition" activeByDefault="true">
+        <toolSections name="F.CreationPalette" label="Modeling" reusedTools="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']/@toolSections.0/@ownedTools[name='F.Dependency'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']/@toolSections.0/@ownedTools[name='F.Feature'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']/@toolSections.0/@ownedTools[name='F.Inclusion'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']/@toolSections.0/@ownedTools[name='F.Plugin'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@additionalLayers[name='Edition']/@toolSections.0/@ownedTools[name='P.Dependency']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="F.Feature" label="Feature" precondition="aql:self.oclIsKindOf(platform::Repository) or self.oclIsKindOf(platform::Package)" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='F.Feature']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="Feature" referenceName="features">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="version" valueExpression="1.0.0"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsKindOf(platform::Package)">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="id" valueExpression="aql:container.absoluteName.add('.name')"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsKindOf(platform::Repository)">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="id" valueExpression="new name"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureInclusions" referenceName="featureInclusions" variableName="featureInclusions"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureDependencies" referenceName="featureDependencies" variableName="featureDependencies"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="IncludedPlugins" referenceName="includedPlugins" variableName="includedPlugins"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="FeaturePluginDependencies" referenceName="pluginDependencies" variableName="pluginDependencies"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="F.Plugin" label="Plugin" precondition="aql:container.oclIsKindOf(platform::Repository) or container.oclIsKindOf(platform::Package)" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@containerMappings[name='P.Plugin']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="Plugin" referenceName="plugins">
+                <subModelOperations xsi:type="tool:SetValue" featureName="version" valueExpression="1.0.0"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsKindOf(platform::Package)">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="id" valueExpression="aql:container.absoluteName.add('.name')"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsKindOf(platform::Repository)">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="id" valueExpression="new name"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="F.Inclusion" label="Inclusion" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedFeature'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToIncludedPlugin']" connectionStartPrecondition="aql:self.oclIsKindOf(platform::Feature)">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:target.oclIsKindOf(platform::Plugin)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.includedPlugins.equals(null)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="IncludedPlugins" referenceName="includedPlugins"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:includedPlugins">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="includedPlugins" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:target.oclIsKindOf(platform::Feature)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.featureInclusions.equals(null)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureInclusions" referenceName="featureInclusions"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:featureInclusions">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureInclusion" referenceName="featureInclusions" variableName="newInclusion">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="includedFeature" valueExpression="var:target"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="version" valueExpression="aql:target.version"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="F.Dependency" label="Feature Dependency" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToFeatureDependency'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='F.FeatureToPluginDependency']" connectionStartPrecondition="aql:self.oclIsKindOf(platform::Feature)">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:target.oclIsKindOf(platform::Feature)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.featureDependencies.equals(null)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureDependencies" referenceName="featureDependencies"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:featureDependencies">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureDependency" referenceName="featureDependencies" variableName="newInclusion">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="version" valueExpression="aql:target.version"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:target.oclIsKindOf(platform::Plugin)">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.pluginDependencies.equals(null)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureToPluginDependencies" referenceName="pluginDependencies"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:pluginDependencies">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="FeatureToPluginDependency" referenceName="pluginDependencies" variableName="newInclusion">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="version" valueExpression="aql:target.version"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="P.Dependency" label="Plugin Dependency" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']/@defaultLayer/@edgeMappings[name='P.PluginToPluginDependency']" connectionStartPrecondition="aql:self.oclIsKindOf(platform::Plugin)">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.pluginDependencies.equals(null)">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="PluginDependencies" referenceName="pluginDependencies"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:pluginDependencies">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="PluginDependency" referenceName="pluginDependencies" variableName="newInclusion">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="version" valueExpression="aql:target.version"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="FeaturePluginDependecies" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Unset" featureName="includedPlugins" elementExpression="aql:elementView.targetNode.target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Extension Point schema" titleExpression="aql:self.id.concat(' Extension Point Schema')" domainClass="platform.ExtensionPoint" enablePopupBars="true" DomainClass="platform.ExtensionPoint">
+      <metamodel href="../../org.polarsys.kitalpha.pdt.metamodel/model/platform.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="EPS.SchemaElementToCompositor" label="EPS.SchemaElementToCompositor" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.SchemaElement']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.ComplexCompositor']" targetFinderExpression="feature:complexCompositor" DomainClass="platform.">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EPS.CompositorToChildrenCompositor" label="EPS.CompositorToChildrenCompositor" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.ComplexCompositor']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.ComplexCompositor']" targetFinderExpression="feature:complexCompositorChildren" DomainClass="platform.">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EPS.ExtensionPointToSchemaElement" label="EPS.ExtensionPointToSchemaElement" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.ExtensionPoint']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.SchemaElement']" targetFinderExpression="feature:extensionSchemaElement" DomainClass="platform.">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EPS.ComplexCompositorToSchemaElement" label="EPS.ComplexCompositorToSchemaElement" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.ComplexCompositor']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']/@defaultLayer/@containerMappings[name='EPS.SchemaElement']" targetFinderExpression="feature:reference" sourceFinderExpression="feature:eContainer" domainClass="platform.SchemaElementReference" useDomainElement="true" DomainClass="platform.SchemaElementReference">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name.add(' [').add(self.minCard).add(';').add(self.getMaxCardofAComplexSchemaElement()).add(']')">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EPS.ComplexCompositor" semanticCandidatesExpression="aql:self.schemaElements.eAllContents()" domainClass="platform.ComplexCompositor" childrenPresentation="List" DomainClass="platform.ComplexCompositor" listContainer="true">
+          <subNodeMappings name="ComplexCompositorMinCard" label="ComplexCompositorMinCard" semanticCandidatesExpression="var:self" domainClass="platform.ComplexCompositor" DomainClass="platform.ComplexCompositor">
+            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="aql:'Min Cardinality :'.add(self.minCard)" labelAlignment="LEFT" sizeComputationExpression="aql:self.minCard.toString().size()">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="ComplexCompositorMaxCard" label="ComplexCompositorMaxCard" semanticCandidatesExpression="var:self" domainClass="platform.ComplexCompositor" DomainClass="platform.ComplexCompositor">
+            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="aql:'Max Cardinality :'.concat(self.getMaxCardofAComplexSchemaElement())" labelAlignment="LEFT" sizeComputationExpression="aql:self.maxCard.toString().size()">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementBorder']" labelExpression="feature:complexCompositorKind" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementBottom']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EPS.SchemaElement" semanticCandidatesExpression="feature:schemaElements" domainClass="platform.SchemaElement" childrenPresentation="List" DomainClass="platform.SchemaElement" listContainer="true">
+          <subNodeMappings name="EPS.SIMPLEConfigurationElementAttribute_String" preconditionExpression="aql:self.type.toString().equals('String')" semanticCandidatesExpression="feature:attributes" semanticElements="" domainClass="platform.ConfigurationElementAttribute" DomainClass="platform.ConfigurationElementAttribute">
+            <style xsi:type="style:SquareDescription" labelSize="9" labelExpression="aql:self.name.add(' : ').add(self.type.toString())" labelAlignment="LEFT" sizeComputationExpression="aql:self.name.size()">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="EPS.SIMPLEConfigurationElementAttribute_Class" preconditionExpression="aql:self.type.toString().equals('Java')" semanticCandidatesExpression="feature:attributes" semanticElements="" domainClass="platform.ConfigurationElementAttribute" DomainClass="platform.ConfigurationElementAttribute">
+            <style xsi:type="style:SquareDescription" labelSize="9" labelExpression="aql:self.name.add(' ').add(self.basedOn)" labelAlignment="LEFT" sizeComputationExpression="aql:self.name.size()">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="EPS.SIMPLEConfigurationElementAttribute_Resource" preconditionExpression="aql:self.type.toString().equals('Resource')" semanticCandidatesExpression="feature:attributes" semanticElements="" domainClass="platform.ConfigurationElementAttribute" DomainClass="platform.ConfigurationElementAttribute">
+            <style xsi:type="style:SquareDescription" labelSize="9" labelExpression="aql:self.name.add(' : ').add(self.type.toString())" labelAlignment="LEFT" sizeComputationExpression="aql:self.name.size()">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementBorder']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementBottom']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EPS.ExtensionPoint" semanticCandidatesExpression="var:self" domainClass="platform.ExtensionPoint" DomainClass="platform.ExtensionPoint">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ExtensionPointBorder']" labelExpression="feature:id" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ExtensionPointTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ExtensionPointBottom']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Extension Schema" titleExpression="aql:self.getLabelForGivenExtension().concat(' Extension Schema')" domainClass="platform.Extension" enablePopupBars="true" DomainClass="platform.Extension">
+      <metamodel href="../../org.polarsys.kitalpha.pdt.metamodel/model/platform.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="E.ConfiguredSchemaElementToChildren" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Schema']/@defaultLayer/@containerMappings[name='E.ConfiguredSchemaElement']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Schema']/@defaultLayer/@containerMappings[name='E.ConfiguredSchemaElement']" targetFinderExpression="feature:children">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="E.ExtensionToConfiguredSchemaElement" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Schema']/@defaultLayer/@containerMappings[name='E.Extension']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Schema']/@defaultLayer/@containerMappings[name='E.ConfiguredSchemaElement']" targetFinderExpression="feature:configuredSchemaElement">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="E.Extension" semanticCandidatesExpression="var:self" domainClass="platform.Extension" DomainClass="platform.Extension">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:id" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ExtensionTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ExtensionBottom']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="E.ConfiguredSchemaElement" semanticCandidatesExpression="feature:eAllContents" domainClass="platform.ConfiguredSchemaElement" childrenPresentation="List" DomainClass="platform.ConfiguredSchemaElement">
+          <subNodeMappings name="E.ConfiguredSchemaElementAttributeInstance" preconditionExpression="aql:self.containedValue.oclIsKindOf(platform::StringValue) or self.containedValue.oclIsKindOf(platform::BooleanValue)" semanticCandidatesExpression="feature:configurationElements" domainClass="platform.ConfigurationElementAttributeInstance" DomainClass="platform.ConfigurationElementAttributeInstance">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name.add(' : ').add(self.type).add(' = ').add(self.containedValue.eGet('value').toString())" labelAlignment="LEFT" sizeComputationExpression="aql:self.name.size()" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="E.ConfiguredSchemaElementAttributeInstanceClass" preconditionExpression="aql:self.containedValue.oclIsKindOf(platform::JavaClassValue)" semanticCandidatesExpression="feature:configurationElements" domainClass="platform.ConfigurationElementAttributeInstance" DomainClass="platform.ConfigurationElementAttributeInstance">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name.add(' : ').add(self.type).add(' = ').add(self.containedValue.eGet('className').toString())" labelAlignment="LEFT" sizeComputationExpression="aql:self.name.size()" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='ConfigElementBottom']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@toolSections.0/@subSections[name='Drag%20and%20drop']/@ownedTools[name='DD.Plugin']" name="Plug-in Extensions and Extension Points" showOnStartup="true" domainClass="platform.EclipseElement" preconditionExpression="aql:self.oclIsKindOf(platform::Package) or self.oclIsKindOf(platform::Repository) or self.oclIsKindOf(platform::Plugin)" enablePopupBars="true" DomainClass="platform.EObject">
+      <metamodel href="../../org.polarsys.kitalpha.pdt.metamodel/model/platform.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide non connected extensions &amp; extension points">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']/@borderedNodeMappings[name='PD.Extension'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']/@borderedNodeMappings[name='PD.ExtensionPoint']" viewConditionExpression="aql:self.incomingEdges->size() > 0 or self.outgoingEdges->size() > 0"/>
+      </filters>
+      <defaultLayer name="Default">
+        <edgeMappings name="PD.ExtensionToExtensionPoint" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']/@borderedNodeMappings[name='PD.Extension']" targetMapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']/@borderedNodeMappings[name='PD.ExtensionPoint']" targetFinderExpression="feature:extensionPoint">
+          <style targetArrow="OutputFillClosedArrow">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="PD.Plugin" detailDescriptions="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@toolSections.0/@subSections[name='Navigation']/@ownedTools[name='Plugin%20Dependencies']" preconditionExpression="aql:not diagram.target.equals(self)" semanticCandidatesExpression="" createElements="false" domainClass="Plugin" childrenPresentation="List" DomainClass="platform.Plugin">
+          <borderedNodeMappings name="PD.ExtensionPoint" detailDescriptions="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@toolSections.0/@subSections[name='Navigation']/@ownedTools[name='Extension%20Point%20Schema']" semanticCandidatesExpression="aql:self.extensionPoints.extensionPoints" domainClass="ExtensionPoint" DomainClass="platform.ExtensionPoint">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="feature:id" labelAlignment="LEFT" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.kitalpha.pdt.modeler.resources/icons/ports/ext_point_obj.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="PD.Extension" detailDescriptions="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@toolSections.0/@subSections[name='Navigation']/@ownedTools[name='Extension%20Schema']" semanticCandidatesExpression="aql:self.extensions.extensions" domainClass="Extension" DomainClass="platform.Extension">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.id.concat(' : ').concat(self.extensionPoint.id)" labelAlignment="LEFT" hideLabelByDefault="true" sizeComputationExpression="2" workspacePath="/org.polarsys.kitalpha.pdt.modeler.resources/icons/ports/extension_obj.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="PD.Version" semanticCandidatesExpression="var:self" domainClass="Plugin" DomainClass="platform.Plugin">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Version : '.concat(self.version)" labelAlignment="LEFT" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" width="10" height="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginBorder']" labelExpression="feature:id" roundedCorner="true" heightComputationExpression="10" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginBottom']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="PD.PluginCurrent" preconditionExpression="aql:diagram.target.equals(self)" domainClass="Plugin" reusedBorderedNodeMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']/@borderedNodeMappings[name='PD.Extension'] //@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']/@borderedNodeMappings[name='PD.ExtensionPoint']" reusedNodeMappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']/@subNodeMappings[name='PD.Version']" childrenPresentation="List" DomainClass="platform.Plugin">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginBorder']" labelExpression="feature:id" roundedCorner="true" widthComputationExpression="10" heightComputationExpression="10" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginTop']" foregroundColor="//@userColorsPalettes[name='DefaultPalette']/@entries[name='PluginBottom']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Plug-in Declaration">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Insert Existing Plug-in(s)" precondition="aql:containerView->filter(diagram::DDiagram)->size() > 0" forceRefresh="true" candidatesExpression="service:getAllPlugins()" multiple="true" message="Select Plug-ins to insert" iconPath="/org.polarsys.kitalpha.pdt.modeler.resources/icons/req_plugins_obj.gif">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:For" expression="var:element">
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']" containerViewExpression="var:containerView"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <subSections name="Drag and drop">
+            <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DD.Plugin" forceRefresh="true" mappings="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']" dragSource="PROJECT_EXPLORER">
+              <oldContainer name="oldSemanticContainer"/>
+              <newContainer name="newSemanticContainer"/>
+              <element name="element"/>
+              <newViewContainer name="newContainerView"/>
+              <initialOperation/>
+            </ownedTools>
+          </subSections>
+          <subSections name="Popup">
+            <ownedTools xsi:type="tool:PopupMenu" name="Eclipse Platform Modeler">
+              <menuItemDescription xsi:type="tool:OperationAction" name="Show contributions of this plug-in" precondition="aql:self.oclIsKindOf(platform::Plugin)" forceRefresh="true" icon="/org.polarsys.kitalpha.pdt.modeler.resources/icons/full/obj16/Plugin.gif">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:For" expression="service:getContributedPluginForGivenPlugin()">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Show plug-ins that contribute to this plug-in" precondition="aql:self.oclIsKindOf(platform::Plugin)" forceRefresh="true" icon="/org.polarsys.kitalpha.pdt.modeler.resources/icons/req_plugins_obj.gif">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:For" expression="service:getContributorsOfGivenPlugin()">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']" containerViewExpression="aql:views->asSequence()->at(1).eContainer()"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Show contributions to this Extension Point" precondition="aql:self.oclIsKindOf(platform::ExtensionPoint)" forceRefresh="true" icon="/org.polarsys.kitalpha.pdt.modeler.resources/icons/extensions_obj.gif">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:For" expression="service:getContributorsForGivenEP()">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']" containerViewExpression="aql:views->first().eContainer(diagram::DDiagram)"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Show extended Plugin" precondition="aql:self.oclIsKindOf(platform::Extension)" forceRefresh="true" icon="/org.polarsys.kitalpha.pdt.modeler.resources/icons/full/obj16/Plugin.gif">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:For" expression="service:getContributedPluginForGivenExtension()">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Plug-in%20Extensions%20and%20Extension%20Points']/@defaultLayer/@containerMappings[name='PD.Plugin']" containerViewExpression="aql:views->first().eContainer(diagram::DDiagram)"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+            </ownedTools>
+          </subSections>
+          <subSections name="Navigation">
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Extension Schema" titleExpression="aql:'Extension from '.add(self.eContainer().id).add(' to ').add(self.extensionPoint.id)" diagramDescription="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Schema']">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Navigation" diagramDescription="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Schema']"/>
+              </initialOperation>
+              <containerViewVariable name="containerView"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Extension Point Schema" titleExpression="aql:self.id.add('Extension Point Schema')" diagramDescription="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Navigation" diagramDescription="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Extension%20Point%20schema']"/>
+              </initialOperation>
+              <containerViewVariable name="containerView"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Plugin Dependencies" diagramDescription="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Navigation" diagramDescription="//@ownedViewpoints[name='Eclipse%20Model']/@ownedRepresentations[name='Features%20and%20Plugins']"/>
+              </initialOperation>
+              <containerViewVariable name="containerView"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+          </subSections>
+        </toolSections>
+        <toolSections name="F.CreationPalette" label="Modeling"/>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.kitalpha.pdt.modeler.utils.services.IntrospectionServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes name="DefaultPalette">
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="PluginTop"/>
+    <entries xsi:type="description:UserFixedColor" red="130" green="209" blue="250" name="PluginBottom"/>
+    <entries xsi:type="description:UserFixedColor" red="26" green="98" blue="132" name="PluginBorder"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="ExtensionPointTop"/>
+    <entries xsi:type="description:UserFixedColor" red="232" green="255" blue="221" name="ExtensionPointBottom"/>
+    <entries xsi:type="description:UserFixedColor" red="63" green="88" blue="58" name="ExtensionPointBorder"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="ExtensionTop"/>
+    <entries xsi:type="description:UserFixedColor" red="254" green="253" blue="218" name="ExtensionBottom"/>
+    <entries xsi:type="description:UserFixedColor" red="153" green="113" blue="57" name="ExtensionBorder"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="ConfigElementTop"/>
+    <entries xsi:type="description:UserFixedColor" red="215" green="238" blue="255" name="ConfigElementBottom"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="ConfigElementBorder"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="FeatureTop"/>
+    <entries xsi:type="description:UserFixedColor" red="242" green="185" blue="184" name="FeatureBottom"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="FeatureBorder"/>
+  </userColorsPalettes>
+</description:Group>

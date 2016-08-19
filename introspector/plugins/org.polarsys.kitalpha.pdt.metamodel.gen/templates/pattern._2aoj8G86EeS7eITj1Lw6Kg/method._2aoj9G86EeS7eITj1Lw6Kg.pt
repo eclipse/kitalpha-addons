@@ -1,0 +1,1 @@
+return genClass.getName().equals("Repository");

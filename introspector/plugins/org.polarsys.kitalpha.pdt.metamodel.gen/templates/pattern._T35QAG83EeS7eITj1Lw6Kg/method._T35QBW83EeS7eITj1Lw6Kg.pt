@@ -1,0 +1,11 @@
+		
+@Override
+public Object overlayImage(Object object, Object image){
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		return super.overlayImage(object, getResourceLocator().getImage("full/obj16/PluginDependency"));
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/
+}

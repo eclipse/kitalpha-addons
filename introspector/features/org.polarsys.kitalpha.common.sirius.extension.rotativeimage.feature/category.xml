@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.polarsys.kitalpha.common.sirius.extension.rotativeimage.feature_1.0.0.qualifier.jar" id="org.polarsys.kitalpha.common.sirius.extension.rotativeimage.feature" version="1.0.0.qualifier">
+      <category name="org.polarsys.kitalpha.common"/>
+   </feature>
+   <category-def name="org.polarsys.kitalpha.common" label="Rotative Image Utils"/>
+</site>

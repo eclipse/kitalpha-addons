@@ -1,0 +1,23 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.parameters
+Element-Name: Sirius - EditPart
+Element-Type: context
+Element-Version: 2.0
+Id: _EwWjwKoVEeW9t_E6bhc35A
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 8/3/16 4:04 PM
+
+------=_.parameters.context-2e023de5-3294-36a9-ac1d-6701f05a40ee
+Content-Type: text/properties
+Entry-Name: .parameters.context
+
+#Wed Aug 03 16:04:31 CEST 2016
+WorkspaceImage=WorkspaceImageEditPart
+ListContainer=DNodeListViewNodeListCompartment2EditPart
+FlatContainer=DNodeContainerViewNodeContainerCompartmentEditPart
+Square=SquareEditPart
+RotativeImage=RotativeImageEditPart
+SubFlatContainer=DNodeContainerViewNodeContainerCompartment2EditPart
+
+------=_.parameters.context-2e023de5-3294-36a9-ac1d-6701f05a40ee--

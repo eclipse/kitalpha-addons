@@ -1,0 +1,42 @@
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.AbstractValue");%>
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.StringValue");%>
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.JavaClassValue");%>
+<%genModel.addImport("org.polarsys.kitalpha.pdt.metamodel.model.platform.BooleanValue");%>
+
+		/**
+		 * CUSTOM_CODE_BEGIN
+		 **/
+
+		String label = "";
+		ConfigurationElementAttributeInstance CEAI = (ConfigurationElementAttributeInstance) object;
+		AbstractValue containedValue = CEAI.getContainedValue();
+		
+		String value = "";
+		if (containedValue != null) {
+			if (containedValue instanceof StringValue) {
+				value = ((StringValue) containedValue).getValue();
+			} else if (containedValue instanceof JavaClassValue) {
+				JavaClassValue javaClassValue = (JavaClassValue) containedValue;
+				value = javaClassValue.getClassName();
+			} else if (containedValue instanceof BooleanValue) {
+				value = Boolean.toString(((BooleanValue) containedValue)
+						.isValue());
+			}
+		}
+		if((CEAI.getName() != null)&&(!CEAI.getName().isEmpty()))
+			label = "" + CEAI.getName();
+		if(CEAI.getType()!= null)
+			label += " : " + CEAI.getType();
+		
+		if((value != null)&&(!value.isEmpty()))
+			label += " = " + value;
+
+		if (label.length()>0)
+			label = label+" [Configuration Element Attribute Instance]";
+		else
+			label = "[Configuration Element Attribute Instance]";
+		return label;
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/
+

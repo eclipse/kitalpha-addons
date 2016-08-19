@@ -1,0 +1,21 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: FAP_Testsuite
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _KoqnYFP9EeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 8/3/16 5:46 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_drsMYFP9EeamI7Iw-qIwEA	// kind: 'test' name: 'FAP_default_diagram_name' path: 'testcase/FAP_default_diagram_name.test'
+_PjbAUFMwEeamI7Iw-qIwEA	// kind: 'test' name: 'FAP_Introspection' path: 'testcase/FAP_Introspection.test'
+_TvfPgFPdEeamI7Iw-qIwEA	// kind: 'test' name: 'FAP_Tool_DnD' path: 'testcase/FAP_Tool_DnD.test'
+_-4UgQFPEEeamI7Iw-qIwEA	// kind: 'test' name: 'FAP_Tool_InsertFeatures' path: 'testcase/FAP_Tool_InsertFeatures.test'
+_jTJ7EFPEEeamI7Iw-qIwEA	// kind: 'test' name: 'FAP_Tool_InsertPlugins' path: 'testcase/FAP_Tool_InsertPlugins.test'
+_HpQ5AFjJEeatdodrlkIIMg	// kind: 'test' name: 'FAP_Tool_Edition' path: 'testcase/FAP_Tool_Edition.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

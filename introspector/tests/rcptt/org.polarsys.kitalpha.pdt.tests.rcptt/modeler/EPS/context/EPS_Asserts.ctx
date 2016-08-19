@@ -1,0 +1,46 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: EPS_Asserts
+Element-Type: context
+Element-Version: 2.0
+Id: _faUJ0FPbEeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/27/16 3:16 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc checkDefautlDiagramName {
+	linkwithEditor
+	
+	get-view $ProjectExplorerName | get-tree 
+    	| get-item "org.polarsys.kitalpha.pdt.example/models/Kitalpha_20160726_141010.aird/Kitalpha_20160726_141010.platform - \\[platform:\\/resource\\/org.polarsys.kitalpha.pdt.example\\/models\\/Kitalpha_20160726_141010.platform\\]/Kitalpha/Running Platform/org/polarsys/kitalpha/accuracy/org.polarsys.kitalpha.accuracy v1.0.0 \\[Plugin\\]/Extension Points/org.polarsys.kitalpha.validation.java \\[Extension Point\\]/org.polarsys.kitalpha.validation.java Extension Point Schema" 
+    	| get-property caption | equals "org.polarsys.kitalpha.validation.java Extension Point Schema" | verify-true
+}
+
+proc checkDiagramElements {
+	get-editor $TestDiagramName | get-diagram -index 1 | get-edit-part -name $TestDiagramName | get-edit-part 
+	    -name JavaConstraint | get-edit-part -className DNodeListNameEditPart | get-property "element.name" 
+	    | equals JavaConstraint | verify-true
+	
+	get-editor $TestDiagramName | get-diagram -index 1 | get-edit-part -name $TestDiagramName | get-edit-part 
+	    -name JavaConstraint | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+	    -name "requirementId : String" | get-property "element.name" | equals "requirementId : String" | verify-true
+	    
+	get-editor $TestDiagramName | get-diagram -index 1 | get-edit-part -name $TestDiagramName | get-edit-part 
+    	-name JavaConstraint | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    	-name "Class implements : org.polarsys.kitalpha.validation.java.provider.generic.IJavaConstraint" 
+    	| get-property "element.name" 
+    	| equals "Class implements : org.polarsys.kitalpha.validation.java.provider.generic.IJavaConstraint" | verify-true
+	
+	get-editor $TestDiagramName | get-diagram -index 1 | get-edit-part -name $TestDiagramName | get-edit-part 
+	    -name JavaConstraint | get-target-connection 0 | get-edit-part -className DEdgeNameEditPart 
+	    | get-property "element.name" | equals "JavaConstraint [1;*]" | verify-true
+	    
+	get-editor $TestDiagramName | get-diagram -index 1 | get-edit-part -name $TestDiagramName | get-edit-part 
+	    -name SEQUENCE | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+	    -name "Min Cardinality :1" | get-property "element.name" | equals "Min Cardinality :1" | verify-true
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

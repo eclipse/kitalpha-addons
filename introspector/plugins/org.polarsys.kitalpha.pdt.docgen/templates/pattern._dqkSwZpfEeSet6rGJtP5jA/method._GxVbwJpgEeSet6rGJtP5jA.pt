@@ -1,0 +1,106 @@
+<%
+String outputFolder = ctx.getValue("outputFolder").toString();
+String projectName = ctx.getValue("projectName").toString();
+String text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers.getLabel((EclipseElement)element);
+boolean diagramsInclusion = Helpers.diagramsInclusionIsChecked();
+
+HTMLDocGenContext context = HTMLDocGenContext.INSTANCE;
+try {
+	text = EscapeChars.forHTML(text);
+} catch (NullPointerException e) {
+	System.err.println("Caught exception while converting text into html:" + e.getMessage());
+	text = "";
+}
+%><div style="position: fixed; top: 0; left: 1%; width: 98%; z-index: 2; background-color: white; ";>
+<%
+String hyperlink = "";
+EObject parent = element.eContainer();
+if (parent != null && parent instanceof EclipseElement) {
+	hyperlink = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers
+			.getTypeHyperLink((EclipseElement) parent, Helpers.getLabel((EclipseElement) parent));
+	String parentClassName = parent.eClass().getName();%>
+	<p><strong><%=parentClassName%> :</strong> <%=hyperlink%></p><%
+}
+%>
+<%String imageFileName = LabelProviderHelper.getImageFileName(element,
+						projectName, outputFolder);%>
+<h1><img src="../icon/<%=imageFileName%>" alt="" /> <%=text%></h1>
+<hr style="width:98%; align : center; " /> 
+</div>
+
+<div style="position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;">
+
+<%
+String extensionID = ((Extension) element).getId();
+if (extensionID == null) {
+	extensionID = "Extension Id not found";
+}
+
+%>
+
+<%
+Extension lastExtension = null;
+List<Extension> extensions = new ArrayList<Extension>();
+Plugin currentPlugin=null;
+EObject obj = ((org.polarsys.kitalpha.pdt.metamodel.model.platform.Plugin)(element.eContainer().eContainer()));
+if (obj instanceof Plugin) {
+			currentPlugin = (Plugin) obj;
+			if (currentPlugin.getExtensions().getExtensions() != null) {
+				extensions = currentPlugin.getExtensions().getExtensions();
+				for (Extension extension : extensions) {
+					int listSize = extensions.size();
+					int lastIndex = extensions.indexOf(extension);
+					//je suis arrivé à la dernière extension 
+					if((listSize-1) == lastIndex){
+						lastExtension = extension;
+						break;
+					}
+				}
+			}
+		}
+
+%>
+
+<%
+ String pageKey = extensionID +"_"+ ((Extension) element).getExtensionPoint().getId();
+ String extensionPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.extensionsPages.get(pageKey);
+%>
+
+<%=extensionPage%>
+
+
+
+<%
+String extensionKey = IntrospectionServices.getLabelForGivenExtension((Extension)element) + " Extension Schema";
+DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.extensionDiagrams.get(extensionKey);%>
+
+<%
+if (diagram != null){%>
+<h2>Representation</h2>
+<%}%>
+
+</p>
+<%
+
+if((diagram instanceof DSemanticDiagram) && (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Schema"))) {
+String generatedFolder = fileNameService.getFileName(((DSemanticDiagram)diagram).getTarget());%>
+<p><strong><%=((DSemanticDiagram) diagram).getDescription().getName()%></strong></p>
+<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.core/egf/HTMLDocGenCommon.fcore#LogicalName=org.polarsys.kitalpha.doc.gen.business.core.sirius.DiagramGenerator" args="diagram:diagram, outputFolder:outputFolder, projectName:projectName, generatedFolder:generatedFolder, fileNameService:fileNameService, helper:helper"%>
+<%}
+%>
+
+<%
+if(diagramsInclusion){
+	if(lastExtension == (Extension)element && lastExtension != null)
+	{
+		//je ferme mon aird
+		if (currentPlugin!=null){
+			AIRDHelpers.INSTANCE.clearCurrentAird();
+			AIRDHelpers.INSTANCE.cleanAllMaps();
+			}
+	}
+}
+
+%>
+				
+				

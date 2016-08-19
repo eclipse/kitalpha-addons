@@ -1,0 +1,4 @@
+
+
+	String label = ((org.polarsys.kitalpha.pdt.metamodel.model.platform.Package)object).getName();
+		return label;

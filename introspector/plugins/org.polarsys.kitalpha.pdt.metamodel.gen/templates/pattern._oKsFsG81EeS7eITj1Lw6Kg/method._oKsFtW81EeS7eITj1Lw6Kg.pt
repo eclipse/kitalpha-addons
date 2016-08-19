@@ -1,0 +1,26 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		ComplexCompositor complexCompositor = (ComplexCompositor) object;
+		String label = "";
+		int complexCompCard = complexCompositor.getMaxCard();
+
+		if (complexCompositor.getComplexCompositorKind().equals(
+				ComplexCompositorKind.SEQUENCE)) {
+			if (complexCompositor.isUnbounded())
+				label = "Sequence [" + complexCompositor.getMinCard() + ";*]";
+			else
+				label = "Sequence [" + complexCompositor.getMinCard() + ";"
+						+ complexCompCard + "]";
+
+		} else {
+			if (complexCompositor.isUnbounded())
+				label = "Choice [" + complexCompositor.getMinCard() + ";*]";
+			else
+				label = "Choice [" + complexCompositor.getMinCard() + ";"
+						+ complexCompCard + "]";
+		}
+		return label;
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

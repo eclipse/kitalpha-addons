@@ -1,0 +1,11 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		
+		String label = ((EclipseModel)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_EclipseModel_type") : label;
+
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

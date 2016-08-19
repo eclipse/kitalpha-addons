@@ -1,0 +1,10 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		if (this.eContainer() instanceof org.polarsys.kitalpha.pdt.metamodel.model.platform.Repository)
+			return this.getName();
+		else
+			return (( org.polarsys.kitalpha.pdt.metamodel.model.platform.Package)this.eContainer()).getAbsoluteName()+"."+getName();
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

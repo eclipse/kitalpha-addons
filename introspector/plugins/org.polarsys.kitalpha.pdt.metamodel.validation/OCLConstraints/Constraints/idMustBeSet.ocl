@@ -1,0 +1,6 @@
+package platform
+context IdentifiedElement
+
+inv id_exists : oclIsKindOf(Extension) or (self.id <>'' and self.id <> null)
+
+endpackage

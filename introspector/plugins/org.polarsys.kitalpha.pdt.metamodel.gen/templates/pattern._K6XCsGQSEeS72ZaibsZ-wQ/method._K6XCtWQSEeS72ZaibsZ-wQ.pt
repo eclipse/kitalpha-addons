@@ -1,0 +1,12 @@
+		/**
+		 * CUSTOM_CODE_BEGIN : []
+		 **/
+		String label = ((Plugin)object).getId();
+		String version  = ((Plugin)object).getVersion();
+		if(version != null || label != null)
+			return label + " v" + version + " [Plugin]";
+		else
+			return "[Plugin]";
+		/**
+		 * CUSTOM_CODE_END : []
+		 **/

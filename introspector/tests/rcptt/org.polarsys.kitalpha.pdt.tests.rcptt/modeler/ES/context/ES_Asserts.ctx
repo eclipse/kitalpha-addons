@@ -1,0 +1,37 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ES_Asserts
+Element-Type: context
+Element-Version: 2.0
+Id: _wY0eEFP2EeamI7Iw-qIwEA
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 7/27/16 3:20 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+proc checkDefautlDiagramName {
+	linkwithEditor
+	
+	get-view $ProjectExplorerName | get-tree 
+   		| get-item "org.polarsys.kitalpha.pdt.example/models/Kitalpha_20160726_141010.aird/Kitalpha_20160726_141010.platform - \\[platform:\\/resource\\/org.polarsys.kitalpha.pdt.example\\/models\\/Kitalpha_20160726_141010.platform\\]/Kitalpha/Running Platform/org/polarsys/kitalpha/ad/af/dsl/services/cs/text/wizards/org.polarsys.kitalpha.ad.af.dsl.services.cs.text.wizards v1.0.0 \\[Plugin\\]/Extensions/\\(no name\\)  -> org.polarsys.kitalpha.ad.af.dsl.servicies.project.concretesyntaxresource \\[Extension\\]/\\(no name\\)_org.polarsys.kitalpha.ad.af.dsl.services.cs.text.wizards_1 Extension Schema" 
+    	| get-property caption | equals "(no name)_org.polarsys.kitalpha.ad.af.dsl.services.cs.text.wizards_1 Extension Schema" | verify-true
+}
+
+proc checkDiagramElements {
+	with [get-editor $TestDiagramName | get-diagram -index 1 | get-edit-part -name $TestDiagramName | get-edit-part 
+	    -name ConcreteSyntaxResourceCreator] {
+	    get-edit-part -className DNodeListNameEditPart | get-property "element.name" | equals ConcreteSyntaxResourceCreator | verify-true
+    	with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+	        get-edit-part -name "default : Boolean = true" | get-property "element.name" | equals "default : Boolean = true" | verify-true
+        	get-edit-part -name "label : String = Text" | get-property "element.name" | equals "label : String = Text" | verify-true
+        	get-edit-part -name "class : Java = org.polarsys.kitalpha.ad.af.dsl.services.cs.text.wizards.AfdslResourceCreator" 
+	            | get-property "element.name" 
+            	| equals "class : Java = org.polarsys.kitalpha.ad.af.dsl.services.cs.text.wizards.AfdslResourceCreator" 
+            	| verify-true
+    	}
+	}
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
