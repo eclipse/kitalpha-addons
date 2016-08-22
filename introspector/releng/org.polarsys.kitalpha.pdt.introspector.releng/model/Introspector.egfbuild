@@ -12,11 +12,11 @@
   </propertyPackages>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_wesOAN7xEeW4stM5O9DEYQ" name="Download TP">
     <steps xsi:type="buildstep:CleanStep" xmi:id="_y2cIgN7xEeW4stM5O9DEYQ" type="Result"/>
-    <steps xsi:type="buildfile:CreateFolderStep" xmi:id="_4VtNkN7xEeW4stM5O9DEYQ" name="Create Folder download" folderPath="${publish}/download"/>
+    <steps xsi:type="buildfile:CreateFolderStep" xmi:id="_4VtNkN7xEeW4stM5O9DEYQ" name="Create Folder download" enabled="false" folderPath="${publish}/download"/>
     <steps xsi:type="buildstep:AntStep" xmi:id="_oFYMEGYcEeaCmeLaiYKh-Q" name="download TP" description="" targetName="download_tp" xml="&lt;target name=&quot;download_tp&quot;>&#xD;&#xA;&#x9; &lt;dirname property=&quot;dir&quot; file=&quot;${publish}/TP.ts&quot;/>&#xD;&#xA;&#x9; &lt;mkdir dir=&quot;${dir}&quot; />&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${TP_URL}/buildTimestamp?format=yyyy-MM-dd_HH-mm-ss&quot; &#xD;&#xA;&#x9;&#x9;dest=&quot;${publish}/TP.ts&quot;/>&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&lt;loadfile srcfile=&quot;${publish}/TP.ts&quot; property=&quot;ts&quot;/>&#xD;&#xA;&#x9;&lt;echo>timestamp: ${ts}&lt;/echo>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${TP_URL}/artifact/result/publish/kitalpha_${Kitalpha_Version}-${ts}-linux-gtk-x86_64-mars.tar.gz&quot;&#xD;&#xA;&#x9;&#x9;dest=&quot;${publish}/TP.tar.gz&quot;/>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;gunzip src=&quot;${publish}/TP.tar.gz&quot;/>&#xD;&#xA;&#x9;&lt;untar src=&quot;${publish}/TP.tar&quot; dest=&quot;${publish}/TP&quot;/>&#xD;&#xA;&lt;/target> "/>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_PG59UN_KEeWQk67aMW_B0g" name="Platform Model Step">
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_RX-BAN_KEeWQk67aMW_B0g" name="Build Platform Model">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_PG59UN_KEeWQk67aMW_B0g" name="model">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_RX-BAN_KEeWQk67aMW_B0g" name="model">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_wsTloGYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_wsTloWYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_qg070N_KEeWQk67aMW_B0g" path="${publish}/TP"/>
@@ -25,8 +25,8 @@
     <steps xsi:type="buildstep:PublishStep" xmi:id="_3cL_AN_KEeWQk67aMW_B0g" name="Publish Platform Model" component="_rcyNwN_KEeWQk67aMW_B0g" generateSources="false"/>
     <steps xsi:type="buildfile:ZipStep" xmi:id="_dKVFcOByEeWKm7LsGxVCTg" name="Platform Model" baseDir="${publish}/org.polarsys.kitalpha.pdt.metamodel.feature/site.p2" destinationFilePath="${publish}/platformModel-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_Cgh2MN_LEeWQk67aMW_B0g" name="Platform Introspector Step">
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_FzCv0N_LEeWQk67aMW_B0g" name="Build Plaform Introspector">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_Cgh2MN_LEeWQk67aMW_B0g" name="introspector">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_FzCv0N_LEeWQk67aMW_B0g" name="introspector">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_5PB0oGYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_5PB0oWYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_UEYugN_LEeWQk67aMW_B0g" path="${publish}/TP"/>
@@ -38,8 +38,8 @@
     <steps xsi:type="buildstep:AggregateStep" xmi:id="_pvP-kOByEeWKm7LsGxVCTg" name="Aggregate Platform Introspector" description="" id="org.polarsys.kitalpha.pdt.introspector.packaging" publishSteps="_ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g"/>
     <steps xsi:type="buildfile:ZipStep" xmi:id="_pvP-keByEeWKm7LsGxVCTg" name="Platform Introspector" baseDir="${publish}/org.polarsys.kitalpha.pdt.introspector.packaging/site.p2" destinationFilePath="${publish}/platformIntrospector-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_7Hl6gOBeEeWKm7LsGxVCTg" name="Rotative Image Step">
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_-9MTEOBeEeWKm7LsGxVCTg" name="Rotative Image">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_7Hl6gOBeEeWKm7LsGxVCTg" name="rotative-image">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_-9MTEOBeEeWKm7LsGxVCTg" name="rotative-image">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_9AU8AGYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_9AU8AWYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_Ft8OIOBfEeWKm7LsGxVCTg" path="${publish}/TP"/>
@@ -47,8 +47,8 @@
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_R1bkYOBfEeWKm7LsGxVCTg" name="Publish Rotative Image" component="_H16AMOBfEeWKm7LsGxVCTg" generateSources="false"/>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_s9bVkN_UEeWQk67aMW_B0g" name="Platform Modeler Step">
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_s9bVkd_UEeWQk67aMW_B0g" name="Build Plaform Modeler">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_s9bVkN_UEeWQk67aMW_B0g" name="modeler">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_s9bVkd_UEeWQk67aMW_B0g" name="modeler">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_-9cI8GYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_-9cI8WYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_s9bVlN_UEeWQk67aMW_B0g" path="${publish}/TP"/>
@@ -60,8 +60,8 @@
     <steps xsi:type="buildstep:PublishStep" xmi:id="_s9bVmN_UEeWQk67aMW_B0g" name="Publish Platform Modeler" component="_s9bVld_UEeWQk67aMW_B0g" generateSources="false"/>
     <steps xsi:type="buildfile:ZipStep" xmi:id="_CLqDEOBzEeWKm7LsGxVCTg" name="Platform Modeler" baseDir="${publish}/org.polarsys.kitalpha.pdt.modeler.feature/site.p2" destinationFilePath="${publish}/platformModeler-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_FgyWoN_VEeWQk67aMW_B0g" name="Platform GenDoc Step">
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_FgyWod_VEeWQk67aMW_B0g" name="Build Plaform GenDoc">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_FgyWoN_VEeWQk67aMW_B0g" name="gendoc">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_FgyWod_VEeWQk67aMW_B0g" name="gendoc">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_ExEUcGYdEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_ExEUcWYdEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_FgyWpN_VEeWQk67aMW_B0g" path="${publish}/TP"/>
