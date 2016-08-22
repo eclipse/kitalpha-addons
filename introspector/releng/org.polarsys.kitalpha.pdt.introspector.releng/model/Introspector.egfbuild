@@ -12,7 +12,6 @@
   </propertyPackages>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_wesOAN7xEeW4stM5O9DEYQ" name="Download TP">
     <steps xsi:type="buildstep:CleanStep" xmi:id="_y2cIgN7xEeW4stM5O9DEYQ" type="Result"/>
-    <steps xsi:type="buildfile:CreateFolderStep" xmi:id="_4VtNkN7xEeW4stM5O9DEYQ" name="Create Folder download" enabled="false" folderPath="${publish}/download"/>
     <steps xsi:type="buildstep:AntStep" xmi:id="_oFYMEGYcEeaCmeLaiYKh-Q" name="download TP" description="" targetName="download_tp" xml="&lt;target name=&quot;download_tp&quot;>&#xD;&#xA;&#x9; &lt;dirname property=&quot;dir&quot; file=&quot;${publish}/TP.ts&quot;/>&#xD;&#xA;&#x9; &lt;mkdir dir=&quot;${dir}&quot; />&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${TP_URL}/buildTimestamp?format=yyyy-MM-dd_HH-mm-ss&quot; &#xD;&#xA;&#x9;&#x9;dest=&quot;${publish}/TP.ts&quot;/>&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&lt;loadfile srcfile=&quot;${publish}/TP.ts&quot; property=&quot;ts&quot;/>&#xD;&#xA;&#x9;&lt;echo>timestamp: ${ts}&lt;/echo>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${TP_URL}/artifact/result/publish/kitalpha_${Kitalpha_Version}-${ts}-linux-gtk-x86_64-mars.tar.gz&quot;&#xD;&#xA;&#x9;&#x9;dest=&quot;${publish}/TP.tar.gz&quot;/>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;gunzip src=&quot;${publish}/TP.tar.gz&quot;/>&#xD;&#xA;&#x9;&lt;untar src=&quot;${publish}/TP.tar&quot; dest=&quot;${publish}/TP&quot;/>&#xD;&#xA;&lt;/target> "/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_PG59UN_KEeWQk67aMW_B0g" name="model">
@@ -93,14 +92,9 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_TG1voOBkEeWKm7LsGxVCTg" name="Clean">
     <steps xsi:type="buildfile:DeleteStep" xmi:id="_HLOSMOBkEeWKm7LsGxVCTg" name="Delete TP">
-      <filePaths>${publish}/download/TP.zip</filePaths>
+      <filePaths>${publish}/TP.zip</filePaths>
     </steps>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_SeSkEuBzEeWKm7LsGxVCTg" name="Delete Packaging Platform DocGen" resultSteps="_SeSkEOBzEeWKm7LsGxVCTg"/>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_pvP-kuByEeWKm7LsGxVCTg" name="Delete Packaging Platform Introspector" resultSteps="_pvP-kOByEeWKm7LsGxVCTg"/>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_HbV-kOB0EeWKm7LsGxVCTg" name="Delete Packaging All in one" resultSteps="_u2V-wOBzEeWKm7LsGxVCTg"/>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_TWSGkOB0EeWKm7LsGxVCTg" name="Delete download folder">
-      <dirPaths>${publish}/download</dirPaths>
-    </steps>
+    <steps xsi:type="buildfile:DeleteStep" xmi:id="__cthsGhHEeaCmeLaiYKh-Q" name="Delete Packaging Platform DocGen" resultSteps="_R1bkYOBfEeWKm7LsGxVCTg _FgyWp9_VEeWQk67aMW_B0g _lghCoN_VEeWQk67aMW_B0g _ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g _3cL_AN_KEeWQk67aMW_B0g _s9bVmN_UEeWQk67aMW_B0g _SeSkEOBzEeWKm7LsGxVCTg _pvP-kOByEeWKm7LsGxVCTg _u2V-wOBzEeWKm7LsGxVCTg"/>
     <steps xsi:type="buildfile:DeleteStep" xmi:id="_DQ4hkOB6EeWKm7LsGxVCTg" name="Delete TP Unzip">
       <dirPaths>${publish}/TP</dirPaths>
     </steps>
