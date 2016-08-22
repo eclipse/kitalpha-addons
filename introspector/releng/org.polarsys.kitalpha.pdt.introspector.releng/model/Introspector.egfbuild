@@ -72,7 +72,7 @@
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_FgyWp9_VEeWQk67aMW_B0g" name="Publish Platform GenDoc " component="_FgyWpd_VEeWQk67aMW_B0g" generateSources="false"/>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_lghCoN_VEeWQk67aMW_B0g" name="Publish Platform GenDoc UI" component="_irA1IN_VEeWQk67aMW_B0g" generateSources="false"/>
-    <steps xsi:type="buildstep:AggregateStep" xmi:id="_SeSkEOBzEeWKm7LsGxVCTg" name="Aggregate Platform DocGen" description="" id="org.polarsys.kitalpha.pdt.docgen.packaging"/>
+    <steps xsi:type="buildstep:AggregateStep" xmi:id="_SeSkEOBzEeWKm7LsGxVCTg" name="Aggregate Platform DocGen" description="" id="org.polarsys.kitalpha.pdt.docgen.packaging" publishSteps="_lghCoN_VEeWQk67aMW_B0g _FgyWp9_VEeWQk67aMW_B0g"/>
     <steps xsi:type="buildfile:ZipStep" xmi:id="_SeSkEeBzEeWKm7LsGxVCTg" name="Platform DocGen" baseDir="${publish}/org.polarsys.kitalpha.pdt.docgen.packaging/site.p2" destinationFilePath="${publish}/platformDocGen-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_shauwOBzEeWKm7LsGxVCTg" name="Packaging All in one">
