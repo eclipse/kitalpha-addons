@@ -22,9 +22,11 @@
       <components xsi:type="buildstep:Feature" xmi:id="_rcyNwN_KEeWQk67aMW_B0g" id="org.polarsys.kitalpha.pdt.metamodel.feature"/>
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_3cL_AN_KEeWQk67aMW_B0g" name="Publish Platform Model" component="_rcyNwN_KEeWQk67aMW_B0g" generateSources="false"/>
-    <steps xsi:type="buildfile:ZipStep" xmi:id="_dKVFcOByEeWKm7LsGxVCTg" name="Platform Model" baseDir="${publish}/org.polarsys.kitalpha.pdt.metamodel.feature/site.p2" destinationFilePath="${publish}/platformModel-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_9hBAUGhjEeaCmeLaiYKh-Q" name="install.model" id="TP" profile="SDKProfile" resultSteps="_3cL_AN_KEeWQk67aMW_B0g"/>
+    <steps xsi:type="buildfile:ZipStep" xmi:id="_dKVFcOByEeWKm7LsGxVCTg" name="Platform Model" baseDir="${publish}/org.polarsys.kitalpha.pdt.metamodel.feature/site.p2" destinationFilePath="${publish}/PDTTooling_Model-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_Cgh2MN_LEeWQk67aMW_B0g" name="introspector">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_Hm9t4GhqEeaCmeLaiYKh-Q" name="clean.workspace"/>
     <steps xsi:type="buildstep:BuildStep" xmi:id="_FzCv0N_LEeWQk67aMW_B0g" name="introspector">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_5PB0oGYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_5PB0oWYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
@@ -34,10 +36,12 @@
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_ZMGgIN_UEeWQk67aMW_B0g" name="Publish Platform Introspector" component="_bpWfUN_MEeWQk67aMW_B0g" generateSources="false"/>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_eQSLsN_UEeWQk67aMW_B0g" name="Publish Platform Introspector UI" component="_dBk2gN_MEeWQk67aMW_B0g" generateSources="false"/>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_C7ym8GhkEeaCmeLaiYKh-Q" name="install.introspector" id="TP" profile="SDKProfile" resultSteps="_pvP-kOByEeWKm7LsGxVCTg"/>
     <steps xsi:type="buildstep:AggregateStep" xmi:id="_pvP-kOByEeWKm7LsGxVCTg" name="Aggregate Platform Introspector" description="" id="org.polarsys.kitalpha.pdt.introspector.packaging" publishSteps="_ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g"/>
-    <steps xsi:type="buildfile:ZipStep" xmi:id="_pvP-keByEeWKm7LsGxVCTg" name="Platform Introspector" baseDir="${publish}/org.polarsys.kitalpha.pdt.introspector.packaging/site.p2" destinationFilePath="${publish}/platformIntrospector-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
+    <steps xsi:type="buildfile:ZipStep" xmi:id="_pvP-keByEeWKm7LsGxVCTg" name="Platform Introspector" baseDir="${publish}/org.polarsys.kitalpha.pdt.introspector.packaging/site.p2" destinationFilePath="${publish}/PDTTooling_Introspector-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_7Hl6gOBeEeWKm7LsGxVCTg" name="rotative-image">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_KJIIoGhqEeaCmeLaiYKh-Q" name="clean.workspace"/>
     <steps xsi:type="buildstep:BuildStep" xmi:id="_-9MTEOBeEeWKm7LsGxVCTg" name="rotative-image">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_9AU8AGYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_9AU8AWYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
@@ -45,34 +49,34 @@
       <components xsi:type="buildstep:Feature" xmi:id="_H16AMOBfEeWKm7LsGxVCTg" id="org.polarsys.kitalpha.common.sirius.extension.rotativeimage.feature"/>
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_R1bkYOBfEeWKm7LsGxVCTg" name="Publish Rotative Image" component="_H16AMOBfEeWKm7LsGxVCTg" generateSources="false"/>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_KVibsGhkEeaCmeLaiYKh-Q" name="install.rotative-image" id="TP" profile="SDKProfile" resultSteps="_R1bkYOBfEeWKm7LsGxVCTg"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_s9bVkN_UEeWQk67aMW_B0g" name="modeler">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_K31owGhqEeaCmeLaiYKh-Q" name="clean.workspace"/>
     <steps xsi:type="buildstep:BuildStep" xmi:id="_s9bVkd_UEeWQk67aMW_B0g" name="modeler">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_-9cI8GYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_-9cI8WYcEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_s9bVlN_UEeWQk67aMW_B0g" path="${publish}/TP"/>
-      <buildLocations xsi:type="buildstep:ResultStepBuildLocation" xmi:id="_4aDUcN_VEeWQk67aMW_B0g" resultStep="_ZMGgIN_UEeWQk67aMW_B0g"/>
-      <buildLocations xsi:type="buildstep:ResultStepBuildLocation" xmi:id="_4aDUcd_VEeWQk67aMW_B0g" resultStep="_eQSLsN_UEeWQk67aMW_B0g"/>
-      <buildLocations xsi:type="buildstep:ResultStepBuildLocation" xmi:id="_Uw3awOBfEeWKm7LsGxVCTg" resultStep="_R1bkYOBfEeWKm7LsGxVCTg"/>
       <components xsi:type="buildstep:Feature" xmi:id="_s9bVld_UEeWQk67aMW_B0g" id="org.polarsys.kitalpha.pdt.modeler.feature"/>
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_s9bVmN_UEeWQk67aMW_B0g" name="Publish Platform Modeler" component="_s9bVld_UEeWQk67aMW_B0g" generateSources="false"/>
-    <steps xsi:type="buildfile:ZipStep" xmi:id="_CLqDEOBzEeWKm7LsGxVCTg" name="Platform Modeler" baseDir="${publish}/org.polarsys.kitalpha.pdt.modeler.feature/site.p2" destinationFilePath="${publish}/platformModeler-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_fOEw0GhkEeaCmeLaiYKh-Q" name="install.modeler" id="TP" profile="SDKProfile" resultSteps="_s9bVmN_UEeWQk67aMW_B0g"/>
+    <steps xsi:type="buildfile:ZipStep" xmi:id="_CLqDEOBzEeWKm7LsGxVCTg" name="Platform Modeler" baseDir="${publish}/org.polarsys.kitalpha.pdt.modeler.feature/site.p2" destinationFilePath="${publish}/PDTTooling_Modeler-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_FgyWoN_VEeWQk67aMW_B0g" name="gendoc">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_LjbjcGhqEeaCmeLaiYKh-Q" name="clean.workspace"/>
     <steps xsi:type="buildstep:BuildStep" xmi:id="_FgyWod_VEeWQk67aMW_B0g" name="gendoc">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_ExEUcGYdEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/plugins"/>
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_ExEUcWYdEeaCmeLaiYKh-Q" gitLocation="_lV3xgGYfEeaCmeLaiYKh-Q" folderName="introspector/features"/>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_FgyWpN_VEeWQk67aMW_B0g" path="${publish}/TP"/>
-      <buildLocations xsi:type="buildstep:ResultStepBuildLocation" xmi:id="_EBU5kN_WEeWQk67aMW_B0g" resultStep="_ZMGgIN_UEeWQk67aMW_B0g"/>
-      <buildLocations xsi:type="buildstep:ResultStepBuildLocation" xmi:id="_EBU5kd_WEeWQk67aMW_B0g" resultStep="_eQSLsN_UEeWQk67aMW_B0g"/>
       <components xsi:type="buildstep:Feature" xmi:id="_FgyWpd_VEeWQk67aMW_B0g" id="org.polarsys.kitalpha.pdt.docgen.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_irA1IN_VEeWQk67aMW_B0g" id="org.polarsys.kitalpha.pdt.docgen.ui.feature"/>
     </steps>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_FgyWp9_VEeWQk67aMW_B0g" name="Publish Platform GenDoc " component="_FgyWpd_VEeWQk67aMW_B0g" generateSources="false"/>
     <steps xsi:type="buildstep:PublishStep" xmi:id="_lghCoN_VEeWQk67aMW_B0g" name="Publish Platform GenDoc UI" component="_irA1IN_VEeWQk67aMW_B0g" generateSources="false"/>
     <steps xsi:type="buildstep:AggregateStep" xmi:id="_SeSkEOBzEeWKm7LsGxVCTg" name="Aggregate Platform DocGen" description="" id="org.polarsys.kitalpha.pdt.docgen.packaging" publishSteps="_lghCoN_VEeWQk67aMW_B0g _FgyWp9_VEeWQk67aMW_B0g"/>
-    <steps xsi:type="buildfile:ZipStep" xmi:id="_SeSkEeBzEeWKm7LsGxVCTg" name="Platform DocGen" baseDir="${publish}/org.polarsys.kitalpha.pdt.docgen.packaging/site.p2" destinationFilePath="${publish}/platformDocGen-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_kIs3wGhkEeaCmeLaiYKh-Q" name="install.docgen" id="TP" profile="SDKProfile" resultSteps="_SeSkEOBzEeWKm7LsGxVCTg"/>
+    <steps xsi:type="buildfile:ZipStep" xmi:id="_SeSkEeBzEeWKm7LsGxVCTg" name="Platform DocGen" baseDir="${publish}/org.polarsys.kitalpha.pdt.docgen.packaging/site.p2" destinationFilePath="${publish}/PDTTooling_DocGen-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_shauwOBzEeWKm7LsGxVCTg" name="Packaging All in one">
     <steps xsi:type="buildstep:AggregateStep" xmi:id="_u2V-wOBzEeWKm7LsGxVCTg" name="All in one" id="org.polarsys.kitalpha.pdttooling.packaging" publishSteps="_R1bkYOBfEeWKm7LsGxVCTg _FgyWp9_VEeWQk67aMW_B0g _lghCoN_VEeWQk67aMW_B0g _ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g _3cL_AN_KEeWQk67aMW_B0g _s9bVmN_UEeWQk67aMW_B0g"/>
@@ -86,7 +90,7 @@
       <properties xmi:id="_Y0g_tFirEeaYUrj_0kALIg" key="result" value="${publish}"/>
     </propertyPackages>
     <steps xsi:type="buildfile:DownloadStep" xmi:id="_cyROsFirEeaYUrj_0kALIg" name="download jacoco" sourceFilePath="${jacoco.url}" destinationFilePath="${publish}/jacocoagent.jar"/>
-    <steps xsi:type="buildstep:InstallStep" xmi:id="_igpGwFirEeaYUrj_0kALIg" name="Install All update sites" id="TP" profile="SDKProfile" resultSteps="_R1bkYOBfEeWKm7LsGxVCTg _FgyWp9_VEeWQk67aMW_B0g _lghCoN_VEeWQk67aMW_B0g _ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g _3cL_AN_KEeWQk67aMW_B0g _s9bVmN_UEeWQk67aMW_B0g" p2_os="" p2_ws="" p2_arch=""/>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_igpGwFirEeaYUrj_0kALIg" name="Install All update sites" id="TP" profile="SDKProfile" resultSteps="_3cL_AN_KEeWQk67aMW_B0g _R1bkYOBfEeWKm7LsGxVCTg _ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g _s9bVmN_UEeWQk67aMW_B0g _FgyWp9_VEeWQk67aMW_B0g _lghCoN_VEeWQk67aMW_B0g" p2_os="" p2_ws="" p2_arch=""/>
     <steps xsi:type="buildstep:AntStep" xmi:id="_dVOx0FirEeaYUrj_0kALIg" name="install rcptt" targetName="install.rcptt" xml="&lt;target name=&quot;install.rcptt&quot;>&#xD;&#xA;&#x9;&lt;available file=&quot;${tools}/rcptt&quot; property=&quot;rcptt.exists&quot; />&#xD;&#xA;&#x9;&lt;antcall target=&quot;do.install.rcptt&quot; />&#xD;&#xA;&lt;/target>&#xD;&#xA;&#xD;&#xA;&lt;target name=&quot;do.install.rcptt&quot; unless=&quot;rcptt.exists&quot;>&#xD;&#xA;&#x9;&lt;echo message=&quot;Fetching headless rcptt application&quot; />&#xD;&#xA;&#x9;&lt;tempfile destdir=&quot;${java.io.tmpdir}&quot; prefix=&quot;rcptt-&quot; suffix=&quot;.zip&quot; property=&quot;rcptt.zip&quot; deleteonexit=&quot;true&quot; />&#xD;&#xA;&#x9;&lt;get src=&quot;${rcptt.url}&quot; dest=&quot;${rcptt.zip}&quot; />&#xD;&#xA;&#x9;&lt;mkdir dir=&quot;${tools}&quot; />&#xD;&#xA;&#x9;&lt;unzip src=&quot;${rcptt.zip}&quot; dest=&quot;${tools}/rcptt&quot; />&#xD;&#xA;&#x9;&lt;delete file=&quot;${rcptt.zip}&quot; />&#xD;&#xA;&lt;/target>"/>
     <steps xsi:type="buildstep:AntStep" xmi:id="_dVOx0VirEeaYUrj_0kALIg" name="execute rcptt" targetName="test" xml="&lt;target name=&quot;test&quot;>&#xD;&#xA;&#x9;&lt;ant antfile=&quot;../../../tests/rcptt.xml&quot;/>&#xD;&#xA;&lt;/target>"/>
   </steps>
