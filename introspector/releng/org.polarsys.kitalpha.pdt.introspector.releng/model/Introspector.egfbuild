@@ -106,7 +106,7 @@
     </steps>
   </steps>
   <scms xsi:type="buildscm:GIT" xmi:id="_ukVMgGYcEeaCmeLaiYKh-Q">
-    <locations xmi:id="_lV3xgGYfEeaCmeLaiYKh-Q" url="www.polarsys.org/r/kitalpha/kitalpha-addons" localPath=" " password=""/>
+    <locations xmi:id="_lV3xgGYfEeaCmeLaiYKh-Q" protocol="https://" url="www.polarsys.org/r/kitalpha/kitalpha-addons" localPath=" " password=""/>
   </scms>
   <deployment xsi:type="builddeploy:HudsonDeployment" xmi:id="_MUzV0N-NEeWvvay4JCyCuw" assignedNode="master" jdkName="jdk6u18" antName="ant-1.8.2" userDeployServerUrl="https://www.polarsys.org/kitalpha/hudson/">
     <users xmi:id="_bq4vAN-NEeWvvay4JCyCuw" login="boubekeur.zendagui@obeo.fr" permission="EXECUTE"/>
