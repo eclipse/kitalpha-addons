@@ -76,7 +76,7 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_shauwOBzEeWKm7LsGxVCTg" name="Packaging All in one">
     <steps xsi:type="buildstep:AggregateStep" xmi:id="_u2V-wOBzEeWKm7LsGxVCTg" name="All in one" id="org.polarsys.kitalpha.pdttooling.packaging" publishSteps="_R1bkYOBfEeWKm7LsGxVCTg _FgyWp9_VEeWQk67aMW_B0g _lghCoN_VEeWQk67aMW_B0g _ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g _3cL_AN_KEeWQk67aMW_B0g _s9bVmN_UEeWQk67aMW_B0g"/>
-    <steps xsi:type="buildfile:ZipStep" xmi:id="_O8ZfwOB1EeWKm7LsGxVCTg" name="All in One" description="" baseDir="${publish}/org.polarsys.kitalpha.pdttooling.packaging/site.p2" destinationFilePath="${publish}/PDTTooling_Tooling_All-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
+    <steps xsi:type="buildfile:ZipStep" xmi:id="_O8ZfwOB1EeWKm7LsGxVCTg" name="All in One" description="" baseDir="${publish}/org.polarsys.kitalpha.pdttooling.packaging/site.p2" destinationFilePath="${publish}/PDTTooling_All-updateSite-${Kitalpha_Version}_${timestamp}-nosrc.zip"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_VjrhEFirEeaYUrj_0kALIg" name="RCPTT Tests" enabled="false">
     <propertyPackages xmi:id="_Y0g_sFirEeaYUrj_0kALIg" name="RCPTT">
@@ -91,13 +91,13 @@
     <steps xsi:type="buildstep:AntStep" xmi:id="_dVOx0VirEeaYUrj_0kALIg" name="execute rcptt" targetName="test" xml="&lt;target name=&quot;test&quot;>&#xD;&#xA;&#x9;&lt;ant antfile=&quot;../../../tests/rcptt.xml&quot;/>&#xD;&#xA;&lt;/target>"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_TG1voOBkEeWKm7LsGxVCTg" name="Clean">
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_HLOSMOBkEeWKm7LsGxVCTg" name="Delete TP">
-      <filePaths>${publish}/TP.zip</filePaths>
-    </steps>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="__cthsGhHEeaCmeLaiYKh-Q" name="Delete Packaging Platform DocGen" resultSteps="_R1bkYOBfEeWKm7LsGxVCTg _FgyWp9_VEeWQk67aMW_B0g _lghCoN_VEeWQk67aMW_B0g _ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g _3cL_AN_KEeWQk67aMW_B0g _s9bVmN_UEeWQk67aMW_B0g _SeSkEOBzEeWKm7LsGxVCTg _pvP-kOByEeWKm7LsGxVCTg _u2V-wOBzEeWKm7LsGxVCTg"/>
-    <steps xsi:type="buildfile:DeleteStep" xmi:id="_DQ4hkOB6EeWKm7LsGxVCTg" name="Delete TP Unzip">
+    <steps xsi:type="buildfile:DeleteStep" xmi:id="_HLOSMOBkEeWKm7LsGxVCTg" name="Delete TP files and folder">
+      <filePaths>${publish}/TP.tar.gz</filePaths>
+      <filePaths>${publish}/TP.tar</filePaths>
+      <filePaths>${publish}/TP.ts</filePaths>
       <dirPaths>${publish}/TP</dirPaths>
     </steps>
+    <steps xsi:type="buildfile:DeleteStep" xmi:id="__cthsGhHEeaCmeLaiYKh-Q" name="Delete Packaging Platform DocGen" resultSteps="_R1bkYOBfEeWKm7LsGxVCTg _FgyWp9_VEeWQk67aMW_B0g _lghCoN_VEeWQk67aMW_B0g _ZMGgIN_UEeWQk67aMW_B0g _eQSLsN_UEeWQk67aMW_B0g _3cL_AN_KEeWQk67aMW_B0g _s9bVmN_UEeWQk67aMW_B0g _SeSkEOBzEeWKm7LsGxVCTg _pvP-kOByEeWKm7LsGxVCTg"/>
   </steps>
   <scms xsi:type="buildscm:GIT" xmi:id="_ukVMgGYcEeaCmeLaiYKh-Q">
     <locations xmi:id="_lV3xgGYfEeaCmeLaiYKh-Q" protocol="https://" url="www.polarsys.org/r/kitalpha/kitalpha-addons" localPath="" password=""/>
