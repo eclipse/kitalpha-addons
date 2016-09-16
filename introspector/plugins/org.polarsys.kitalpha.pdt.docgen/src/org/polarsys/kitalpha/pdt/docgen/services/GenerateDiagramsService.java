@@ -29,6 +29,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.polarsys.kitalpha.doc.gen.business.core.sirius.util.session.DiagramSessionHelper;
 import org.polarsys.kitalpha.doc.gen.business.core.util.MonitorServices;
@@ -39,9 +40,8 @@ import org.polarsys.kitalpha.pdt.docgen.helpers.AIRDHelpers;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.EclipseElement;
 
 /**
- * 
  * @author Xavier DECOOL
- *
+ * @author Boubekeur Zendagui
  */
 public class GenerateDiagramsService {
 
@@ -82,7 +82,14 @@ public class GenerateDiagramsService {
 		
 		Collection<DRepresentation> diagramList = new ArrayList<DRepresentation>();
 		try {
-			diagramList = generateDiagrams(progressMonitor, element);
+			Collection<DRepresentationDescriptor> diagramsDescriptors = 
+					generateDiagrams(progressMonitor, element);
+			for (DRepresentationDescriptor dRepresentationDescriptor : diagramsDescriptors) 
+			{
+				DRepresentation representation = dRepresentationDescriptor.getRepresentation();
+				diagramList.add(representation);
+			}
+//			diagramList = generateDiagrams(progressMonitor, element);
 		} catch (DocGenException e) {
 			// e.printStackTrace();
 			// TODO bug #5982 : popup info for ask user if he really want to exit
@@ -133,11 +140,11 @@ public class GenerateDiagramsService {
 		}
 	}
 
-	private static Collection<DRepresentation> generateDiagrams(
+	private static Collection<DRepresentationDescriptor> generateDiagrams(
 			final IProgressMonitor monitor, final EclipseElement element)
 			throws DocGenException {
 
-		Collection<DRepresentation> allRepresentations = new ArrayList<DRepresentation>();
+		Collection<DRepresentationDescriptor> allRepresentations = new ArrayList<DRepresentationDescriptor>();
 
 		if (null != monitor && progressMonitor != monitor)
 			progressMonitor = monitor;
@@ -190,7 +197,7 @@ public class GenerateDiagramsService {
 				throw new DocGenException("Generation was canceled");
 			}
 			
-			EList<DRepresentation> representations = dView.getOwnedRepresentations();
+			EList<DRepresentationDescriptor> representations = dView.getOwnedRepresentationDescriptors();
 			allRepresentations.addAll(representations);
 		}
 		
