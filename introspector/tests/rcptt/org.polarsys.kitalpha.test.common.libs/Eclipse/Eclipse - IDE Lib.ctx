@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _xOyqAKfiEeW1v5EVWLgPjA
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/3/16 5:42 PM
+Save-Time: 9/23/16 6:06 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -16,6 +16,11 @@ proc "saveAll" {
 	// Check if the save all button is enabled
 	if [get-button "Save All (M1+M2+S)" | get-property enablement -raw | equals true ] {
 		get-button "Save All (M1+M2+S)" | click
+	}
+	-else { // Try save button
+		if [get-button "Save (M1+S)" | get-property enablement -raw | equals true ] {
+			get-button "Save (M1+S)" | click
+		}
 	}
 }
 
