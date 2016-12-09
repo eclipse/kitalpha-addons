@@ -7,22 +7,10 @@ Element-Version: 3.0
 External-Reference: 
 Id: _HpQ5AFjJEeatdodrlkIIMg
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 11/2/16 9:18 AM
+Save-Time: 8/3/16 5:42 PM
 Testcase-Type: ecl
+Verifications: _kJ7noFmOEeaQX85cFsu4pg,_WIIrYFmPEeaQX85cFsu4pg,_mSCuMFmPEeaQX85cFsu4pg
 
-------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
-Content-Type: text/plain
-Entry-Name: .description
-
-Checking th eedition tools.
-
-The folowwing verifications are checked at the end:
-1- FAP_Edition
-2- FAP_Introspection_DiagramElementsVerification
-3- FAP_Introspection_ProjectExplorerVerification
-
-TODO: Activating the verification.
-------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl
 Entry-Name: .content
