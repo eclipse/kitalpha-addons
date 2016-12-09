@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _-ijpIKfBEeWPmoMACNli2g
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/4/16 8:52 AM
+Save-Time: 12/9/16 4:07 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -358,6 +358,28 @@ proc applyDiagramTool [val diagramName] [val toolName]{
 	{
 		log [ concat "Can't applay " $toolName ]
 	}
+}
+
+/* The catch bloc is added to face to a Sirius problem. */					  
+/* some times, the * doesn't disapear from the aird file name even if the session was saved. */
+proc dragAndDrop [ val projectName ] [ val parentFolders ] 
+				 [ val airdName ] [ val targetDiagram "" ]  
+				 [ val modelElementPath -value ""]{
+	try {
+		get-view $ProjectExplorerName | get-tree 
+			| select [concat $projectName "/" $parentFolders "/" $airdName "/" $modelElementPath ] 
+			| get-item [concat $projectName "/" $parentFolders "/" $airdName "/" $modelElementPath ] 
+			| drag-start 1 1
+	} 
+	-catch { 	
+		get-view $ProjectExplorerName | get-tree 
+			| select [concat $projectName "/" $parentFolders "/*" $airdName "/" $modelElementPath ] 
+			| get-item [concat $projectName "/" $parentFolders "/*" $airdName "/" $modelElementPath ] 
+			| drag-start 1 1	
+	}
+	
+	get-editor $targetDiagram | get-diagram -index 1 | get-edit-part -name $targetDiagram | drop 1 1 -detail copy
+	get-view $ProjectExplorerName | get-tree | drag-end -detail copy
 }
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
