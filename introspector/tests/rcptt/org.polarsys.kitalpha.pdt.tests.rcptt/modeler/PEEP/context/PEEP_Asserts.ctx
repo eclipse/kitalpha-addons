@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _PxqvAFShEeamI7Iw-qIwEA
 Runtime-Version: 2.0.2.201511100828
-Save-Time: 7/28/16 2:36 PM
+Save-Time: 12/9/16 6:05 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -14,10 +14,16 @@ Entry-Name: .ecl.context
 
 proc checkDefautlDiagramName {
 	linkwithEditor
-	
-	get-view $ProjectExplorerName | get-tree 
-   		 | get-item "org.polarsys.kitalpha.pdt.example/models/Kitalpha_20160726_141010.aird/Kitalpha_20160726_141010.platform - \\[platform:\\/resource\\/org.polarsys.kitalpha.pdt.example\\/models\\/Kitalpha_20160726_141010.platform\\]/Kitalpha/Running Platform/new Plug-in Extensions and Extension Points" 
-    	 | get-property caption | equals "new Plug-in Extensions and Extension Points" | verify-true
+	try {
+		get-view $ProjectExplorerName | get-tree 
+	   		 | get-item "org.polarsys.kitalpha.pdt.example/models/Kitalpha_20160726_141010.aird/Kitalpha_20160726_141010.platform - \\[platform:\\/resource\\/org.polarsys.kitalpha.pdt.example\\/models\\/Kitalpha_20160726_141010.platform\\]/Kitalpha/Running Platform/new Plug-in Extensions and Extension Points" 
+	    	 | get-property caption | equals "new Plug-in Extensions and Extension Points" | verify-true
+	} -catch {
+		get-view $ProjectExplorerName | get-tree 
+	   		 | get-item "org.polarsys.kitalpha.pdt.example/models/*Kitalpha_20160726_141010.aird/Kitalpha_20160726_141010.platform - \\[platform:\\/resource\\/org.polarsys.kitalpha.pdt.example\\/models\\/Kitalpha_20160726_141010.platform\\]/Kitalpha/Running Platform/new Plug-in Extensions and Extension Points" 
+	    	 | get-property caption | equals "new Plug-in Extensions and Extension Points" | verify-true	
+	}
+
 }
 
 proc checkDiagramElements {
