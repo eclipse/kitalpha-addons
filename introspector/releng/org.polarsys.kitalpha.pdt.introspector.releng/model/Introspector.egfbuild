@@ -11,6 +11,7 @@
     <properties xmi:id="_FZhJoWYfEeaCmeLaiYKh-Q" key="jacoco.url" value="http://search.maven.org/remotecontent?filepath=org/jacoco/jacoco/0.7.1.201405082137/jacoco-0.7.1.201405082137.zip"/>
   </propertyPackages>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_wesOAN7xEeW4stM5O9DEYQ" name="Download TP">
+    <steps xsi:type="buildfile:CreateFolderStep" xmi:id="_ysMrkPLLEeal1deAwPLEYw" name="initialize publish folder" folderPath="${publish}"/>
     <steps xsi:type="buildstep:CleanStep" xmi:id="_y2cIgN7xEeW4stM5O9DEYQ" type="Result"/>
     <steps xsi:type="buildstep:AntStep" xmi:id="_oFYMEGYcEeaCmeLaiYKh-Q" name="download TP" description="" targetName="download_tp" xml="&lt;target name=&quot;download_tp&quot;>&#xD;&#xA;      &lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${TP_URL}&quot;&#xD;&#xA;&#x9;&#x9;dest=&quot;${publish}/TP.tar.gz&quot;/>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;gunzip src=&quot;${publish}/TP.tar.gz&quot;/>&#xD;&#xA;&#x9;&lt;untar src=&quot;${publish}/TP.tar&quot; dest=&quot;${publish}/TP&quot;/>&#xD;&#xA;&lt;/target> "/>
   </steps>
