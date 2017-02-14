@@ -33,6 +33,7 @@
           <methods xmi:id="_RvMuBVwuEeOOMvbkTQBD3w" name="install_buckminster" patternFilePath="templates/pattern._RvMuAFwuEeOOMvbkTQBD3w/method._RvMuBVwuEeOOMvbkTQBD3w.pt"/>
           <methods xmi:id="_RvMuBlwuEeOOMvbkTQBD3w" name="footer" patternFilePath="templates/pattern._RvMuAFwuEeOOMvbkTQBD3w/method._RvMuBlwuEeOOMvbkTQBD3w.pt"/>
           <methods xmi:id="_RvMuB1wuEeOOMvbkTQBD3w" name="egf" patternFilePath="templates/pattern._RvMuAFwuEeOOMvbkTQBD3w/method._RvMuB1wuEeOOMvbkTQBD3w.pt"/>
+          <methods xmi:id="_FZt-kPNkEea1kq5Op5EuVw" name="eclipse_launch" patternFilePath="templates/pattern._RvMuAFwuEeOOMvbkTQBD3w/method._FZt-kPNkEea1kq5Op5EuVw.pt"/>
           <orchestration xmi:type="pattern:SuperCall" xmi:id="_RvMuCFwuEeOOMvbkTQBD3w"/>
         </elements>
         <elements xmi:id="_RvpZ8FwuEeOOMvbkTQBD3w" name="invoke pattern builder" superPattern="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_sTvtQJVuEd-fvPvNnKEvJg"
@@ -63,6 +64,34 @@
           <methods xmi:id="_KOlQpp7nEeOdJIbGqjlGng" name="footer" patternFilePath="templates/pattern._KOlQoJ7nEeOdJIbGqjlGng/method._KOlQpp7nEeOdJIbGqjlGng.pt"/>
           <orchestration xmi:type="pattern:SuperCall" xmi:id="_KOlQp57nEeOdJIbGqjlGng"/>
         </elements>
+        <elements xmi:id="_Cn83APNjEea1kq5Op5EuVw" name="Eclipse.Jdt.Prefs" superPattern="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_8Rg8cabQEd-qVbFBxWG7lA"
+            headerMethod="#_Cn83AvNjEea1kq5Op5EuVw" conditionMethod="#_Cn83BPNjEea1kq5Op5EuVw"
+            initMethod="#_Cn83A_NjEea1kq5Op5EuVw" footerMethod="#_Cn83BvNjEea1kq5Op5EuVw">
+          <nature xmi:type="jetpattern:JetNature" xmi:id="_Cn83AfNjEea1kq5Op5EuVw"
+              name="JET"/>
+          <methods xmi:id="_Cn83AvNjEea1kq5Op5EuVw" name="header" patternFilePath="templates/pattern._Cn83APNjEea1kq5Op5EuVw/method._Cn83AvNjEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_Cn83A_NjEea1kq5Op5EuVw" name="init" patternFilePath="templates/pattern._Cn83APNjEea1kq5Op5EuVw/method._Cn83A_NjEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_Cn83BPNjEea1kq5Op5EuVw" name="preCondition" patternFilePath="templates/pattern._Cn83APNjEea1kq5Op5EuVw/method._Cn83BPNjEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_Cn83BfNjEea1kq5Op5EuVw" name="setFileName" patternFilePath="templates/pattern._Cn83APNjEea1kq5Op5EuVw/method._Cn83BfNjEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_Cn83BvNjEea1kq5Op5EuVw" name="footer" patternFilePath="templates/pattern._Cn83APNjEea1kq5Op5EuVw/method._Cn83BvNjEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_Cn83B_NjEea1kq5Op5EuVw" name="alterFilePath" patternFilePath="templates/pattern._Cn83APNjEea1kq5Op5EuVw/method._Cn83B_NjEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_Cn83CPNjEea1kq5Op5EuVw" name="content" patternFilePath="templates/pattern._Cn83APNjEea1kq5Op5EuVw/method._Cn83CPNjEea1kq5Op5EuVw.pt"/>
+          <orchestration xmi:type="pattern:SuperCall" xmi:id="_Cn83CfNjEea1kq5Op5EuVw"/>
+          <orchestration xmi:type="pattern:MethodCall" xmi:id="_Cn83CvNjEea1kq5Op5EuVw"
+              called="#_Cn83CPNjEea1kq5Op5EuVw"/>
+        </elements>
+        <elements xmi:id="_zFPS4PNpEea1kq5Op5EuVw" name="build.properties_" superPattern="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_IfGS0I6XEd-e7viTqNBNrA"
+            headerMethod="#_zFPS4vNpEea1kq5Op5EuVw" conditionMethod="#_zFPS5PNpEea1kq5Op5EuVw"
+            initMethod="#_zFPS4_NpEea1kq5Op5EuVw" footerMethod="#_zFPS5vNpEea1kq5Op5EuVw">
+          <nature xmi:type="jetpattern:JetNature" xmi:id="_zFPS4fNpEea1kq5Op5EuVw"
+              name="JET"/>
+          <methods xmi:id="_zFPS4vNpEea1kq5Op5EuVw" name="header" patternFilePath="templates/pattern._zFPS4PNpEea1kq5Op5EuVw/method._zFPS4vNpEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_zFPS4_NpEea1kq5Op5EuVw" name="init" patternFilePath="templates/pattern._zFPS4PNpEea1kq5Op5EuVw/method._zFPS4_NpEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_zFPS5PNpEea1kq5Op5EuVw" name="preCondition" patternFilePath="templates/pattern._zFPS4PNpEea1kq5Op5EuVw/method._zFPS5PNpEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_zFPS5fNpEea1kq5Op5EuVw" name="body" patternFilePath="templates/pattern._zFPS4PNpEea1kq5Op5EuVw/method._zFPS5fNpEea1kq5Op5EuVw.pt"/>
+          <methods xmi:id="_zFPS5vNpEea1kq5Op5EuVw" name="footer" patternFilePath="templates/pattern._zFPS4PNpEea1kq5Op5EuVw/method._zFPS5vNpEea1kq5Op5EuVw.pt"/>
+          <orchestration xmi:type="pattern:SuperCall" xmi:id="_zFPS5_NpEea1kq5Op5EuVw"/>
+        </elements>
       </libraries>
     </viewpoints>
   </viewpointContainer>
@@ -91,6 +120,9 @@
                 replacement="#_RvMuAFwuEeOOMvbkTQBD3w"/>
             <substitutions xmi:id="_LyKLAFwyEeO2h8sZowxIMw" replacedElement="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_sTvtQJVuEd-fvPvNnKEvJg"
                 replacement="#_RvpZ8FwuEeOOMvbkTQBD3w"/>
+            <substitutions xmi:id="_zsdSoPNjEea1kq5Op5EuVw" replacement="#_Cn83APNjEea1kq5Op5EuVw"/>
+            <substitutions xmi:id="_9io4IPNkEea1kq5Op5EuVw" replacedElement="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#_IfGS0I6XEd-e7viTqNBNrA"
+                replacement="#_zFPS4PNpEea1kq5Op5EuVw"/>
           </type>
         </invocationContracts>
       </invocationContractContainer>

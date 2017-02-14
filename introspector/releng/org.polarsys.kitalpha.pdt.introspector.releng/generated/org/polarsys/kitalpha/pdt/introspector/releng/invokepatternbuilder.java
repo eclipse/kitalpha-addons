@@ -1,4 +1,4 @@
-//Generated with EGF 1.4.0.v20160519-0641
+//Generated with EGF 1.4.1.v20161010-1704
 package org.polarsys.kitalpha.pdt.introspector.releng;
 
 import org.eclipse.egf.common.helper.*;
