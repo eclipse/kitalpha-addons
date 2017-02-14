@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
 <buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:builddeploy="http://www.eclipse.org/egf/1.0.0/builddeploy" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_3ZkUYG0BEeWZLqZa10vhXw" name="Introspector">
   <propertyPackages xmi:id="_kEdUUGYcEeaCmeLaiYKh-Q" name="Versions">
-    <properties xmi:id="_jRu24GYcEeaCmeLaiYKh-Q" key="buildVersion" value="1.0.0-${timestamp}"/>
+    <properties xmi:id="_jRu24GYcEeaCmeLaiYKh-Q" key="buildVersion" value="1.1.0-${timestamp}"/>
     <properties xmi:id="_jRu24WYcEeaCmeLaiYKh-Q" key="Kitalpha_Version" value="1.1.0"/>
     <properties xmi:id="_jRu25GYcEeaCmeLaiYKh-Q" key="eclipse_version" value="mars"/>
   </propertyPackages>
   <propertyPackages xmi:id="_CzpTkGYfEeaCmeLaiYKh-Q" name="URLs">
-    <properties xmi:id="_jRu252YcEeaCmeLaiYKh-Q" key="TP_URL" value="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/"/>
+    <properties xmi:id="_jRu252YcEeaCmeLaiYKh-Q" key="TP_URL" value="https://hudson.polarsys.org/kitalpha/job/Kitalpha-v1.1.x/269/"/>
     <properties xmi:id="_FZhJoGYfEeaCmeLaiYKh-Q" key="rcptt.url" value="http://download.eclipse.org/rcptt/release/2.0.2/runner/rcptt.runner-2.0.2.zip"/>
     <properties xmi:id="_FZhJoWYfEeaCmeLaiYKh-Q" key="jacoco.url" value="http://search.maven.org/remotecontent?filepath=org/jacoco/jacoco/0.7.1.201405082137/jacoco-0.7.1.201405082137.zip"/>
   </propertyPackages>
