@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius,
  org.polarsys.kitalpha.pdt.metamodel.model,
  org.polarsys.kitalpha.pdt.modeler.utils,
- org.eclipse.sirius.common.acceleo.aql;bundle-version="4.1.0"
+ org.eclipse.sirius.common.acceleo.aql
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.kitalpha.pdt.modeler.services
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

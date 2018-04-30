@@ -1,0 +1,72 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Thales Global Services S.A.S.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *  Thales Global Services S.A.S - initial API and implementation
+ ******************************************************************************/
+ 
+ target "introspector" with source, requirements
+
+include "http://git.polarsys.org/c/kitalpha/kitalpha.git/plain/releng/plugins/org.polarsys.kitalpha.releng.targets/kitalpha.targetplatform?h=v1.2.x"
+
+ location kitalpha-sdk "http://download.polarsys.org/kitalpha/updates/milestone/sdk/1.2.1rc1/" {
+	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.dsl.feature.feature.group lazy
+	org.polarsys.kitalpha.product.feature.feature.group lazy
+	org.polarsys.kitalpha.sdk.feature.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.genchain.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.feature.feature.group lazy
+	org.polarsys.kitalpha.report.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.metadata.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.integration.sirius.feature.feature.group lazy
+	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.integration.emde.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.integration.amalgam.feature.feature.group lazy
+	org.polarsys.kitalpha.cadence.feature.feature.group lazy
+	org.polarsys.kitalpha.transposer.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.explorer.contextual.feature.feature.group lazy
+	org.polarsys.kitalpha.composer.feature.feature.group lazy
+	org.polarsys.kitalpha.accuracy.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.model.attachment.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
+	org.polarsys.kitalpha.doc.gen.business.core.feature.feature.group lazy
+	org.polarsys.kitalpha.patterns.feature.feature.group lazy
+	org.polarsys.kitalpha.doc.feature.feature.group lazy
+	org.polarsys.kitalpha.runtime.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.sdk.feature.feature.group lazy
+	org.polarsys.kitalpha.ad.ta.feature.feature.group lazy
+	org.polarsys.kitalpha.vp.componentsample.example.installer.feature.feature.group lazy
+	org.polarsys.kitalpha.representation.feature.feature.group lazy
+	org.polarsys.kitalpha.doc.gen.business.ecore.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.sdk.feature.feature.group lazy
+	org.polarsys.kitalpha.cadence.examples.feature.feature.group lazy
+	org.polarsys.kitalpha.composer.examples.feature.feature.group lazy
+	org.polarsys.kitalpha.composer.componentsample.installer.feature.feature.group lazy
+	org.polarsys.kitalpha.transposer.examples.feature.feature.group lazy
+	org.polarsys.kitalpha.transposer.componentsample.installer.feature.feature.group lazy
+	org.polarsys.kitalpha.product.feature.source.feature.group lazy
+	org.polarsys.kitalpha.sdk.feature.source.feature.group lazy
+	org.polarsys.kitalpha.ad.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.share.feature.feature.group lazy
+}
+
+/**
+ * Kitalpha core
+ */
+location kitalpha-core "http://download.polarsys.org/kitalpha/updates/milestone/runtimecore/1.2.1rc1/" {
+	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.commands.feature.source.feature.group lazy
+}

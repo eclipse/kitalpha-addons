@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.polarsys.kitalpha.pdt.introspector.feature_1.0.0.qualifier.jar" id="org.polarsys.kitalpha.pdt.introspector.feature" version="1.0.0.qualifier">
+      <category name="org.polarsys.kitalpha.pdt.introspector"/>
+   </feature>
+   <feature url="features/org.polarsys.kitalpha.pdt.introspector.ui.feature_1.0.0.qualifier.jar" id="org.polarsys.kitalpha.pdt.introspector.ui.feature" version="1.0.0.qualifier">
+      <category name="org.polarsys.kitalpha.pdt.introspector"/>
+   </feature>
+   <!-- <feature url="features/org.polarsys.kitalpha.pdt.introspector.feature_1.0.0.qualifier.jar" id="org.polarsys.kitalpha.pdt.introspector.feature.source" version="1.0.0.qualifier">
+      <category name="org.polarsys.kitalpha.pdt.introspector.source"/>
+   </feature>
+   <feature url="features/org.polarsys.kitalpha.pdt.introspector.ui.feature_1.0.0.qualifier.jar" id="org.polarsys.kitalpha.pdt.introspector.ui.feature.source" version="1.0.0.qualifier">
+      <category name="org.polarsys.kitalpha.pdt.introspector.source"/>
+   </feature> -->
+   <category-def name="org.polarsys.kitalpha.pdt.introspector" label="Introspector"/>
+   <!-- <category-def name="org.polarsys.kitalpha.pdt.introspector.source" label="Introspector Sources"/> -->
+</site>
