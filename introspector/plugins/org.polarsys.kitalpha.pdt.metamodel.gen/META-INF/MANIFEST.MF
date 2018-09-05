@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: org.polarsys.kitalpha.pdt.metamodel.gen;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.polarsys.kitalpha.pdt.metamodel.internal.gen.Activator
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.ui,
@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.egf.pattern.ftask;visibility:=reexport,
  org.eclipse.egf.emf.pattern,
  org.eclipse.egf.model.ftask;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.kitalpha.pdt.metamodel.gen.edit.itemprovider.addpropertydescriptor,
  org.polarsys.kitalpha.pdt.metamodel.gen.edit.itemprovider.getimage,

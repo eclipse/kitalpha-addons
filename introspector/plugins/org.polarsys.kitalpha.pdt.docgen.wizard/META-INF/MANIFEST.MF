@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gen Doc HTML wizard
 Bundle-SymbolicName: org.polarsys.kitalpha.pdt.docgen.wizard
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.polarsys.kitalpha.pdt.docgen.internal.wizard.Activator
 Bundle-Vendor: THALESGROUP
 Require-Bundle: org.eclipse.ui,
@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.pde.core,
  org.polarsys.kitalpha.ad.viewpoint.dsl.generation.helper,
  org.eclipse.ui.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.kitalpha.pdt.docgen.internal.wizard;uses:="org.eclipse.ui.plugin,org.osgi.framework",
  org.polarsys.kitalpha.pdt.docgen.wizard.general;uses:="org.eclipse.jface.wizard,org.polarsys.kitalpha.pdt.docgen.wizard.pages,org.eclipse.core.resources",

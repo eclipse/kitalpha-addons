@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Constraints
 Bundle-SymbolicName: org.polarsys.kitalpha.pdt.metamodel.validation;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.polarsys.kitalpha.pdt.metamodel.validation.internal.constraints.Activator
 Bundle-Vendor: THALESGROUP
 Require-Bundle: org.eclipse.ui,
@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.validation.ocl,
  org.polarsys.kitalpha.accuracy,
  org.polarsys.kitalpha.pdt.metamodel.model
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.kitalpha.pdt.metamodel.validation.constraints.contributions,
  org.polarsys.kitalpha.pdt.metamodel.validation.internal.constraints

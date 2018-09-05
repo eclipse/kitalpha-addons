@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
@@ -46,6 +45,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -589,13 +589,10 @@ public class PlatformElementRepresentationCreationOperation extends
 			final DRepresentation representation) {
 		final TransactionalEditingDomain editingDomain = session
 				.getTransactionalEditingDomain();
-		RecordingCommand command = new RecordingCommand(editingDomain) {
-			@Override
-			protected void doExecute() {
-				representation.refresh();
-			}
-		};
-		editingDomain.getCommandStack().execute(command);
+		
+		Command refreshCommand = new RefreshRepresentationsCommand(editingDomain, true, 
+				new NullProgressMonitor(), representation);
+		editingDomain.getCommandStack().execute(refreshCommand);
 	}
 
 	/**

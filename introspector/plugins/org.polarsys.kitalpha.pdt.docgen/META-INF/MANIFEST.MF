@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: org.polarsys.kitalpha.pdt.docgen;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.polarsys.kitalpha.pdt.internal.docgen.Activator
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.core.runtime,
@@ -30,7 +30,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.doc.gen.business.core,
  org.polarsys.kitalpha.doc.gen.business.core.ui,
  org.polarsys.kitalpha.doc.gen.business.ecore
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.kitalpha.pdt.docgen.content,
  org.polarsys.kitalpha.pdt.docgen.exceptions,
