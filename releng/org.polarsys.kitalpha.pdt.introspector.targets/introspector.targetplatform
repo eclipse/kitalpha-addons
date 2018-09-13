@@ -13,7 +13,7 @@
 
 include "http://git.polarsys.org/c/kitalpha/kitalpha.git/plain/releng/plugins/org.polarsys.kitalpha.releng.targets/kitalpha.targetplatform?h=v1.2.x"
 
- location kitalpha-sdk "http://download.polarsys.org/kitalpha/updates/milestone/sdk/1.2.1rc1/" {
+ location kitalpha-sdk "http://download.polarsys.org/kitalpha/updates/release/sdk/1.2.1/" {
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.dsl.feature.feature.group lazy
@@ -66,7 +66,7 @@ include "http://git.polarsys.org/c/kitalpha/kitalpha.git/plain/releng/plugins/or
 /**
  * Kitalpha core
  */
-location kitalpha-core "http://download.polarsys.org/kitalpha/updates/milestone/runtimecore/1.2.1rc1/" {
+location kitalpha-core "http://download.polarsys.org/kitalpha/updates/release/runtimecore/1.2.1/" {
 	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
 	org.polarsys.kitalpha.model.common.commands.feature.source.feature.group lazy
 }

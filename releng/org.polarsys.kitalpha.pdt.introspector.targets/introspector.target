@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="introspector" sequenceNumber="1525263158">
+<target name="introspector" sequenceNumber="1536854822">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
@@ -173,7 +173,7 @@
       <unit id="org.eclipse.sirius.runtime.acceleo.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.runtime.aql.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.runtime.aql.source.feature.group" version="0.0.0"/>
-      <repository id="Sirus" location="http://download.eclipse.org/sirius/updates/stable/5.1.2-S20180420-110312/neon/"/>
+      <repository id="Sirus" location="http://download.eclipse.org/sirius/updates/releases/5.1.2/neon/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.diffmerge.feature.feature.group" version="0.0.0"/>
@@ -202,7 +202,7 @@
       <unit id="org.eclipse.amalgam.explorer.contextual.sirius.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.amalgam.explorer.contextual.core.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.amalgam.explorer.contextual.core.source.feature.group" version="0.0.0"/>
-      <repository id="amalgam" location="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180423/capella/"/>
+      <repository id="amalgam" location="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180528/capella/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.ecoretools.sdk.feature.group" version="0.0.0"/>
@@ -285,12 +285,12 @@
       <unit id="org.polarsys.kitalpha.sdk.feature.source.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.ad.ui.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.model.common.share.feature.feature.group" version="0.0.0"/>
-      <repository id="kitalpha-sdk" location="http://download.polarsys.org/kitalpha/updates/milestone/sdk/1.2.1rc1/"/>
+      <repository id="kitalpha-sdk" location="http://download.polarsys.org/kitalpha/updates/release/sdk/1.2.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.kitalpha.model.common.commands.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.model.common.commands.feature.source.feature.group" version="0.0.0"/>
-      <repository id="kitalpha-core" location="http://download.polarsys.org/kitalpha/updates/milestone/runtimecore/1.2.1rc1/"/>
+      <repository id="kitalpha-core" location="http://download.polarsys.org/kitalpha/updates/release/runtimecore/1.2.1/"/>
     </location>
   </locations>
 </target>
