@@ -56,6 +56,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.refresh.SynchronizeGMFModelCommand;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -556,13 +557,12 @@ public class PlatformElementRepresentationCreationOperation extends
 		final DiagramDescription description = diagram.getDescription();
 
 		/** Handle description NodeMppings **/
-		EList<NodeMapping> nodeMappings = description.getAllNodeMappings();
+		EList<NodeMapping> nodeMappings = ContentHelper.getAllNodeMappings(description, false);
 		if (!nodeMappings.isEmpty())
 			abstractNodeMappings.addAll(nodeMappings);
 
 		/** Handle description ContainerMppings **/
-		EList<ContainerMapping> containerMappings = description
-				.getAllContainerMappings();
+		EList<ContainerMapping> containerMappings = ContentHelper.getAllContainerMappings(description, false);
 		if (!containerMappings.isEmpty())
 			abstractNodeMappings.addAll(containerMappings);
 
