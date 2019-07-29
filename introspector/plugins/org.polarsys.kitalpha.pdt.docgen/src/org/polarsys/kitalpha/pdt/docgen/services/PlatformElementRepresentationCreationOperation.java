@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Thales Global Services S.A.S.
+ * Copyright (c) 2016, 2019 Thales Global Services S.A.S.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -67,6 +68,7 @@ import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
@@ -440,7 +442,9 @@ public class PlatformElementRepresentationCreationOperation extends
 	private void cleanUselessObjects(final Session session,
 			final DDiagram diagram) {
 
-		String representationName = diagram.getName();
+		DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+		DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+		String representationName = (result == null) ? diagram.getUid() : result.getName();
 		List<DEdge> outgoingEdges = new ArrayList<DEdge>();
 		List<DEdge> diagramEdges = new ArrayList<DEdge>();
 		List<DNode> borderedNodes = new ArrayList<DNode>();
@@ -728,7 +732,7 @@ public class PlatformElementRepresentationCreationOperation extends
 	private DRepresentation createRepresentation(final EObject semantic,
 			String representationName, IProgressMonitor monitor) throws DocGenException{
 		if(monitor.isCanceled()){
-			throw new DocGenException("arrete detecté");
+			throw new DocGenException("arrete detectÃ©");
 		}
 
 		// get associate description on my representationName
@@ -787,7 +791,7 @@ public class PlatformElementRepresentationCreationOperation extends
 			IProgressMonitor monitor) throws DocGenException{
 		String name = getLabelFrom(semantic, description);
 		if(monitor.isCanceled()){
-			throw new DocGenException("arrete detecté");
+			throw new DocGenException("arrete detectÃ©");
 		}
 		CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(
 				_currentSession, description, semantic, name, monitor);
@@ -884,8 +888,10 @@ public class PlatformElementRepresentationCreationOperation extends
 
 								// I work with a feature
 								if (currentObject instanceof Feature) {
-									String name = ((DDiagram) dRepresentation)
-											.getName();
+									DDiagram diagram = (DDiagram) dRepresentation;
+									DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+									DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+									String name = (result == null) ? diagram.getUid() : result.getName();
 									String objectName = ((Feature) currentObject)
 											.getId();
 									String diagramName = objectName
@@ -899,8 +905,10 @@ public class PlatformElementRepresentationCreationOperation extends
 
 								// I work with a plugin
 								if (currentObject instanceof Plugin) {
-									String name = ((DDiagram) dRepresentation)
-											.getName();
+									DDiagram diagram = (DDiagram) dRepresentation;
+									DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+									DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+									String name = (result == null) ? diagram.getUid() : result.getName();
 									String objectName = ((Plugin) currentObject)
 											.getId();
 									String diagramName = objectName
@@ -924,8 +932,10 @@ public class PlatformElementRepresentationCreationOperation extends
 
 								// I work with an extension
 								if (currentObject instanceof Extension) {
-									String name = ((DDiagram) dRepresentation)
-											.getName();
+									DDiagram diagram = (DDiagram) dRepresentation;
+									DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+									DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+									String name = (result == null) ? diagram.getUid() : result.getName();
 									String objectName = IntrospectionServices
 											.getLabelForGivenExtension((Extension) currentObject);
 									String diagramName = objectName
@@ -939,8 +949,10 @@ public class PlatformElementRepresentationCreationOperation extends
 
 								// I work with an EP
 								if (currentObject instanceof ExtensionPoint) {
-									String name = ((DDiagram) dRepresentation)
-											.getName();
+									DDiagram diagram = (DDiagram) dRepresentation;
+									DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+									DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+									String name = (result == null) ? diagram.getUid() : result.getName();
 									String objectName = ((ExtensionPoint) currentObject)
 											.getId();
 									String diagramName = objectName

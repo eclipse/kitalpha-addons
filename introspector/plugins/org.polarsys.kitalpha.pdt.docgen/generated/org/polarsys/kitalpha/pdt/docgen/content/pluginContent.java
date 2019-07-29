@@ -1,6 +1,8 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.1.201906060805
 package org.polarsys.kitalpha.pdt.docgen.content;
 
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.polarsys.kitalpha.pdt.docgen.wizard.general.HTMLDocGenContext;
 import java.util.*;
 import org.eclipse.emf.ecore.*;
@@ -38,18 +40,11 @@ public class pluginContent extends org.polarsys.kitalpha.doc.gen.business.core.d
 	protected final String TEXT_5 = NL + "<hr style=\"width:98%; align : center; \" /> " + NL + "</div>" + NL + "" + NL
 			+ "<div style=\"position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;\">" + NL;
 	protected final String TEXT_6 = NL;
-	protected final String TEXT_7 = NL;
-	protected final String TEXT_8 = NL;
-	protected final String TEXT_9 = NL;
-	protected final String TEXT_10 = NL;
-	protected final String TEXT_11 = NL + "<h2>Representations</h2>";
-	protected final String TEXT_12 = NL + NL + "</p>";
-	protected final String TEXT_13 = NL + "\t<p><strong>";
-	protected final String TEXT_14 = "</strong></p>" + NL + "\t";
-	protected final String TEXT_15 = NL + "\t";
-	protected final String TEXT_16 = NL;
-	protected final String TEXT_17 = NL;
-	protected final String TEXT_18 = NL;
+	protected final String TEXT_7 = NL + "<h2>Representations</h2>";
+	protected final String TEXT_8 = NL + NL + "</p>";
+	protected final String TEXT_9 = "</strong></p>" + NL + "\t";
+	protected final String TEXT_10 = NL + "\t";
+	protected final String TEXT_11 = NL;
 
 	public pluginContent() {
 		//Here is the constructor
@@ -85,8 +80,8 @@ public class pluginContent extends org.polarsys.kitalpha.doc.gen.business.core.d
 			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
-		stringBuffer.append(TEXT_17);
-		stringBuffer.append(TEXT_18);
+		stringBuffer.append(TEXT_11);
+		stringBuffer.append(TEXT_11);
 		return stringBuffer.toString();
 	}
 
@@ -183,16 +178,16 @@ public class pluginContent extends org.polarsys.kitalpha.doc.gen.business.core.d
 		String pluginPage = org.polarsys.kitalpha.pdt.docgen.helpers.PluginHelpers.getPluginPage((Plugin) element,
 				projectName, outputFolder, 1);
 
-		stringBuffer.append(TEXT_7);
+		stringBuffer.append(TEXT_6);
 		stringBuffer.append(pluginPage);
-		stringBuffer.append(TEXT_8);
+		stringBuffer.append(TEXT_6);
 
 		if (diagramsInclusion) {
 			diagramList = org.polarsys.kitalpha.pdt.docgen.services.GenerateDiagramsService
 					.generateDiagramsForTheGivenObject((Plugin) element);
 		}
 
-		stringBuffer.append(TEXT_9);
+		stringBuffer.append(TEXT_6);
 
 		List<Extension> extensions = new ArrayList<Extension>();
 		if (((Plugin) element).getExtensions().getExtensions() != null) {
@@ -221,12 +216,12 @@ public class pluginContent extends org.polarsys.kitalpha.doc.gen.business.core.d
 			}
 		}
 
-		stringBuffer.append(TEXT_10);
+		stringBuffer.append(TEXT_6);
 
 		if (diagramList.size() >= 1) {
-			stringBuffer.append(TEXT_11);
+			stringBuffer.append(TEXT_7);
 		}
-		stringBuffer.append(TEXT_12);
+		stringBuffer.append(TEXT_8);
 
 		for (DRepresentation diagram : diagramList) {
 			if ((diagram instanceof DSemanticDiagram)
@@ -234,9 +229,9 @@ public class pluginContent extends org.polarsys.kitalpha.doc.gen.business.core.d
 							|| (((DSemanticDiagram) diagram).getDescription().getName()
 									.equals("Plug-in Extensions and Extension Points")))) {
 				String generatedFolder = fileNameService.getFileName(((DSemanticDiagram) diagram).getTarget());
-				stringBuffer.append(TEXT_13);
+				stringBuffer.append(TEXT_2);
 				stringBuffer.append(((DSemanticDiagram) diagram).getDescription().getName());
-				stringBuffer.append(TEXT_14);
+				stringBuffer.append(TEXT_9);
 				{
 					//<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.core/egf/HTMLDocGenCommon.fcore#LogicalName=org.polarsys.kitalpha.doc.gen.business.core.sirius.DiagramGenerator" args="diagram:diagram, outputFolder:outputFolder, projectName:projectName, generatedFolder:generatedFolder, fileNameService:fileNameService, helper:helper"%>
 
@@ -257,16 +252,20 @@ public class pluginContent extends org.polarsys.kitalpha.doc.gen.business.core.d
 					stringBuffer.setLength(0);
 				}
 
-				stringBuffer.append(TEXT_15);
+				stringBuffer.append(TEXT_10);
 			} else if ((diagram instanceof DSemanticDiagram)
 					&& (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Schema"))) {
-				String diagramKey = ((DSemanticDiagram) diagram).getName();
+				DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+				DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+				String diagramKey = (result == null) ? diagram.getUid() : result.getName();
 				org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.addExtensionDiagrams(diagramKey, diagram);
 			}
 
 			else if ((diagram instanceof DSemanticDiagram)
 					&& (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Point schema"))) {
-				String diagramKey = ((DSemanticDiagram) diagram).getName();
+				DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+				DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+				String diagramKey = (result == null) ? diagram.getUid() : result.getName();
 				org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.addExtensionPointsDiagrams(diagramKey,
 						diagram);
 			}
@@ -278,7 +277,7 @@ public class pluginContent extends org.polarsys.kitalpha.doc.gen.business.core.d
 			AIRDHelpers.INSTANCE.cleanAllMaps();
 		}
 
-		stringBuffer.append(TEXT_16);
+		stringBuffer.append(TEXT_6);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
 		new Node.DataLeaf(ictx.getNode(), getClass(), "content", stringBuffer.toString());
 	}

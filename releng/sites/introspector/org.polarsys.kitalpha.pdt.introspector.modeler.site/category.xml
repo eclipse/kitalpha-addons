@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.polarsys.kitalpha.pdt.modeler.feature_1.0.0.qualifier.jar" id="org.polarsys.kitalpha.pdt.modeler.feature" version="1.0.0.qualifier">
+   <feature id="org.polarsys.kitalpha.pdt.modeler.feature" version="0.0.0">
       <category name="org.polarsys.kitalpha.pdt.introspector.modeler"/>
    </feature>
    <category-def name="org.polarsys.kitalpha.pdt.introspector.modeler" label="Introspector Modeler"/>

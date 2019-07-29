@@ -93,12 +93,16 @@ for (DRepresentation diagram : diagramList){
 	<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.core/egf/HTMLDocGenCommon.fcore#LogicalName=org.polarsys.kitalpha.doc.gen.business.core.sirius.DiagramGenerator" args="diagram:diagram, outputFolder:outputFolder, projectName:projectName, generatedFolder:generatedFolder, fileNameService:fileNameService, helper:helper"%>
 	<%}
 	else if((diagram instanceof DSemanticDiagram) && (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Schema"))){
-		String diagramKey = ((DSemanticDiagram)diagram).getName();
+	    DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+        DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+		String diagramKey = (result == null) ? diagram.getUid() : result.getName();
 		org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.addExtensionDiagrams(diagramKey, diagram);
 	}
 	
 	else if((diagram instanceof DSemanticDiagram) && (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Point schema"))){
-		String diagramKey = ((DSemanticDiagram)diagram).getName();
+	    DRepresentationQuery rep2descQuery = new DRepresentationQuery(diagram);
+        DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+		String diagramKey = (result == null) ? diagram.getUid() : result.getName();
 		org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.addExtensionPointsDiagrams(diagramKey, diagram);
 	}
 }

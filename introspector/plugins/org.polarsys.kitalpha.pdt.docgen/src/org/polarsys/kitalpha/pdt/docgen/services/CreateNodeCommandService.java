@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
@@ -33,6 +34,7 @@ import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.Extension;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.ExtensionPoint;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.Feature;
@@ -131,9 +133,7 @@ public class CreateNodeCommandService extends RecordingCommand {
 			if (preCondition) {
 				createNodeAndItChildrenNodes(_target, nodeMapping, _diagram);
 			}
-		} else
-			System.out.println("can't find a target for : "
-					+ _diagram.getName());
+		} 
 	}
 
 	/**
@@ -151,8 +151,10 @@ public class CreateNodeCommandService extends RecordingCommand {
 	 */
 	private void createNodeAndItChildrenNodes(EObject currentObject,
 			AbstractNodeMapping nodeMapping, DDiagram parent) {
+		DRepresentationQuery rep2descQuery = new DRepresentationQuery(parent);
+		DRepresentationDescriptor result = rep2descQuery.getRepresentationDescriptor();
+		String diagramName = (result == null) ? parent.getUid() : result.getName();
 
-		String diagramName = parent.getName();
 		// create it sub nodes
 		if (currentObject instanceof Plugin) {
 
