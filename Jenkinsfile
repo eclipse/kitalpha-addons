@@ -9,7 +9,7 @@ pipeline {
     stage('Package introspector addon') {
       steps {
       	wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-        	sh 'mvn  -Dmaven.test.failure.ignore=true clean verify  -e -f pom.xml'
+        	sh 'mvn  -Dmaven.test.failure.ignore=true clean verify -P introspector -e -f pom.xml'
         }
       }
     }
