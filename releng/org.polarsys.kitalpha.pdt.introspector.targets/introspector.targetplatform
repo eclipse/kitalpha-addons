@@ -11,22 +11,22 @@
  
  target "introspector" with source, requirements
 
-include "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0RC4/targets/kitalpha.targetplatform"
+include "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.1DEV0/targets/kitalpha.targetplatform"
 
 //kitalpha core
-location kitalpha-runtime "http://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.0RC4/" {
+location kitalpha-runtime "http://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1DEV0/" {
 	org.polarsys.kitalpha.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.runtime.feature.source.feature.group lazy
 }
 
-location kitalpha-runtimeCore "http://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0RC4/" {
+location kitalpha-runtimeCore "http://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.1DEV0/" {
 	org.polarsys.kitalpha.common.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.source.feature.group lazy
 }
 
 
 //kitalpha
-location Kitalpha-SDK "http://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.0RC4/" {
+location Kitalpha-SDK "http://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1DEV0/" {
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.source.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.feature.group lazy
