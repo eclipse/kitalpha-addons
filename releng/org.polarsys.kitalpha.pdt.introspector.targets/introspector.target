@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="introspector" sequenceNumber="1585128230">
+<target name="introspector" sequenceNumber="1591865291">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.m2e.feature.feature.group" version="0.0.0"/>
@@ -69,12 +69,12 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
-      <repository id="GMF-Notation-1.13.0" location="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S202003100829"/>
+      <repository id="GMF-Notation-1.13.0" location="https://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S202003100829"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gmf.runtime.thirdparty.feature.group" version="0.0.0"/>
-      <repository id="GMF-Runtime-1.13.0" location="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202003121028"/>
+      <repository id="GMF-Runtime-1.13.0" location="https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202003121028"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.doc.feature.feature.group" version="0.0.0"/>
@@ -104,7 +104,7 @@
       <unit id="org.eclipse.sirius.samples.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.properties.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.feature.group" version="0.0.0"/>
-      <repository id="sirius" location="https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200320-102312/2019-06/"/>
+      <repository id="sirius" location="https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200602-082939/2019-06/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.doc" version="0.0.0"/>
@@ -168,12 +168,12 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.kitalpha.runtime.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.runtime.feature.source.feature.group" version="0.0.0"/>
-      <repository id="kitalpha-runtime" location="http://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1DEV0/"/>
+      <repository id="kitalpha-runtime" location="http://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1.IT4/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.kitalpha.common.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.common.feature.source.feature.group" version="0.0.0"/>
-      <repository id="kitalpha-runtimeCore" location="http://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.1DEV0/"/>
+      <repository id="kitalpha-runtimeCore" location="http://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.1.IT4/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group" version="0.0.0"/>
@@ -288,7 +288,7 @@
       <unit id="org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.richtext.widget.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group" version="0.0.0"/>
-      <repository id="Kitalpha-SDK" location="http://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1DEV0/"/>
+      <repository id="Kitalpha-SDK" location="http://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1.IT4/"/>
     </location>
   </locations>
 </target>
