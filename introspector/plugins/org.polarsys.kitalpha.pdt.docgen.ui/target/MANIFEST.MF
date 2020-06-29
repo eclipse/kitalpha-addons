@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.polarsys.kitalpha.pdt.docgen.ui;singleton:=tr
+ ue
+Export-Package: org.polarsys.kitalpha.pdt.docgen.ui
+Bundle-Name: %Bundle-Name
+Bundle-Version: 1.1.0.201909231359
+Require-Bundle: org.eclipse.core.runtime,org.polarsys.kitalpha.pdt.doc
+ gen.wizard,org.polarsys.kitalpha.pdt.metamodel.editor
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.polarsys.kitalpha.pdt.docgen.internal.ui.Activat
+ or
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Eclipse-SourceReferences: scm:git:https://git.polarsys.org/c/kitalpha/
+ kitalpha-addons.git/;path="introspector/plugins/org.polarsys.kitalpha
+ .pdt.docgen.ui";commitId=9d8b25783a97f90be2d8590035132d5608e2e097
+Bundle-Vendor: %Bundle-Vendor
+
