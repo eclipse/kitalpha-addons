@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="introspector" sequenceNumber="1593448088">
+<target name="introspector" sequenceNumber="1596553366">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.m2e.feature.feature.group" version="0.0.0"/>
@@ -168,12 +168,12 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.kitalpha.runtime.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.runtime.feature.source.feature.group" version="0.0.0"/>
-      <repository id="kitalpha-runtime" location="http://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.1.IT5-1/"/>
+      <repository id="kitalpha-runtime" location="http://download.eclipse.org/kitalpha/updates/release/runtime/1.4.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.kitalpha.common.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.common.feature.source.feature.group" version="0.0.0"/>
-      <repository id="kitalpha-runtimeCore" location="http://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.1.IT5-1/"/>
+      <repository id="kitalpha-runtimeCore" location="http://download.eclipse.org/kitalpha/updates/release/runtimecore/1.4.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group" version="0.0.0"/>
@@ -288,7 +288,7 @@
       <unit id="org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.richtext.widget.feature.feature.group" version="0.0.0"/>
       <unit id="org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group" version="0.0.0"/>
-      <repository id="Kitalpha-SDK" location="http://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.1.IT5-1/"/>
+      <repository id="Kitalpha-SDK" location="http://download.eclipse.org/kitalpha/updates/release/sdk/1.4.1/"/>
     </location>
   </locations>
 </target>
