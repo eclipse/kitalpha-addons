@@ -23,7 +23,6 @@
 		<tycho-extras-version>1.0.0</tycho-extras-version>
 		<tycho.scmUrl>scm:git:https://github.com/eclipse/kitalpha-addons.git/</tycho.scmUrl>
 		<antrun-version>1.8</antrun-version>
-		<sonar-version>3.0.2</sonar-version>
 		<jacoco-version>0.7.5.201505241946</jacoco-version>
 		
 	    <maven.compiler.target>1.8</maven.compiler.target>
