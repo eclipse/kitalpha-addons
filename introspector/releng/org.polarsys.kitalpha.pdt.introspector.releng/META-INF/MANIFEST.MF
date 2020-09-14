@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Releng2
 Bundle-SymbolicName: org.polarsys.kitalpha.pdt.introspector.releng;singleton:=true
-Bundle-Version: 1.1.1.qualifier
+Bundle-Version: 1.1.2.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.egf.pattern;bundle-version="1.3.0",
  org.eclipse.egf.pattern.ftask;bundle-version="1.3.0",
