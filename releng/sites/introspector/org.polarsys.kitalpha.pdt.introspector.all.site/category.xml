@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="org.polarsys.kitalpha.common.sirius.extension.rotativeimage.feature" version="0.0.0">
-      <category name="org.polarsys.kitalpha.pdt.all"/>
-   </feature>
    <feature id="org.polarsys.kitalpha.pdt.docgen.feature" version="0.0.0">
       <category name="org.polarsys.kitalpha.pdt.all"/>
    </feature>
