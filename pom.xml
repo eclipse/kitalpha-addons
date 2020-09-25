@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -19,12 +19,12 @@
 	<packaging>pom</packaging>
 	
 	<properties>
-		<tycho-version>1.0.0</tycho-version>
-		<tycho-extras-version>1.0.0</tycho-extras-version>
+		<tycho-version>2.0.0</tycho-version>
+		<tycho-extras-version>2.0.0</tycho-extras-version>
 		<tycho.scmUrl>scm:git:https://github.com/eclipse/kitalpha-addons.git/</tycho.scmUrl>
 		<antrun-version>1.8</antrun-version>
 		<sonar-version>3.0.2</sonar-version>
-		<jacoco-version>0.7.5.201505241946</jacoco-version>
+		<jacoco-version>0.8.6</jacoco-version>
 		
 	    <maven.compiler.target>1.8</maven.compiler.target>
 	    <maven.compiler.source>1.8</maven.compiler.source>
@@ -56,8 +56,6 @@
 				<module>releng/org.polarsys.kitalpha.pdt.introspector.targets</module>
 			
 				<!-- Features -->
-				<module>introspector/features/org.polarsys.kitalpha.common.sirius.extension.rotativeimage.feature</module>
-				
 				<module>introspector/features/org.polarsys.kitalpha.pdt.introspector.feature</module>
 				<module>introspector/features/org.polarsys.kitalpha.pdt.introspector.ui.feature</module>
 				
@@ -71,8 +69,6 @@
 				
 				
 				<!-- Plugins -->
-				<module>introspector/plugins/org.polarsys.kitalpha.common.sirius.extension.rotativeimage</module>
-				
 				<module>introspector/plugins/org.polarsys.kitalpha.pdt.introspector.core</module>
 				<module>introspector/plugins/org.polarsys.kitalpha.pdt.introspector.preferences</module>
 				<module>introspector/plugins/org.polarsys.kitalpha.pdt.introspector.ui</module>

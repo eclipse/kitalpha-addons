@@ -11,29 +11,28 @@
  
  target "introspector" with source, requirements
 
-include "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0RC4/targets/kitalpha.targetplatform"
+include "https://raw.githubusercontent.com/eclipse/kitalpha/master/releng/plugins/org.polarsys.kitalpha.releng.targets/kitalpha.targetplatform"
 
 //kitalpha core
-location kitalpha-runtime "http://download.eclipse.org/kitalpha/updates/stable/runtime/1.4.0RC4/" {
+location kitalpha-runtime "https://ci.eclipse.org/kitalpha/job/Kitalpha/view/change-requests/job/PR-67/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository/" {
 	org.polarsys.kitalpha.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.runtime.feature.source.feature.group lazy
 }
 
-location kitalpha-runtimeCore "http://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0RC4/" {
+location kitalpha-runtimeCore "https://ci.eclipse.org/kitalpha/job/Kitalpha/view/change-requests/job/PR-67/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository/" {
 	org.polarsys.kitalpha.common.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.source.feature.group lazy
 }
 
 
 //kitalpha
-location Kitalpha-SDK "http://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.0RC4/" {
+location Kitalpha-SDK "https://ci.eclipse.org/kitalpha/job/Kitalpha/view/change-requests/job/PR-67/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository/" {
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.source.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.source.feature.group lazy
 	org.polarsys.kitalpha.ad.dsl.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.dsl.feature.source.feature.group lazy
-	org.polarsys.kitalpha.product.feature.feature.group lazy
 	org.polarsys.kitalpha.sdk.feature.feature.group lazy
 	org.polarsys.kitalpha.emde.genchain.feature.feature.group lazy
 	org.polarsys.kitalpha.emde.genchain.feature.source.feature.group lazy
@@ -134,7 +133,6 @@ location Kitalpha-SDK "http://download.eclipse.org/kitalpha/updates/stable/sdk/1
 	org.polarsys.kitalpha.transposer.examples.feature.source.feature.group lazy
 	org.polarsys.kitalpha.transposer.componentsample.installer.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.componentsample.installer.feature.source.feature.group lazy
-	org.polarsys.kitalpha.product.feature.source.feature.group lazy
 	org.polarsys.kitalpha.sdk.feature.source.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy //TODO sources
