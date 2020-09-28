@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 Thales Global Services S.A.S.
+ * Copyright (c) 2018, 2020 Thales Global Services S.A.S.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -11,22 +11,21 @@
  
  target "introspector" with source, requirements
 
-include "https://raw.githubusercontent.com/eclipse/kitalpha/master/releng/plugins/org.polarsys.kitalpha.releng.targets/kitalpha.targetplatform"
+include "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/5.0.0-S202011101656/targets/kitalpha.targetplatform"
 
 //kitalpha core
-location kitalpha-runtime "https://ci.eclipse.org/kitalpha/job/Kitalpha/view/change-requests/job/PR-67/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository/" {
+location kitalpha-runtime "http://download.eclipse.org/kitalpha/updates/stable/runtime/5.0.0-S202011101656/" {
 	org.polarsys.kitalpha.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.runtime.feature.source.feature.group lazy
 }
 
-location kitalpha-runtimeCore "https://ci.eclipse.org/kitalpha/job/Kitalpha/view/change-requests/job/PR-67/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository/" {
+location kitalpha-runtimeCore "http://download.eclipse.org/kitalpha/updates/stable/runtimecore/5.0.0-S202011101656/" {
 	org.polarsys.kitalpha.common.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.source.feature.group lazy
 }
 
-
 //kitalpha
-location Kitalpha-SDK "https://ci.eclipse.org/kitalpha/job/Kitalpha/view/change-requests/job/PR-67/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository/" {
+location Kitalpha-SDK "http://download.eclipse.org/kitalpha/updates/stable/sdk/5.0.0-S202011101656/" {
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.source.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.feature.group lazy
