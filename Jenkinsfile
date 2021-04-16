@@ -29,8 +29,10 @@ pipeline {
 				DST_DIR=/home/data/httpd/download.eclipse.org/kitalpha/addons/introspector/nightly/master
 				ssh genie.kitalpha@projects-storage.eclipse.org rm -rf ${DST_DIR}
 				ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${DST_DIR}
-				scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/repository/* genie.kitalpha@projects-storage.eclipse.org:${DST_DIR}/updates
-				scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/PDTTooling_All-dropins-*.zip genie.kitalpha@projects-storage.eclipse.org:${DST_DIR}/dropins
+				ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${DST_DIR}/updates/
+				ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${DST_DIR}/dropins/
+				scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/repository/* genie.kitalpha@projects-storage.eclipse.org:${DST_DIR}/updates/
+				scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/PDTTooling_All-dropins-*.zip genie.kitalpha@projects-storage.eclipse.org:${DST_DIR}/dropins/
 				
 		  
             '''
