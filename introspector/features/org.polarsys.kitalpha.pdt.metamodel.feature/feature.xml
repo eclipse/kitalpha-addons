@@ -3,7 +3,7 @@
       id="org.polarsys.kitalpha.pdt.metamodel.feature"
       label="%featureName"
       version="5.1.0.qualifier"
-      provider-name="%ProviderName">
+      provider-name="%providerName">
 
    <description>
       %description
