@@ -14,8 +14,10 @@ pipeline {
 		stage('Package Introspector Addon') {
 			steps {
 				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-					def jacocoPrepareAgent = "-Djacoco.destFile=$JACOCO_EXEC_FILE_PATH -Djacoco.append=true org.jacoco:jacoco-maven-plugin:$JACOCO_VERSION:prepare-agent"
-					sh 'mvn  -Dmaven.test.failure.ignore=true ${jacocoPrepareAgent} clean verify -P introspector -e -f pom.xml'
+					script {
+						def jacocoPrepareAgent = "-Djacoco.destFile=$JACOCO_EXEC_FILE_PATH -Djacoco.append=true org.jacoco:jacoco-maven-plugin:$JACOCO_VERSION:prepare-agent"
+						sh 'mvn  -Dmaven.test.failure.ignore=true ${jacocoPrepareAgent} clean verify -P introspector -e -f pom.xml'					    
+					}					
 				}
 			}
 		}
