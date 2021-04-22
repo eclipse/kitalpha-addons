@@ -52,8 +52,8 @@ pipeline {
 		stage('Perform Sonar analysis') {
 			environment {
 			    PROJECT_NAME = 'kitalpha-addons'
-	    		SONARCLOUD_TOKEN = credentials('sonar-token-$PROJECT_NAME')
-			    SONAR_PROJECT_KEY = 'eclipse_$PROJECT_NAME'
+	    		SONARCLOUD_TOKEN = credentials('sonar-token-kitalpha-addons')
+			    SONAR_PROJECT_KEY = 'eclipse_kitalpha-addons'
 			}
 			steps {
 				withEnv(['MAVEN_OPTS=-Xmx4g']) {
