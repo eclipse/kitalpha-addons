@@ -14,7 +14,6 @@ package org.polarsys.kitalpha.pdt.docgen.helpers;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 import org.polarsys.kitalpha.doc.gen.business.core.util.LabelProviderHelper;
@@ -38,10 +37,12 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.PluginExtensions;
  */
 public class PluginHelpers {
 
+	private PluginHelpers() {}
+
 	// Fabrique la page destinée au plugins
 	public static String getPluginPage(Plugin plugin, String projectName,
 			String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		// je recupere l'image de mon plugin
 		String imageFileName = LabelProviderHelper.getImageFileName(plugin,
@@ -51,30 +52,30 @@ public class PluginHelpers {
 		String text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers
 				.getLabel(plugin);
 
-		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("<img src=\"../icon/");
-		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
-		buffer.append(" " + text);
-		buffer.append("</h" + indentationIndice + ">");
-		buffer.append(getPluginGeneralInformationTable(plugin, projectName,
+		stringBuilder.append("<h" + indentationIndice + ">");
+		stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+		stringBuilder.append(imageFileName);
+		stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+		stringBuilder.append(" " + text);
+		stringBuilder.append("</h" + indentationIndice + ">");
+		stringBuilder.append(getPluginGeneralInformationTable(plugin, projectName,
 				folderName, indentationIndice + 1));
-		buffer.append(getCapabilitiesContent(plugin, projectName, folderName,
+		stringBuilder.append(getCapabilitiesContent(plugin, projectName, folderName,
 				indentationIndice + 1));
-		buffer.append(getPluginDependenciesContent(plugin, projectName,
+		stringBuilder.append(getPluginDependenciesContent(plugin, projectName,
 				folderName, indentationIndice + 1));
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getPluginGeneralInformationTable(Plugin plugin,
 			String projectName, String folderName, int identationIndice) {
 
 		// je recupère tout ce dont j'ai besoin pour mon tableau
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
-		buffer.append("<h" + identationIndice + ">");
-		buffer.append("General Informations");
-		buffer.append("</h" + identationIndice + ">");
+		stringBuilder.append("<h" + identationIndice + ">");
+		stringBuilder.append("General Informations");
+		stringBuilder.append("</h" + identationIndice + ">");
 
 		// info sur mon plugin
 		String pluginID = plugin.getId();
@@ -90,87 +91,87 @@ public class PluginHelpers {
 		}
 
 		// ensuite je crée mon tableau
-		buffer.append("<table align=\"center\">");
-		buffer.append("<thead>");
+		stringBuilder.append("<table align=\"center\">");
+		stringBuilder.append("<thead>");
 
 		// 1st line : head
-		buffer.append("<tr>");
-		buffer.append("<th> Field </th>");
-		buffer.append("<th> Value </th>");
-		buffer.append("</tr>");
-		buffer.append("</thead>");
-		buffer.append("<tbody>");
+		stringBuilder.append(Constants.TR_OPEN);
+		stringBuilder.append("<th> Field </th>");
+		stringBuilder.append("<th> Value </th>");
+		stringBuilder.append(Constants.TR_CLOSE);
+		stringBuilder.append("</thead>");
+		stringBuilder.append("<tbody>");
 
 		// 2nd line : id
-		buffer.append("<tr>");
-		buffer.append("<td>Identifier</td>");
-		buffer.append("<td>" + pluginID + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append(Constants.TR_OPEN);
+		stringBuilder.append("<td>Identifier</td>");
+		stringBuilder.append(Constants.TD_OPEN + pluginID + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		// 3rd line : version
-		buffer.append("<tr>");
-		buffer.append("<td>Version</td>");
-		buffer.append("<td>" + pluginVersion + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append(Constants.TR_OPEN);
+		stringBuilder.append("<td>Version</td>");
+		stringBuilder.append(Constants.TD_OPEN + pluginVersion + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		if (executionEnvironments != null) {
 			// 4rd line : execution environments
-			buffer.append("<tr>");
-			buffer.append("<td>Execution Environment(s)</td>");
-			buffer.append("<td>");
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append(Constants.TR_OPEN);
+			stringBuilder.append("<td>Execution Environment(s)</td>");
+			stringBuilder.append(Constants.TD_OPEN);
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (ExecutionEnvironment executionEnvironment : executionEnvironments) {
-				buffer.append("<li>");
+				stringBuilder.append(Constants.LI_OPEN);
 				String imageName = LabelProviderHelper.getImageFileName(
 						executionEnvironment, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" " + executionEnvironment.getId());
-				buffer.append("</li>");
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" " + executionEnvironment.getId());
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
-			buffer.append("</td>");
-			buffer.append("</tr>");
+			stringBuilder.append(Constants.UL_CLOSE);
+			stringBuilder.append(Constants.TD_CLOSE);
+			stringBuilder.append(Constants.TR_CLOSE);
 		}
-		buffer.append("</tbody>");
-		buffer.append("</table>");
-		return buffer.toString();
+		stringBuilder.append("</tbody>");
+		stringBuilder.append("</table>");
+		return stringBuilder.toString();
 	}
 
 	// Je crée le contenu de mon onglet capabilities
 
 	private static String getCapabilitiesContent(Plugin plugin,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		if ((plugin.getExportedPackages() != null)
 				|| (plugin.getExtensionPoints() != null)
 				|| (plugin.getExtensions() != null)) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append("Capabilities");
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append("Capabilities");
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		// je recupere tous les menus dont j'ai besoin
 		// les exported packages
-		buffer.append(getExportedPackagesContent(plugin, projectName,
+		stringBuilder.append(getExportedPackagesContent(plugin, projectName,
 				folderName, indentationIndice + 1));
 
 		// les extension points
-		buffer.append(getExtensionPointsContent(plugin, projectName,
+		stringBuilder.append(getExtensionPointsContent(plugin, projectName,
 				folderName, indentationIndice + 1));
 
 		// les extensions
-		buffer.append(getExtensionsContent(plugin, projectName, folderName,
+		stringBuilder.append(getExtensionsContent(plugin, projectName, folderName,
 				indentationIndice + 1));
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	// je recupére les exported packages
 	private static String getExportedPackagesContent(Plugin plugin,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		// je recupère les infos dont j'ai besoin
 
 		// exported packages
@@ -187,39 +188,39 @@ public class PluginHelpers {
 		}
 		if (packagesNumber == 1) {
 			title = "Exported Package ";
-			element = "(" + packagesNumber + " element)";
+			element = "(" + packagesNumber + Constants.ELEMENT;
 		} else if (packagesNumber > 1) {
 			title = "Exported Packages ";
-			element = "(" + packagesNumber + " elements)";
+			element = "(" + packagesNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		if (exportedPackages != null) {
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (ExportedPackage exportedPackage : exportedPackages) {
-				buffer.append("<li>");
+				stringBuilder.append(Constants.LI_OPEN);
 				String imageName = LabelProviderHelper.getImageFileName(
 						exportedPackage, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" " + exportedPackage.getId());
-				buffer.append("</li>");
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" " + exportedPackage.getId());
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getExtensionPointsContent(Plugin plugin,
 			String projectName, String folderName, int indentationIndice) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		PluginExtensionPoints pluginExtensionPoints = plugin
 				.getExtensionPoints();
 		EList<ExtensionPoint> pluginExtensionPointsList = null;
@@ -235,41 +236,41 @@ public class PluginHelpers {
 		}
 		if (extensionPointsNumber == 1) {
 			title = "Extension Point ";
-			element = "(" + extensionPointsNumber + " element)";
+			element = "(" + extensionPointsNumber + Constants.ELEMENT;
 		} else if (extensionPointsNumber > 1) {
 			title = "Extension Points ";
-			element = "(" + extensionPointsNumber + " elements)";
+			element = "(" + extensionPointsNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		if (pluginExtensionPointsList != null) {
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (ExtensionPoint extensionPoint : pluginExtensionPointsList) {
-				buffer.append("<li>");
+				stringBuilder.append(Constants.LI_OPEN);
 				String imageName = LabelProviderHelper.getImageFileName(
 						extensionPoint, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(extensionPoint,
 								LabelProviderHelper.getText(extensionPoint)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getExtensionsContent(Plugin plugin,
 			String projectName, String folderName, int indentationIndice) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		PluginExtensions pluginExtensionsFolder = plugin.getExtensions();
 		EList<Extension> pluginExtensionsList = null;
@@ -286,58 +287,58 @@ public class PluginHelpers {
 		}
 		if (extensionsNumber == 1) {
 			title = "Extension ";
-			element = "(" + extensionsNumber + " element)";
+			element = "(" + extensionsNumber + Constants.ELEMENT;
 		} else if (extensionsNumber > 1) {
 			title = "Extension ";
-			element = "(" + extensionsNumber + " elements)";
+			element = "(" + extensionsNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		if (pluginExtensionsList != null) {
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (Extension extension : pluginExtensionsList) {
-				buffer.append("<li>");
+				stringBuilder.append(Constants.LI_OPEN);
 				String imageName = LabelProviderHelper.getImageFileName(
 						extension, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(extension,
 								LabelProviderHelper.getText(extension)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getPluginDependenciesContent(Plugin plugin,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("Dependencies");
-		buffer.append("</h" + indentationIndice + ">");
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("<h" + indentationIndice + ">");
+		stringBuilder.append("Dependencies");
+		stringBuilder.append("</h" + indentationIndice + ">");
 
 		// creating outgoing
-		buffer.append(getPluginOutgoingDependenciesContent(plugin, projectName,
+		stringBuilder.append(getPluginOutgoingDependenciesContent(plugin, projectName,
 				folderName, indentationIndice + 1));
 		// creating incoming
-		buffer.append(getPluginIncomingDependenciesContent(plugin, projectName,
+		stringBuilder.append(getPluginIncomingDependenciesContent(plugin, projectName,
 				folderName, indentationIndice + 1));
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getPluginOutgoingDependenciesContent(Plugin plugin,
 			String projectName, String folderName, int indentationIndice) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 		PluginDependencies pluginDependenciesFolder = plugin
 				.getPluginDependencies();
 		EList<PluginDependency> pluginDependenciesList = null;
@@ -354,10 +355,10 @@ public class PluginHelpers {
 		}
 		if (outgoinPluginDependenciesNumber == 1) {
 			title = "Outgoing ";
-			element = "(" + outgoinPluginDependenciesNumber + " element)";
+			element = "(" + outgoinPluginDependenciesNumber + Constants.ELEMENT;
 		} else if (outgoinPluginDependenciesNumber > 1) {
 			title = "Outgoing ";
-			element = "(" + outgoinPluginDependenciesNumber + " elements)";
+			element = "(" + outgoinPluginDependenciesNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
@@ -367,22 +368,22 @@ public class PluginHelpers {
 		}
 
 		// Plugin dependencies
-		if (pluginDependenciesList.size() > 0) {
-			buffer.append("<ul style=\"list-style-type:none\">");
+		if (pluginDependenciesList!=null && !pluginDependenciesList.isEmpty()) {
+			buffer.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (PluginDependency pluginDependency : pluginDependenciesList) {
 				Plugin target = pluginDependency.getTarget();
-				buffer.append("<li>");
+				buffer.append(Constants.LI_OPEN);
 				String imageName = LabelProviderHelper.getImageFileName(
 						pluginDependency, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
+				buffer.append(Constants.IMG_SRC_ICON_OPEN);
 				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
+				buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 				buffer.append(" "
 						+ Helpers.getTypeHyperLink(target,
 								LabelProviderHelper.getText(pluginDependency)));
-				buffer.append("</li>");
+				buffer.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			buffer.append(Constants.UL_CLOSE);
 		}
 		return buffer.toString();
 	}
@@ -390,7 +391,7 @@ public class PluginHelpers {
 	private static String getPluginIncomingDependenciesContent(Plugin plugin,
 			String projectName, String folderName, int indentationIndice) {
 		
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		int incomingPluginDependenciesNumber = 0;
 		String title = "";
 		String element = "";
@@ -399,56 +400,50 @@ public class PluginHelpers {
 				plugin.eResource());
 
 		if (crossReferences != null) {
-			for (Setting setting : crossReferences) {
-				EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
-				if(eStructuralFeature.equals(
-						PlatformPackage.eINSTANCE.getPluginDependency_Target())){
-					incomingPluginDependenciesNumber++;
-				}
-			}
+			incomingPluginDependenciesNumber += crossReferences.stream().map(Setting::getEStructuralFeature)
+					.filter(sF -> sF.equals(PlatformPackage.eINSTANCE.getPluginDependency_Target())).count();
 		}
 		if (incomingPluginDependenciesNumber == 1) {
 			title = "Ingoing ";
-			element = "(" + incomingPluginDependenciesNumber + " element)";
+			element = "(" + incomingPluginDependenciesNumber + Constants.ELEMENT;
 		} else if (incomingPluginDependenciesNumber > 1) {
 			title = "Ingoing ";
-			element = "(" + incomingPluginDependenciesNumber + " elements)";
+			element = "(" + incomingPluginDependenciesNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 		// 9rd line : incoming dependencies
 
 		if (crossReferences != null) {
-			buffer.append("<ul style=\"list-style-type:none\">");
-			for (Setting setting : crossReferences) {
-				if (setting.getEStructuralFeature().equals(
-						PlatformPackage.eINSTANCE.getPluginDependency_Target())) {
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
+			crossReferences.stream()
+				.filter(setting -> setting.getEStructuralFeature().equals(PlatformPackage.eINSTANCE.getPluginDependency_Target()))
+				.forEach(setting -> {
 					PluginDependency dependency = (PluginDependency) setting
 							.getEObject();
 					Plugin dependant = (Plugin) (dependency.eContainer()
 							.eContainer());
 					if (dependant != null) {
-						buffer.append("<li>");
+						stringBuilder.append(Constants.LI_OPEN);
 						String imageName = LabelProviderHelper
 								.getImageFileName(dependant, projectName,
 										folderName);
-						buffer.append("<img src=\"../icon/");
-						buffer.append(imageName);
-						buffer.append("\" alt=\"\"/>");
-						buffer.append(" "
+						stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+						stringBuilder.append(imageName);
+						stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+						stringBuilder.append(" "
 								+ Helpers.getTypeHyperLink(dependant,
 										LabelProviderHelper.getText(dependant)));
-						buffer.append("</li>");
-
+						stringBuilder.append(Constants.LI_CLOSE);
+	
 					}
-				}
-			}
-			buffer.append("</ul>");
+				});
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 }

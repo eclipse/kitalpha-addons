@@ -32,25 +32,25 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.SchemaElementReference
  *
  */
 public class ExtensionPointsHelpers {
+	
+	private ExtensionPointsHelpers() {}
 
-	public static HashMap<String, String> extensionPointsPages = new HashMap<String, String>();
-	public static HashMap<String, DRepresentation> extensionPointsDiagrams = new HashMap<String, DRepresentation>();
+	protected static final HashMap<String, String> extensionPointsPages = new HashMap<>();
+	protected static final HashMap<String, DRepresentation> extensionPointsDiagrams = new HashMap<>();
 	
 	/**
 	 * Add an extension point's page 
 	 **/
 
 	public static void addExtensionPointPage(String key, String currentExtensionPage) {
-		if (!extensionPointsPages.containsKey(key))
-			extensionPointsPages.put(key, currentExtensionPage);
+		extensionPointsPages.computeIfAbsent(key, k -> currentExtensionPage);
 	}
 	
 	/**
 	 * Add an extension point's diagram 
 	 **/
 	public static void addExtensionPointsDiagrams(String key, DRepresentation currentExtensionDiagram){
-		if(!extensionPointsDiagrams.containsKey(key))
-			extensionPointsDiagrams.put(key, currentExtensionDiagram);
+		extensionPointsDiagrams.computeIfAbsent(key, k -> currentExtensionDiagram);
 	}
 	
 	
@@ -59,7 +59,7 @@ public class ExtensionPointsHelpers {
 	 **/
 	public static String getExtensionPointsPage(ExtensionPoint extensionPoint,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 
 		String text = "";
 		EObject pluginFolder = extensionPoint.eContainer();
@@ -86,28 +86,42 @@ public class ExtensionPointsHelpers {
 							LabelProviderHelper.getText(attachedPlugin));
 
 		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("<img src=\"../icon/");
+		buffer.append(Constants.IMG_SRC_ICON_OPEN);
 		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
+		buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 		buffer.append(" " + text);
 		buffer.append("</h" + indentationIndice + ">");
 		buffer.append(getSchemaElementsContent(extensionPoint, projectName,
 				folderName, (indentationIndice + 1)));
 		for (SchemaElement schemaElement : schemaElements) {
 			// Je crée mes tableaux pour chaque Schema elements
-			buffer.append(getSchemaElementTable(extensionPoint, schemaElement,
-					projectName, folderName, indentationIndice + 1));
+			buffer.append(getSchemaElementTable(schemaElement, projectName, folderName, indentationIndice + 1));
 		}
 		return buffer.toString();
+	}
+	
+	/**
+	 * Get an extension point's diagram 
+	 * @return 
+	 **/
+	public static DRepresentation getExtensionPointsDiagram(String key){
+		return extensionPointsDiagrams.get(key);
+	}
+	
+	/**
+	 * Get an extension point's page 
+	 * @return 
+	 **/
+	public static String getExtensionPointsPage(String key) {
+		return extensionPointsPages.get(key);
 	}
 
 	/**
 	 * Return a schema element table
 	 * **/
-	private static String getSchemaElementTable(ExtensionPoint extensionPoint,
-			SchemaElement schemaElement, String projectName, String folderName,
+	private static String getSchemaElementTable(SchemaElement schemaElement, String projectName, String folderName,
 			int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 
 		String imageFileName = LabelProviderHelper.getImageFileName(
 				schemaElement, projectName, folderName);
@@ -133,9 +147,9 @@ public class ExtensionPointsHelpers {
 		}
 
 		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("<img src=\"../icon/");
+		buffer.append(Constants.IMG_SRC_ICON_OPEN);
 		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
+		buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 		buffer.append(" " + text);
 		buffer.append("</h" + indentationIndice + ">");
 		
@@ -156,67 +170,65 @@ public class ExtensionPointsHelpers {
 
 		// 1st column : identification
 		buffer.append("<td>");
-		buffer.append("<img src=\"../icon/");
+		buffer.append(Constants.IMG_SRC_ICON_OPEN);
 		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
+		buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 		buffer.append(" " + text);
-		buffer.append("</td>");
+		buffer.append(Constants.TD_CLOSE);
 
 		// 2nd column : complex compositor
 		if (complexCompositor != null) {
 			buffer.append("<td>");
-			buffer.append("<ul style=\"list-style-type:none\">");
+			buffer.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			buffer.append("<li>");
 			String complexCompositorImage = LabelProviderHelper
 					.getImageFileName(complexCompositor, projectName,
 							folderName);
-			buffer.append("<img src=\"../icon/");
+			buffer.append(Constants.IMG_SRC_ICON_OPEN);
 			buffer.append(complexCompositorImage);
-			buffer.append("\" alt=\"\"/>");
+			buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 			String complex = getTextOfComplexCompositor(complexCompositor);
 			buffer.append(" " + complex);
 			referencedSchemaElements = complexCompositor.getElementReferences();
-			complexCompositor = null;
-			buffer.append("</li>");
+			buffer.append(Constants.LI_CLOSE);
 		}
 
 		// list of referenced schema element
-		buffer.append("<ul style=\"list-style-type:none\">");
+		buffer.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 		if (referencedSchemaElements != null) {
 			for (SchemaElementReference referencedSchemaElement : referencedSchemaElements) {
 				buffer.append("<li>");
 				String imageName2 = LabelProviderHelper.getImageFileName(
 						referencedSchemaElement, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
+				buffer.append(Constants.IMG_SRC_ICON_OPEN);
 				buffer.append(imageName2);
-				buffer.append("\" alt=\"\"/>");
+				buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 				buffer.append(" "
 						+ LabelProviderHelper.getText(referencedSchemaElement));
 			}
-			referencedSchemaElements = null;
 
 		}
-		buffer.append("</li>");
+		buffer.append(Constants.LI_CLOSE);
 		buffer.append("</ul>");
-		buffer.append("</td>");
+		buffer.append(Constants.TD_CLOSE);
 
 		// 3rd column : attributes
 		if (attributes != null) {
 			buffer.append("<td>");
-			buffer.append("<ul style=\"list-style-type:none\">");
+			buffer.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (ConfigurationElementAttribute configurationElementAttribute : attributes) {
 				buffer.append("<li>");
 				String attributeImage = LabelProviderHelper.getImageFileName(
 						configurationElementAttribute, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
+				buffer.append(Constants.IMG_SRC_ICON_OPEN);
 				buffer.append(attributeImage);
-				buffer.append("\" alt=\"\"/>");
+				buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 				buffer.append(" "
 						+ LabelProviderHelper
 								.getText(configurationElementAttribute));
-				buffer.append("</li>");
+				buffer.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</td>");
+			buffer.append(Constants.TD_CLOSE);
 			buffer.append("</tbody>");
 			buffer.append("</table>");
 		}
@@ -229,7 +241,7 @@ public class ExtensionPointsHelpers {
 	private static String getSchemaElementsContent(
 			ExtensionPoint extensionPoint, String projectName,
 			String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 		EList<SchemaElement> schemaElements = null;
 		if (extensionPoint.getSchemaElements() != null)
 			schemaElements = extensionPoint.getSchemaElements();
@@ -257,17 +269,17 @@ public class ExtensionPointsHelpers {
 
 		// schema elements
 		if (schemaElementsNumber > 0) {
-			buffer.append("<ul style=\"list-style-type:none\">");
+			buffer.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (SchemaElement schemaElement : schemaElements) {
 				buffer.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						schemaElement, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
+				buffer.append(Constants.IMG_SRC_ICON_OPEN);
 				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
+				buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 				buffer.append(" "
 						+ Helpers.getLabel(schemaElement));
-				buffer.append("</li>");
+				buffer.append(Constants.LI_CLOSE);
 			}
 			buffer.append("</ul>");
 		}

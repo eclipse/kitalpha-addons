@@ -30,6 +30,8 @@ import org.polarsys.kitalpha.pdt.modeler.utils.services.IntrospectionServices;
  */
 public class Helpers {
 	
+	private Helpers() {}
+	
 	private static boolean diagramsInclusion;
 	
 	public static boolean diagramsInclusionIsChecked(){
@@ -63,7 +65,7 @@ public class Helpers {
 	}
 
 	public static String getTypeHyperLink(EclipseElement element, String content) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		String modelName = "";
 		ObjectHelpers oh = new ObjectHelpers();
 		if (element != null) {
@@ -73,9 +75,9 @@ public class Helpers {
 					modelName = LabelProviderHelper.getText(root);
 				}
 			}
-			buffer.append("<a href=\"");
-			if (modelName != "") {
-				buffer.append("../" + modelName + "/");
+			stringBuilder.append("<a href=\"");
+			if (!modelName.equals("")) {
+				stringBuilder.append("../" + modelName + "/");
 			}
 			Pattern p = Pattern.compile("\\(.+?\\)");
 			String text = oh.getFileName(element);
@@ -85,18 +87,18 @@ public class Helpers {
 				String substring = group.substring(1, group.length()-1);
 				String replace = text.replace("(no_name)", substring);
 				text = replace;
-				buffer.append(text);
+				stringBuilder.append(text);
 			} else
-				buffer.append(oh.getFileName(element));
+				stringBuilder.append(oh.getFileName(element));
 
-			buffer.append(".html\">");
+			stringBuilder.append(".html\">");
 			if (content != null)
-				buffer.append(content);
+				stringBuilder.append(content);
 			else
-				buffer.append(LabelProviderHelper.getText(element));
-			buffer.append("</a>");
+				stringBuilder.append(LabelProviderHelper.getText(element));
+			stringBuilder.append("</a>");
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 }

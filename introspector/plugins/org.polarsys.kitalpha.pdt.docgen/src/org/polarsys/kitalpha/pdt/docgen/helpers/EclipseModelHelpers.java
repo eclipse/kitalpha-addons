@@ -22,11 +22,14 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.Repository;
  *
  */
 public class EclipseModelHelpers {
+	
+	private EclipseModelHelpers() {}
+	
 	public static String getEclipseModelName(EclipseModel currentModel){
 		return currentModel.getName();
 	}
 	
-	public static int getReferencedEclipseModelsCount(EclipseModel currentModel){
+	public static int getReferencedEclipseModelsCount(){
 		
 		//TODO retourner le nombre de model lié au model courant pour créer autant d'index helper 
 		// int count = 0;
@@ -39,7 +42,7 @@ public class EclipseModelHelpers {
 	public static String getEclipseModelPage(EclipseModel currentModel,
 			String projectName, String folderName, int indentationIndice) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		// get package's icon
 		String imageFileName = LabelProviderHelper.getImageFileName(
@@ -48,23 +51,23 @@ public class EclipseModelHelpers {
 		String text = Helpers.getLabel(currentModel);
 
 		// starting page's creation
-		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("<img src=\"../icon/");
-		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
-		buffer.append(" " + text);
-		buffer.append("</h" + indentationIndice + ">");
+		stringBuilder.append("<h" + indentationIndice + ">");
+		stringBuilder.append("<img src=\"../icon/");
+		stringBuilder.append(imageFileName);
+		stringBuilder.append("\" alt=\"\"/>");
+		stringBuilder.append(" " + text);
+		stringBuilder.append("</h" + indentationIndice + ">");
 
-		buffer.append(getEclipseModelContents(currentModel, projectName,
+		stringBuilder.append(getEclipseModelContents(currentModel, projectName,
 				folderName, (indentationIndice + 1)));
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getEclipseModelContents(EclipseModel currentModel,
 			String projectName, String folderName, int indentationIndice) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		EList<Repository> repositories = null;
 
 		if (currentModel.getRepositories() != null) {
@@ -72,19 +75,17 @@ public class EclipseModelHelpers {
 		}
 
 		if (repositories != null) {
-			buffer.append(getContainedRepositoriesContent(currentModel,
-					projectName, folderName, (indentationIndice + 1),
-					repositories));
+			stringBuilder.append(
+					getContainedRepositoriesContent(projectName, folderName, (indentationIndice + 1), repositories));
 		}
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
-	private static String getContainedRepositoriesContent(
-			EclipseModel currentModel, String projectName, String folderName,
+	private static String getContainedRepositoriesContent(String projectName, String folderName,
 			int indentationIndice, EList<Repository> repositories) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		int repoNumber = 0;
 
 		String title = "";
@@ -102,29 +103,29 @@ public class EclipseModelHelpers {
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		// now i creat sub-packages' list
 		if (repoNumber > 0) {
-			buffer.append("<ul style=\"list-style-type:disc\">");
+			stringBuilder.append("<ul style=\"list-style-type:disc\">");
 			for (Repository repository : repositories) {
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						repository, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append("<img src=\"../icon/");
+				stringBuilder.append(imageName);
+				stringBuilder.append("\" alt=\"\"/>");
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(repository,
 								LabelProviderHelper.getText(repository)));
-				buffer.append("</li>");
+				stringBuilder.append("</li>");
 			}
-			buffer.append("</ul>");
+			stringBuilder.append("</ul>");
 		}
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 }

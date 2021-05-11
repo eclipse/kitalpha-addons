@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.2.202001031546
 package org.polarsys.kitalpha.pdt.docgen.content;
 
 import org.polarsys.kitalpha.pdt.docgen.wizard.general.HTMLDocGenContext;
@@ -39,18 +39,11 @@ public class extensionPointsContent extends org.polarsys.kitalpha.doc.gen.busine
 	protected final String TEXT_7 = "</h1>" + NL + "<hr style=\"width:98%; align : center; \" /> " + NL + "</div>" + NL
 			+ "" + NL + "<div style=\"position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;\">" + NL;
 	protected final String TEXT_8 = NL;
-	protected final String TEXT_9 = NL;
-	protected final String TEXT_10 = NL + NL;
-	protected final String TEXT_11 = NL;
-	protected final String TEXT_12 = NL + "<h2>Representation</h2>";
-	protected final String TEXT_13 = NL + NL + "</p>";
-	protected final String TEXT_14 = NL + "<p><strong>";
-	protected final String TEXT_15 = "</strong></p>";
-	protected final String TEXT_16 = NL;
-	protected final String TEXT_17 = NL;
-	protected final String TEXT_18 = NL;
-	protected final String TEXT_19 = NL;
-	protected final String TEXT_20 = NL;
+	protected final String TEXT_9 = NL + NL;
+	protected final String TEXT_10 = NL + "<h2>Representation</h2>";
+	protected final String TEXT_11 = NL + NL + "</p>";
+	protected final String TEXT_12 = NL + "<p><strong>";
+	protected final String TEXT_13 = "</strong></p>";
 
 	public extensionPointsContent() {
 		//Here is the constructor
@@ -86,8 +79,8 @@ public class extensionPointsContent extends org.polarsys.kitalpha.doc.gen.busine
 			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
-		stringBuffer.append(TEXT_19);
-		stringBuffer.append(TEXT_20);
+		stringBuffer.append(TEXT_8);
+		stringBuffer.append(TEXT_8);
 		return stringBuffer.toString();
 	}
 
@@ -199,31 +192,31 @@ public class extensionPointsContent extends org.polarsys.kitalpha.doc.gen.busine
 		}
 
 		String pageKey = extensionPointID;
-		String extensionPointPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.extensionPointsPages
-				.get(pageKey);
+		String extensionPointPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers
+				.getExtensionPointsPage(pageKey);
 
 		stringBuffer.append(TEXT_8);
-		stringBuffer.append(TEXT_9);
+		stringBuffer.append(TEXT_8);
 		stringBuffer.append(extensionPointPage);
-		stringBuffer.append(TEXT_10);
+		stringBuffer.append(TEXT_9);
 
 		String extensionPointKey = extensionPointID + " Extension Point schema";
-		DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.extensionPointsDiagrams
-				.get(extensionPointKey);
-		stringBuffer.append(TEXT_11);
+		DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers
+				.getExtensionPointsDiagram(extensionPointKey);
+		stringBuffer.append(TEXT_8);
 
 		if (diagram != null) {
-			stringBuffer.append(TEXT_12);
+			stringBuffer.append(TEXT_10);
 		}
-		stringBuffer.append(TEXT_13);
+		stringBuffer.append(TEXT_11);
 
 		if ((diagram instanceof DSemanticDiagram)
 				&& (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Point schema"))) {
 			String generatedFolder = fileNameService.getFileName(((DSemanticDiagram) diagram).getTarget());
-			stringBuffer.append(TEXT_14);
+			stringBuffer.append(TEXT_12);
 			stringBuffer.append(((DSemanticDiagram) diagram).getDescription().getName());
-			stringBuffer.append(TEXT_15);
-			stringBuffer.append(TEXT_16);
+			stringBuffer.append(TEXT_13);
+			stringBuffer.append(TEXT_8);
 			{
 				//<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.core/egf/HTMLDocGenCommon.fcore#LogicalName=org.polarsys.kitalpha.doc.gen.business.core.sirius.DiagramGenerator" args="diagram:diagram, outputFolder:outputFolder, projectName:projectName, generatedFolder:generatedFolder, fileNameService:fileNameService, helper:helper"%>
 
@@ -246,7 +239,7 @@ public class extensionPointsContent extends org.polarsys.kitalpha.doc.gen.busine
 
 		}
 
-		stringBuffer.append(TEXT_17);
+		stringBuffer.append(TEXT_8);
 
 		if (diagramsInclusion) {
 			if (lastExtensionPoint == (ExtensionPoint) element) {
@@ -257,7 +250,7 @@ public class extensionPointsContent extends org.polarsys.kitalpha.doc.gen.busine
 			}
 		}
 
-		stringBuffer.append(TEXT_18);
+		stringBuffer.append(TEXT_8);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
 		new Node.DataLeaf(ictx.getNode(), getClass(), "content", stringBuffer.toString());
 	}

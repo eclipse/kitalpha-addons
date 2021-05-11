@@ -30,9 +30,11 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.Plugin;
  */
 public class FeatureHelpers {
 
+	private FeatureHelpers() {}
+	
 	public static String getFeaturePage(Feature feature, String projectName,
 			String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		String imageFileName = LabelProviderHelper.getImageFileName(feature,
 				projectName, folderName);
@@ -41,29 +43,27 @@ public class FeatureHelpers {
 		String text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers
 				.getLabel(feature);
 
-		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("<img src=\"../icon/");
-		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
-		buffer.append(" " + text);
-		buffer.append("</h" + indentationIndice + ">");
+		stringBuilder.append("<h" + indentationIndice + ">");
+		stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+		stringBuilder.append(imageFileName);
+		stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+		stringBuilder.append(" " + text);
+		stringBuilder.append("</h" + indentationIndice + ">");
 
-		buffer.append(getFeatureIdAndMetadataTable(feature, projectName,
+		stringBuilder.append(getFeatureIdAndMetadataTable(feature, indentationIndice + 1));
+
+		stringBuilder.append(getFeatureDetailsContent(feature, projectName,
 				folderName, indentationIndice + 1));
 
-		buffer.append(getFeatureDetailsContent(feature, projectName,
-				folderName, indentationIndice + 1));
-
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
-	private static String getFeatureIdAndMetadataTable(Feature feature,
-			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+	private static String getFeatureIdAndMetadataTable(Feature feature, int indentationIndice) {
+		StringBuilder stringBuilder = new StringBuilder();
 
-		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("Identification & Metadata");
-		buffer.append("</h" + indentationIndice + ">");
+		stringBuilder.append("<h" + indentationIndice + ">");
+		stringBuilder.append("Identification & Metadata");
+		stringBuilder.append("</h" + indentationIndice + ">");
 
 		// Feature's information
 		String featureID = feature.getId();
@@ -75,119 +75,119 @@ public class FeatureHelpers {
 		String sitesToVisit = feature.getSitesToVisit();
 
 		// Then i create my table
-		buffer.append("<table align=\"center\">");
-		buffer.append("<thead>");
+		stringBuilder.append("<table align=\"center\">");
+		stringBuilder.append("<thead>");
 
 		// 1st line : head
-		buffer.append("<tr>");
-		buffer.append("<th> Field </th>");
-		buffer.append("<th> Value </th>");
-		buffer.append("</tr>");
-		buffer.append("</thead>");
-		buffer.append("<tbody>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<th> Field </th>");
+		stringBuilder.append("<th> Value </th>");
+		stringBuilder.append(Constants.TR_CLOSE);
+		stringBuilder.append("</thead>");
+		stringBuilder.append("<tbody>");
 
 		// 2nd line : id
-		buffer.append("<tr>");
-		buffer.append("<td>Identifier</td>");
-		buffer.append("<td>" + featureID + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<td>Identifier</td>");
+		stringBuilder.append("<td>" + featureID + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		// 3rd line : version
-		buffer.append("<tr>");
-		buffer.append("<td>Version</td>");
-		buffer.append("<td>" + featureVersion + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<td>Version</td>");
+		stringBuilder.append("<td>" + featureVersion + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		// 4rd line : Description
-		buffer.append("<tr>");
-		buffer.append("<td>Description</td>");
-		buffer.append("<td>" + featureDescription + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<td>Description</td>");
+		stringBuilder.append("<td>" + featureDescription + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		// 5rd line : Provider
-		buffer.append("<tr>");
-		buffer.append("<td>Provider</td>");
-		buffer.append("<td>" + featureProvider + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<td>Provider</td>");
+		stringBuilder.append("<td>" + featureProvider + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		// 6rd line : Copyright notice
-		buffer.append("<tr>");
-		buffer.append("<td>Copyright Notice</td>");
-		buffer.append("<td>" + featureCopyright + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<td>Copyright Notice</td>");
+		stringBuilder.append("<td>" + featureCopyright + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		// 7rd line : licence agreement
-		buffer.append("<tr>");
-		buffer.append("<td>License Agreement</td>");
-		buffer.append("<td>" + licenseAgreement + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<td>License Agreement</td>");
+		stringBuilder.append("<td>" + licenseAgreement + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
 		// 8rd line : sites to visit
-		buffer.append("<tr>");
-		buffer.append("<td>Sites to visit</td>");
-		buffer.append("<td>" + sitesToVisit + "</td>");
-		buffer.append("</tr>");
+		stringBuilder.append("<tr>");
+		stringBuilder.append("<td>Sites to visit</td>");
+		stringBuilder.append("<td>" + sitesToVisit + Constants.TD_CLOSE);
+		stringBuilder.append(Constants.TR_CLOSE);
 
-		buffer.append("</tbody>");
-		buffer.append("</table>");
-		return buffer.toString();
+		stringBuilder.append("</tbody>");
+		stringBuilder.append("</table>");
+		return stringBuilder.toString();
 	}
 
 	private static String getFeatureDetailsContent(Feature feature,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		if ((feature.getFeatureDependencies() != null)
 				|| (feature.getPluginDependencies() != null)
 				|| (feature.getFeatureInclusions() != null)
 				|| (feature.getIncludedPlugins() != null)) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append("Details");
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append("Details");
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		// Sub menu for dependencies
 		if ((feature.getFeatureDependencies() != null)
 				|| (feature.getPluginDependencies() != null)) {
-			buffer.append("<h" + (indentationIndice + 1) + ">");
-			buffer.append("Dependencies");
-			buffer.append("</h" + (indentationIndice + 1) + ">");
+			stringBuilder.append("<h" + (indentationIndice + 1) + ">");
+			stringBuilder.append("Dependencies");
+			stringBuilder.append("</h" + (indentationIndice + 1) + ">");
 		}
 
 		// feature dependencies
 		if (feature.getFeatureDependencies() != null)
-			buffer.append(getFeatureDependenciesContent(feature, projectName,
+			stringBuilder.append(getFeatureDependenciesContent(feature, projectName,
 					folderName, indentationIndice + 2));
 
 		// plugin dependencies
 		if (feature.getPluginDependencies() != null)
-			buffer.append(getFeaturePluginDependenciesContent(feature,
+			stringBuilder.append(getFeaturePluginDependenciesContent(feature,
 					projectName, folderName, indentationIndice + 2));
 
 		// Sub-menu for inclusions
 		if ((feature.getFeatureInclusions() != null)
 				|| (feature.getIncludedPlugins() != null)) {
-			buffer.append("<h" + (indentationIndice + 1) + ">");
-			buffer.append("Inclusions");
-			buffer.append("</h" + (indentationIndice + 1) + ">");
+			stringBuilder.append("<h" + (indentationIndice + 1) + ">");
+			stringBuilder.append("Inclusions");
+			stringBuilder.append("</h" + (indentationIndice + 1) + ">");
 		}
 
 		// Included features
 		if (feature.getFeatureInclusions() != null)
-			buffer.append(getIncludedFeaturesContent(feature, projectName,
+			stringBuilder.append(getIncludedFeaturesContent(feature, projectName,
 					folderName, indentationIndice + 2));
 
 		// Included plugins
 		if (feature.getIncludedPlugins() != null)
-			buffer.append(getIncludedPluginsContent(feature, projectName,
+			stringBuilder.append(getIncludedPluginsContent(feature, projectName,
 					folderName, indentationIndice + 2));
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getIncludedPluginsContent(Feature feature,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		int includedPluginsNumber = 0;
 		String title = "";
 		String element = "";
@@ -203,43 +203,43 @@ public class FeatureHelpers {
 
 		if (includedPluginsNumber == 1) {
 			title = "Included Plugin ";
-			element = "(" + includedPluginsNumber + " element)";
+			element = "(" + includedPluginsNumber + Constants.ELEMENT;
 		} else if (includedPluginsNumber > 1) {
 			title = "Included Plugins ";
-			element = "(" + includedPluginsNumber + " elements)";
+			element = "(" + includedPluginsNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		// Then i create my list
-		if (includedPlugins.size() > 0) {
+		if (includedPlugins != null && !includedPlugins.isEmpty()) {
 			// included plugins
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (Plugin includedPlugin : includedPlugins) {
 				Plugin target = includedPlugin;
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						includedPlugin, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(target,
 								LabelProviderHelper.getText(includedPlugin)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static Object getIncludedFeaturesContent(Feature feature,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		int includedFeaturesNumber = 0;
 		String title = "";
 		String element = "";
@@ -255,43 +255,43 @@ public class FeatureHelpers {
 			includedFeaturesNumber = featureInclusions.size();
 		if (includedFeaturesNumber == 1) {
 			title = "Included Feature ";
-			element = "(" + includedFeaturesNumber + " element)";
+			element = "(" + includedFeaturesNumber + Constants.ELEMENT;
 		} else if (includedFeaturesNumber > 1) {
 			title = "Included Features ";
-			element = "(" + includedFeaturesNumber + " elements)";
+			element = "(" + includedFeaturesNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		// The i create my list
-		if (featureInclusions.size() > 0) {
+		if (featureInclusions != null && !featureInclusions.isEmpty()) {
 			// feature inclusions
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (FeatureInclusion featureInclusion : featureInclusions) {
 				Feature target = featureInclusion.getIncludedFeature();
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						featureInclusion, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(target,
 								LabelProviderHelper.getText(featureInclusion)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getFeatureDependenciesContent(Feature feature,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		int featureDependenciesNumber = 0;
 		String title = "";
@@ -310,42 +310,42 @@ public class FeatureHelpers {
 		}
 		if (featureDependenciesNumber == 1) {
 			title = "Feature Dependency ";
-			element = "(" + featureDependenciesNumber + " element)";
+			element = "(" + featureDependenciesNumber + Constants.ELEMENT;
 		} else if (featureDependenciesNumber > 1) {
 			title = "Feature Dependencies ";
-			element = "(" + featureDependenciesNumber + " elements)";
+			element = "(" + featureDependenciesNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		// feature dependances
-		if (featureDependencies.size() > 0) {
-			buffer.append("<ul style=\"list-style-type:none\">");
+		if (featureDependencies != null && !featureDependencies.isEmpty()) {
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (FeatureDependency featureDependency : featureDependencies) {
 				Feature target = featureDependency.getTarget();
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						featureDependency, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(target,
 								LabelProviderHelper.getText(featureDependency)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getFeaturePluginDependenciesContent(Feature feature,
 			String projectName, String folderName, int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 
 		int pluginDependenciesNumber = 0;
 		String title = "";
@@ -363,37 +363,37 @@ public class FeatureHelpers {
 
 		if (pluginDependenciesNumber == 1) {
 			title = "Plugin Dependency ";
-			element = "(" + pluginDependenciesNumber + " element)";
+			element = "(" + pluginDependenciesNumber + Constants.ELEMENT;
 		} else if (pluginDependenciesNumber > 1) {
 			title = "Plugin Dependencies ";
-			element = "(" + pluginDependenciesNumber + " elements)";
+			element = "(" + pluginDependenciesNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
-		if (featurePluginDependencies.size() > 0) {
+		if (featurePluginDependencies != null && !featurePluginDependencies.isEmpty()) {
 			// plugin dependencies
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_NONE_OPEN);
 			for (FeatureToPluginDependency featurePluginDependency : featurePluginDependencies) {
 				Plugin target = featurePluginDependency.getTarget();
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						featurePluginDependency, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(target, LabelProviderHelper
 								.getText(featurePluginDependency)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 }

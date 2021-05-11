@@ -23,10 +23,13 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.Repository;
  *
  */
 public class RepositoryHelpers {
+	
+	private RepositoryHelpers() {}
+	
 	public static String getRepositoryPage(Repository currentRepo,
 			String projectName, String folderName, int indentationIndice) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 
 		String imageFileName = LabelProviderHelper.getImageFileName(
 				currentRepo, projectName, folderName);
@@ -36,9 +39,9 @@ public class RepositoryHelpers {
 
 		//starting page's creation
 		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("<img src=\"../icon/");
+		buffer.append(Constants.IMG_SRC_ICON_OPEN);
 		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
+		buffer.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
 		buffer.append(" " + text);
 		buffer.append("</h" + indentationIndice + ">");
 
@@ -52,7 +55,7 @@ public class RepositoryHelpers {
 	private static String getRepositoryContents(Repository currentRepo,
 			String projectName, String folderName, int indentationIndice) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		EList<org.polarsys.kitalpha.pdt.metamodel.model.platform.Package> subPackages = null;
 		EList<Plugin> plugins = null;
 		EList<Feature> features = null;
@@ -73,32 +76,29 @@ public class RepositoryHelpers {
 		}
 
 		if ((plugins != null) || (features != null) || (subPackages != null))
-			buffer.append("<h" + indentationIndice + ">" + "Contents" + "</h"
+			stringBuilder.append("<h" + indentationIndice + ">" + "Contents" + "</h"
 					+ indentationIndice + ">");
 
 		// Creating content of sub-packages
 		if (subPackages != null)
-			buffer.append(getSubPackagesContent(currentRepo, projectName,
-					folderName, (indentationIndice + 1), subPackages));
+			stringBuilder.append(getSubPackagesContent(projectName, folderName, (indentationIndice + 1), subPackages));
 
 		// Creating content of features
 		if (features != null)
-			buffer.append(getContainedFeaturesContent(currentRepo, projectName,
-					folderName, (indentationIndice + 1), features));
+			stringBuilder
+					.append(getContainedFeaturesContent(projectName, folderName, (indentationIndice + 1), features));
 
 		// Creating content of plugins
 		if (plugins != null)
-			buffer.append(getContainedPluginsContent(currentRepo, projectName,
-					folderName, (indentationIndice + 1), plugins));
+			stringBuilder.append(getContainedPluginsContent(projectName, folderName, (indentationIndice + 1), plugins));
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
-	private static String getContainedPluginsContent(Repository currentRepo,
-			String projectName, String folderName, int indentationIndice,
+	private static String getContainedPluginsContent(String projectName, String folderName, int indentationIndice,
 			EList<Plugin> plugins) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		int pluginsNumber = 0;
 
 		String title = "";
@@ -109,42 +109,41 @@ public class RepositoryHelpers {
 		}
 		if (pluginsNumber == 1) {
 			title = "Contained plugin ";
-			element = "(" + pluginsNumber + " element)";
+			element = "(" + pluginsNumber + Constants.ELEMENT;
 		} else if (pluginsNumber > 1) {
 			title = "Contained plugins ";
-			element = "(" + pluginsNumber + " elements)";
+			element = "(" + pluginsNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		if (pluginsNumber > 0) {
-			buffer.append("<ul style=\"list-style-type:disc\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_DISC_OPEN);
 			for (Plugin plugin : plugins) {
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(plugin,
 						projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(plugin,
 								LabelProviderHelper.getText(plugin)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
-	private static String getContainedFeaturesContent(Repository currentRepo,
-			String projectName, String folderName, int indentationIndice,
+	private static String getContainedFeaturesContent(String projectName, String folderName, int indentationIndice,
 			EList<Feature> features) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		int featuresNumber = 0;
 
 		String title = "";
@@ -155,42 +154,41 @@ public class RepositoryHelpers {
 		}
 		if (featuresNumber == 1) {
 			title = "Contained feature ";
-			element = "(" + featuresNumber + " element)";
+			element = "(" + featuresNumber + Constants.ELEMENT;
 		} else if (featuresNumber > 1) {
 			title = "Contained features ";
-			element = "(" + featuresNumber + " elements)";
+			element = "(" + featuresNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		if (featuresNumber > 0) {
-			buffer.append("<ul style=\"list-style-type:disc\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_DISC_OPEN);
 			for (Feature feature : features) {
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						feature, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(feature,
 								LabelProviderHelper.getText(feature)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
-	private static String getSubPackagesContent(Repository currentRepo,
-			String projectName, String folderName, int indentationIndice,
+	private static String getSubPackagesContent(String projectName, String folderName, int indentationIndice,
 			EList<org.polarsys.kitalpha.pdt.metamodel.model.platform.Package> subPackages) {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		int subPackagesNumber = 0;
 
 		String title = "";
@@ -201,34 +199,34 @@ public class RepositoryHelpers {
 		}
 		if (subPackagesNumber == 1) {
 			title = "Contained package ";
-			element = "(" + subPackagesNumber + " element)";
+			element = "(" + subPackagesNumber + Constants.ELEMENT;
 		} else if (subPackagesNumber > 1) {
 			title = "Contained packages ";
-			element = "(" + subPackagesNumber + " elements)";
+			element = "(" + subPackagesNumber + Constants.ELEMENTS;
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		if (subPackagesNumber > 0) {
-			buffer.append("<ul style=\"list-style-type:disc\">");
+			stringBuilder.append(Constants.UL_STYLE_LIST_STYLE_TYPE_DISC_OPEN);
 			for (org.polarsys.kitalpha.pdt.metamodel.model.platform.Package currentSubPackage : subPackages) {
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						currentSubPackage, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" "
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" "
 						+ Helpers.getTypeHyperLink(currentSubPackage,
 								LabelProviderHelper.getText(currentSubPackage)));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.LI_CLOSE);
 			}
-			buffer.append("</ul>");
+			stringBuilder.append(Constants.UL_CLOSE);
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 }

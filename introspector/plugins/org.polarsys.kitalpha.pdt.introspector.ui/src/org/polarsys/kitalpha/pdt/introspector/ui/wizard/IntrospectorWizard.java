@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -13,6 +15,7 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.polarsys.kitalpha.pdt.introspector.core.IntrospectionContext;
 import org.polarsys.kitalpha.pdt.introspector.core.launcher.Introspection;
+import org.polarsys.kitalpha.pdt.introspector.internal.ui.Activator;
 import org.polarsys.kitalpha.pdt.introspector.preferences.utils.IntrospectorPreferenceUtils;
 import org.polarsys.kitalpha.pdt.introspector.ui.wizard.pages.IntrospectionWizardFirstPage;
 
@@ -54,9 +57,11 @@ public class IntrospectorWizard extends Wizard implements INewWizard {
 		try {
 			getContainer().run(false, true, op);
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+			Activator.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error during perform finish", e));
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Activator.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error during perform finish", e));
 		}
 		return true;
 	}

@@ -46,12 +46,7 @@ public class AIRDHelpers {
 			TransactionalEditingDomain editingDomain = _localSession.getTransactionalEditingDomain();
 			CommandStack commandStack = editingDomain.getCommandStack();
 			
-			for (DView dView : views) {
-//				EList<DRepresentation> representations = dView.getOwnedRepresentations();
-//				Set<DRepresentation> representationsSet = new HashSet<DRepresentation>();
-//				representationsSet.addAll(representations);
-//				DeleteRepresentationCommand command = new DeleteRepresentationCommand(_localSession, representationsSet);
-				
+			for (DView dView : views) {				
 				EList<DRepresentationDescriptor> ownedRepresentationDescriptors = dView.getOwnedRepresentationDescriptors();
 				Set<DRepresentationDescriptor> representationsSet = new HashSet<DRepresentationDescriptor>();
 				representationsSet.addAll(ownedRepresentationDescriptors);

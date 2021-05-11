@@ -26,12 +26,15 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.egf.core.producer.InvocationException;
 import org.eclipse.egf.ftask.producer.context.ITaskProductionContext;
 import org.eclipse.egf.ftask.producer.invocation.ITaskProduction;
+import org.polarsys.kitalpha.doc.gen.business.ecore.Activator;
 
 
 /**
@@ -85,7 +88,7 @@ public class CopyCSS implements ITaskProduction {
 		IProject project = destination.getProject();
 		IFolder folder = project.getFolder(projectDestinationFullPath);
 		IFile contentFile = folder.getFile("content.css");
-		try {
+		try (FileOutputStream outStream = new FileOutputStream(contentFile.getLocation().toOSString())) {
 			urlSource = new URL("platform:/plugin/" + pluginID
 					+ "/CSS/content.css");
 			InputStream inputStream = urlSource.openConnection()
@@ -94,8 +97,7 @@ public class CopyCSS implements ITaskProduction {
 					inputStream));
 
 			String inputLine;
-			FileOutputStream outStream = new FileOutputStream(contentFile
-					.getLocation().toOSString());
+			
 
 			while ((inputLine = in.readLine()) != null) {
 				outStream.write(inputLine.getBytes());
@@ -104,11 +106,10 @@ public class CopyCSS implements ITaskProduction {
 			}
 			in.close();
 			outStream.flush();
-			outStream.close();
-			
 
 		} catch (IOException e2) {
-			e2.printStackTrace();
+			Activator.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error during copy", e2));
 		}
 	}
 
