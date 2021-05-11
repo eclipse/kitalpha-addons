@@ -61,7 +61,7 @@ if(obj instanceof Plugin){
 %>
 <%
  String pageKey = extensionPointID;
- String extensionPointPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.extensionPointsPages.get(pageKey);
+ String extensionPointPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.getExtensionPointsPage(pageKey);
 %>
 
 <%=extensionPointPage%>
@@ -69,7 +69,7 @@ if(obj instanceof Plugin){
 
 <%
 String extensionPointKey = extensionPointID + " Extension Point schema";
-DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.extensionPointsDiagrams.get(extensionPointKey);%>
+DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionPointsHelpers.getExtensionPointsDiagram(extensionPointKey);%>
 
 <%
 if (diagram != null){%>

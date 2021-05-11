@@ -30,76 +30,93 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.Repository;
  *
  */
 public class ObjectHelpers implements IFileNameService {
-
+	
 	int index = 0;
+	
+	public String getFileName(Plugin eObject) {
+		String pluginID = eObject.getId();
+		return pluginID.replace(".", "_");
+	}
+	
+	public String getFileName(Feature eObject) {
+		String featureID = eObject.getId();
+		return featureID.replace(".", "_");
+	}
+	
+	public String getFileName(ExtensionPoint eObject) {
+		String epCompleteID = eObject.getId();
+		return epCompleteID.replace(".", "_");
+	}
+	
+	public String getFileName(Extension eObject) {
+		EObject plugin = eObject.eContainer().eContainer();
+		String extensionID = "";
+		EList<Extension> extensions = ((Plugin) plugin).getExtensions()
+				.getExtensions();
+		int i = 0;
+		for (Extension extension : extensions) {
+			i++;
+			String text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers
+					.getLabel(extension);
+			Pattern p = Pattern.compile("\\(.+?\\)");
+			Matcher m = p.matcher(text);
+			if (text != null) {
+				if (m.find()) {
+					String group = m.group(0);
+					String substring = group.substring(1,
+							group.length() - 1);
+					String replace = text.replace("(no name)", substring);
+					text = replace;
+				}
+				if (extension == eObject)
+					extensionID = text + "_" + ((Plugin) plugin).getId()
+							+ i;
+			}
+			String extensionName;
+			if (!extensionID.equals("")) {
+				extensionName = extensionID.replace(".", "_");
+				return extensionName;
+			}
+		}
+		return null;
+	}
+	
+	public String getFileName(org.polarsys.kitalpha.pdt.metamodel.model.platform.Package eObject) {
+		String packageID = eObject.getAbsoluteName();
+		String packageName;
+		if (packageID != null) {
+			packageName = packageID.replace(".", "_");
+			return packageName;
+		}
+		return null;
+	}
+	
+	public String getFileName(Repository eObject) {
+		String repoID = eObject.getName();
+		String repoName;
+		if (repoID != null) {
+			repoName = repoID.replace(".", "_");
+			return repoName;
+		}
+		return null;
+	}
+	
+	public String getFileName(EclipseModel eObject) {
+		String emID = eObject.getName();
+		String emName;
+		if (emID != null) {
+			emName = emID.replace(".", "_");
+			return emName;
+		}
+		return null;
+	}
 
 	@Override
 	public String getFileName(EObject eObject) {
-		if (eObject instanceof Plugin) {
-			String pluginID = ((Plugin) eObject).getId();
-			String pluginName = pluginID.replace(".", "_");
-			return pluginName;
-		} else if (eObject instanceof Feature) {
-			String featureID = ((Feature) eObject).getId();
-			String featureName = featureID.replace(".", "_");
-			return featureName;
-		} else if (eObject instanceof ExtensionPoint) {
-			String epCompleteID = ((ExtensionPoint) eObject).getId();
-			String epName = epCompleteID.replace(".", "_");
-			return epName;
-		} else if (eObject instanceof Extension) {
-
-			EObject plugin = ((Extension) eObject).eContainer().eContainer();
-			String extensionID = "";
-			EList<Extension> extensions = ((Plugin) plugin).getExtensions()
-					.getExtensions();
-			int i = 0;
-			for (Extension extension : extensions) {
-				i++;
-				String text = org.polarsys.kitalpha.pdt.docgen.helpers.Helpers
-						.getLabel(extension);
-				Pattern p = Pattern.compile("\\(.+?\\)");
-				Matcher m = p.matcher(text);
-				if (text != null) {
-					if (m.find()) {
-						String group = m.group(0);
-						String substring = group.substring(1,
-								group.length() - 1);
-						String replace = text.replace("(no name)", substring);
-						text = replace;
-					}
-					if (extension == ((Extension) eObject))
-						extensionID = text + "_" + ((Plugin) plugin).getId()
-								+ i;
-				}
-				String extensionName;
-				if (extensionID != "") {
-					extensionName = extensionID.replace(".", "_");
-					return extensionName;
-				}
-			}
-		} else if (eObject instanceof org.polarsys.kitalpha.pdt.metamodel.model.platform.Package) {
-			String packageID = ((org.polarsys.kitalpha.pdt.metamodel.model.platform.Package) eObject).getAbsoluteName();
-			String packageName;
-			if (packageID != null) {
-				packageName = packageID.replace(".", "_");
-				return packageName;
-			}
-		} else if (eObject instanceof Repository) {
-			String repoID = ((Repository) eObject).getName();
-			String repoName;
-			if (repoID != null) {
-				repoName = repoID.replace(".", "_");
-				return repoName;
-			}
-		} else if (eObject instanceof EclipseModel) {
-			String emID = ((EclipseModel) eObject).getName();
-			String emName;
-			if (emID != null) {
-				emName = emID.replace(".", "_");
-				return emName;
-			}
+		String result = getFileName(eObject);
+		if (result == null) {
+			result = "Object not found";
 		}
-		return "Object not found";
+		return result;
 	}
 }

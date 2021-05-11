@@ -11,6 +11,8 @@
  ******************************************************************************/
 package org.polarsys.kitalpha.pdt.internal.docgen;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -36,6 +38,13 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
+	}
+	
+	/**
+	 * Get simple logging
+	 */
+	public ILog getLog() {
+		return Platform.getLog(Activator.class);
 	}
 
 }

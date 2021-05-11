@@ -183,9 +183,11 @@ public class GenerateDiagramsService {
 		try {
 			operation.run(progressMonitor);
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+			Activator.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error during diagram generation", e));
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Activator.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error during diagram generation", e));
 		}
 		// } catch (DocGenException e){
 		// AIRDHelpers.INSTANCE.cleanAllMaps();

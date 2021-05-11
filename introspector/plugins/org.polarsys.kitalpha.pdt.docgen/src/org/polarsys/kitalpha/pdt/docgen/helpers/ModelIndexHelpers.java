@@ -21,28 +21,47 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.EclipseModel;
  *
  */
 public class ModelIndexHelpers {
+	
+	private ModelIndexHelpers() {}
+	
+	/**
+	 * @deprecated will be made private in a future major version
+	 */
+	@Deprecated
 	public static int i = 1;
-	public static StringBuffer buffer = new StringBuffer();
+	public static final StringBuilder stringBuilder = new StringBuilder();
 
+	public static String getModelIndexContent(String fileName, List<String> domainList) {
+		return getModelIndexContent(null, fileName, domainList);
+	}
+	
+	/**
+	 * @deprecated
+	 * @param rootModel
+	 * @param fileName
+	 * @param domainList
+	 * @return
+	 */
+	@Deprecated
 	public static String getModelIndexContent(EclipseModel rootModel,
 			String fileName, List<String> domainList) {
 
-		buffer.append("<li>");
-		buffer.append("<div style=\"float:left; margin-left:5px; font-size:12px; font-family:Arial\">");
+		stringBuilder.append("<li>");
+		stringBuilder.append("<div style=\"float:left; margin-left:5px; font-size:12px; font-family:Arial\">");
 
 		for (String domain : domainList) {
-			buffer.append("<a href=\"" + domain + "/" + fileName
+			stringBuilder.append("<a href=\"" + domain + "/" + fileName
 					+ ".html\" target=\"_top\">" + fileName + "</a>");
 		}
-		buffer.append("</div>");
-		buffer.append("</li>");
+		stringBuilder.append("</div>");
+		stringBuilder.append("</li>");
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	public static void clearModelIndexBuffer(int modelsNumber) {
 		if (modelsNumber == i) {
-			buffer.setLength(0);
+			stringBuilder.setLength(0);
 			i = 0;
 		}
 		i++;

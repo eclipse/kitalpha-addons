@@ -26,7 +26,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -75,6 +77,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.polarsys.kitalpha.doc.gen.business.ecore.Activator;
 import org.polarsys.kitalpha.pdt.docgen.exceptions.DocGenException;
 import org.polarsys.kitalpha.pdt.docgen.helpers.AIRDHelpers;
 import org.polarsys.kitalpha.pdt.docgen.helpers.Helpers;
@@ -806,11 +809,11 @@ public class PlatformElementRepresentationCreationOperation extends
 			_currentSession.getTransactionalEditingDomain().getCommandStack()
 					.execute(createRepresentationCommand);
 		} catch (NullPointerException e2) {
-			System.out.println("--exception--");
-			e2.printStackTrace();
+			Activator.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error during representation creation", e2));
 		} catch (RuntimeException e) {
-			System.out.println("--exception--");
-			e.printStackTrace();
+			Activator.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error during representation creation", e));
 		} 
 		DRepresentation createdRepresentation = createRepresentationCommand
 				.getCreatedRepresentation();

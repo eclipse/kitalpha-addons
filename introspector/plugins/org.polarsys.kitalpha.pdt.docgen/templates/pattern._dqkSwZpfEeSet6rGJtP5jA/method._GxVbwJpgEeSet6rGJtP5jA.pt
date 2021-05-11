@@ -63,7 +63,7 @@ if (obj instanceof Plugin) {
 
 <%
  String pageKey = extensionID +"_"+ ((Extension) element).getExtensionPoint().getId();
- String extensionPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.extensionsPages.get(pageKey);
+ String extensionPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.getExtensionPage(pageKey);
 %>
 
 <%=extensionPage%>
@@ -72,7 +72,7 @@ if (obj instanceof Plugin) {
 
 <%
 String extensionKey = IntrospectionServices.getLabelForGivenExtension((Extension)element) + " Extension Schema";
-DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.extensionDiagrams.get(extensionKey);%>
+DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.getExtensionDiagram(extensionKey);%>
 
 <%
 if (diagram != null){%>

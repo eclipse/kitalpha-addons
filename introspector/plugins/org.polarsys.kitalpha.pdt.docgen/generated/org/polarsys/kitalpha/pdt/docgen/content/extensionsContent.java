@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.2.202001031546
 package org.polarsys.kitalpha.pdt.docgen.content;
 
 import org.polarsys.kitalpha.pdt.docgen.wizard.general.HTMLDocGenContext;
@@ -40,20 +40,12 @@ public class extensionsContent extends org.polarsys.kitalpha.doc.gen.business.co
 	protected final String TEXT_7 = "</h1>" + NL + "<hr style=\"width:98%; align : center; \" /> " + NL + "</div>" + NL
 			+ "" + NL + "<div style=\"position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;\">" + NL;
 	protected final String TEXT_8 = NL;
-	protected final String TEXT_9 = NL;
-	protected final String TEXT_10 = NL;
-	protected final String TEXT_11 = NL;
-	protected final String TEXT_12 = NL + NL + NL;
-	protected final String TEXT_13 = NL;
-	protected final String TEXT_14 = NL + "<h2>Representation</h2>";
-	protected final String TEXT_15 = NL + NL + "</p>";
-	protected final String TEXT_16 = NL + "<p><strong>";
-	protected final String TEXT_17 = "</strong></p>";
-	protected final String TEXT_18 = NL;
-	protected final String TEXT_19 = NL;
-	protected final String TEXT_20 = NL + "\t\t\t\t" + NL + "\t\t\t\t" + NL;
-	protected final String TEXT_21 = NL;
-	protected final String TEXT_22 = NL;
+	protected final String TEXT_9 = NL + NL + NL;
+	protected final String TEXT_10 = NL + "<h2>Representation</h2>";
+	protected final String TEXT_11 = NL + NL + "</p>";
+	protected final String TEXT_12 = NL + "<p><strong>";
+	protected final String TEXT_13 = "</strong></p>";
+	protected final String TEXT_14 = NL + "\t\t\t\t" + NL + "\t\t\t\t" + NL;
 
 	public extensionsContent() {
 		//Here is the constructor
@@ -89,8 +81,8 @@ public class extensionsContent extends org.polarsys.kitalpha.doc.gen.business.co
 			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
-		stringBuffer.append(TEXT_21);
-		stringBuffer.append(TEXT_22);
+		stringBuffer.append(TEXT_8);
+		stringBuffer.append(TEXT_8);
 		return stringBuffer.toString();
 	}
 
@@ -210,34 +202,34 @@ public class extensionsContent extends org.polarsys.kitalpha.doc.gen.business.co
 			}
 		}
 
-		stringBuffer.append(TEXT_9);
+		stringBuffer.append(TEXT_8);
 
 		String pageKey = extensionID + "_" + ((Extension) element).getExtensionPoint().getId();
-		String extensionPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.extensionsPages.get(pageKey);
+		String extensionPage = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.getExtensionPage(pageKey);
 
-		stringBuffer.append(TEXT_10);
-		stringBuffer.append(TEXT_11);
+		stringBuffer.append(TEXT_8);
+		stringBuffer.append(TEXT_8);
 		stringBuffer.append(extensionPage);
-		stringBuffer.append(TEXT_12);
+		stringBuffer.append(TEXT_9);
 
 		String extensionKey = IntrospectionServices.getLabelForGivenExtension((Extension) element)
 				+ " Extension Schema";
-		DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers.extensionDiagrams
-				.get(extensionKey);
-		stringBuffer.append(TEXT_13);
+		DRepresentation diagram = org.polarsys.kitalpha.pdt.docgen.helpers.ExtensionsHelpers
+				.getExtensionDiagram(extensionKey);
+		stringBuffer.append(TEXT_8);
 
 		if (diagram != null) {
-			stringBuffer.append(TEXT_14);
+			stringBuffer.append(TEXT_10);
 		}
-		stringBuffer.append(TEXT_15);
+		stringBuffer.append(TEXT_11);
 
 		if ((diagram instanceof DSemanticDiagram)
 				&& (((DSemanticDiagram) diagram).getDescription().getName().equals("Extension Schema"))) {
 			String generatedFolder = fileNameService.getFileName(((DSemanticDiagram) diagram).getTarget());
-			stringBuffer.append(TEXT_16);
+			stringBuffer.append(TEXT_12);
 			stringBuffer.append(((DSemanticDiagram) diagram).getDescription().getName());
-			stringBuffer.append(TEXT_17);
-			stringBuffer.append(TEXT_18);
+			stringBuffer.append(TEXT_13);
+			stringBuffer.append(TEXT_8);
 			{
 				//<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.core/egf/HTMLDocGenCommon.fcore#LogicalName=org.polarsys.kitalpha.doc.gen.business.core.sirius.DiagramGenerator" args="diagram:diagram, outputFolder:outputFolder, projectName:projectName, generatedFolder:generatedFolder, fileNameService:fileNameService, helper:helper"%>
 
@@ -260,7 +252,7 @@ public class extensionsContent extends org.polarsys.kitalpha.doc.gen.business.co
 
 		}
 
-		stringBuffer.append(TEXT_19);
+		stringBuffer.append(TEXT_8);
 
 		if (diagramsInclusion) {
 			if (lastExtension == (Extension) element && lastExtension != null) {
@@ -272,7 +264,7 @@ public class extensionsContent extends org.polarsys.kitalpha.doc.gen.business.co
 			}
 		}
 
-		stringBuffer.append(TEXT_20);
+		stringBuffer.append(TEXT_14);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
 		new Node.DataLeaf(ictx.getNode(), getClass(), "content", stringBuffer.toString());
 	}

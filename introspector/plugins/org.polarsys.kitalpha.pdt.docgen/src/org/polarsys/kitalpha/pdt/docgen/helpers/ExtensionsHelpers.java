@@ -33,27 +33,45 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.StringValue;
  */
 public class ExtensionsHelpers {
 	
-	public static HashMap<String, DRepresentation> extensionDiagrams = new HashMap<String, DRepresentation>();
+	private ExtensionsHelpers() {}
+	
+	protected static final HashMap<String, DRepresentation> extensionDiagrams = new HashMap<>();
 
-	public static HashMap<String, String> extensionsPages = new HashMap<String, String>();
+	protected static final HashMap<String, String> extensionsPages = new HashMap<>();
 
 	public static void addExtensionPage(String key, String currentExtensionPage) {
-		if (!extensionsPages.containsKey(key))
-			extensionsPages.put(key, currentExtensionPage);
+		extensionsPages.computeIfAbsent(key, k -> currentExtensionPage);
 	}
 	
 	public static void addExtensionDiagrams(String key, DRepresentation currentExtensionDiagram){
-		if(!extensionDiagrams.containsKey(key))
-			extensionDiagrams.put(key, currentExtensionDiagram);
+		extensionDiagrams.computeIfAbsent(key, k -> currentExtensionDiagram);
+	}
+	
+	/**
+	 * Get an extension's page
+	 * @param key
+	 * @return
+	 */
+	public static String getExtensionPage(String key) {
+		return extensionsPages.get(key);
+	}
+	
+	/**
+	 * Get an extension's diagram
+	 * @param key
+	 * @return
+	 */
+	public static DRepresentation getExtensionDiagram(String key){
+		return extensionDiagrams.get(key);
 	}
 
 	public static String getExtensionsPage(Extension extension, String projectName,
 			String folderName, int indentationIndice) {
 
 		// I get all i need for my table
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		EList<ConfiguredSchemaElement> configuredSchemaElements = null;
-		Set<ConfiguredSchemaElement> allConfiguredSchemaElements = new HashSet<ConfiguredSchemaElement>();
+		Set<ConfiguredSchemaElement> allConfiguredSchemaElements = new HashSet<>();
 
 		
 		String imageFileName = LabelProviderHelper.getImageFileName(extension,
@@ -77,43 +95,39 @@ public class ExtensionsHelpers {
 		}
 
 		// Then i start my page's creation
-		buffer.append("<h" + indentationIndice + ">");
-		buffer.append("<img src=\"../icon/");
-		buffer.append(imageFileName);
-		buffer.append("\" alt=\"\"/>");
-		buffer.append(" " + text);
-		buffer.append("</h" + indentationIndice + ">");
+		stringBuilder.append("<h" + indentationIndice + ">");
+		stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+		stringBuilder.append(imageFileName);
+		stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+		stringBuilder.append(" " + text);
+		stringBuilder.append("</h" + indentationIndice + ">");
 
 		// Starting my list of cse
-		buffer.append(getSchemaElementsContent(extension, projectName,
-				folderName, allConfiguredSchemaElements,
+		stringBuilder.append(getSchemaElementsContent(projectName, folderName, allConfiguredSchemaElements,
 				(indentationIndice + 1)));
 
-		buffer.append(getSchemaElementsDetails(extension, projectName,
-				folderName, allConfiguredSchemaElements,
+		stringBuilder.append(getSchemaElementsDetails(projectName, folderName, allConfiguredSchemaElements,
 				(indentationIndice + 1)));
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	
 
-	private static String getSchemaElementsDetails(Extension extension,
-			String projectName, String folderName,
-			Set<ConfiguredSchemaElement> allConfiguredSchemaElements,
-			int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+	private static String getSchemaElementsDetails(String projectName, String folderName,
+			Set<ConfiguredSchemaElement> allConfiguredSchemaElements, int indentationIndice) {
+		StringBuilder stringBuilder = new StringBuilder();
 
 		if (allConfiguredSchemaElements != null) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append("Details");
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append("Details");
+			stringBuilder.append("</h" + indentationIndice + ">");
 			for (ConfiguredSchemaElement configuredSchemaElement : allConfiguredSchemaElements) {
-				buffer.append(getEachCSEContent(configuredSchemaElement,
+				stringBuilder.append(getEachCSEContent(configuredSchemaElement,
 						projectName, folderName, indentationIndice + 1));
 			}
 		}
 
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
 	private static String getEachCSEContent(
@@ -122,42 +136,40 @@ public class ExtensionsHelpers {
 
 		EList<ConfigurationElementAttributeInstance> attributes = configuredSchemaElement
 				.getConfigurationElements();
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		String text = Helpers.getLabel(configuredSchemaElement);
-		buffer.append("<h" + indentationIndice + ">" + text + "</h"
+		stringBuilder.append("<h" + indentationIndice + ">" + text + "</h"
 				+ indentationIndice + ">");
 
 		if (attributes != null) {
-			buffer.append("<ul style=\"list-style-type:disc\">");
+			stringBuilder.append("<ul style=\"list-style-type:disc\">");
 			for (ConfigurationElementAttributeInstance attribute : attributes) {
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						attribute, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" " + Helpers.getLabel(attribute) + " --> ");
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" " + Helpers.getLabel(attribute) + " --> ");
 
 				AbstractValue containedValue = attribute.getContainedValue();
 				if (containedValue instanceof BooleanValue)
-					buffer.append(((BooleanValue) containedValue).isValue());
+					stringBuilder.append(((BooleanValue) containedValue).isValue());
 				else if (containedValue instanceof StringValue)
-					buffer.append(((StringValue) containedValue).getValue());
+					stringBuilder.append(((StringValue) containedValue).getValue());
 				else if (containedValue instanceof JavaClassValue)
-					buffer.append(((JavaClassValue) containedValue)
+					stringBuilder.append(((JavaClassValue) containedValue)
 							.getClassName());
-				buffer.append("</li>");
+				stringBuilder.append("</li>");
 			}
-			buffer.append("</ul>");
+			stringBuilder.append("</ul>");
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 
-	private static String getSchemaElementsContent(Extension extension,
-			String projectName, String folderName,
-			Set<ConfiguredSchemaElement> allConfiguredSchemaElements,
-			int indentationIndice) {
-		StringBuffer buffer = new StringBuffer();
+	private static String getSchemaElementsContent(String projectName, String folderName,
+			Set<ConfiguredSchemaElement> allConfiguredSchemaElements, int indentationIndice) {
+		StringBuilder stringBuilder = new StringBuilder();
 
 		int configuredSchemaElementsNumber = 0;
 
@@ -176,27 +188,27 @@ public class ExtensionsHelpers {
 		}
 
 		if (!title.equals("")) {
-			buffer.append("<h" + indentationIndice + ">");
-			buffer.append(title + element);
-			buffer.append("</h" + indentationIndice + ">");
+			stringBuilder.append("<h" + indentationIndice + ">");
+			stringBuilder.append(title + element);
+			stringBuilder.append("</h" + indentationIndice + ">");
 		}
 
 		// schema elements
 		if (configuredSchemaElementsNumber > 0) {
-			buffer.append("<ul style=\"list-style-type:none\">");
+			stringBuilder.append("<ul style=\"list-style-type:none\">");
 			for (ConfiguredSchemaElement configuredSchemaElement : allConfiguredSchemaElements) {
-				buffer.append("<li>");
+				stringBuilder.append("<li>");
 				String imageName = LabelProviderHelper.getImageFileName(
 						configuredSchemaElement, projectName, folderName);
-				buffer.append("<img src=\"../icon/");
-				buffer.append(imageName);
-				buffer.append("\" alt=\"\"/>");
-				buffer.append(" " + Helpers.getLabel(configuredSchemaElement));
-				buffer.append("</li>");
+				stringBuilder.append(Constants.IMG_SRC_ICON_OPEN);
+				stringBuilder.append(imageName);
+				stringBuilder.append(Constants.ALT_AFTER_IMGSRCICONOPEN_CLOSE);
+				stringBuilder.append(" " + Helpers.getLabel(configuredSchemaElement));
+				stringBuilder.append("</li>");
 			}
-			buffer.append("</ul>");
+			stringBuilder.append("</ul>");
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 
 	}
 
