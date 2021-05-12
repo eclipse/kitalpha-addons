@@ -15,18 +15,18 @@
 include "https://raw.githubusercontent.com/eclipse/kitalpha/master/releng/plugins/org.polarsys.kitalpha.releng.targets/kitalpha.targetplatform"
 
 //kitalpha core
-location kitalpha-runtime "https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202104201726/" {
+location kitalpha-runtime "https://download.eclipse.org/kitalpha/updates/stable/runtime/5.1.0-S202105111408/" {
 	org.polarsys.kitalpha.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.runtime.feature.source.feature.group lazy
 }
 
-location kitalpha-runtimeCore "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/5.1.0-S202104201726/" {
+location kitalpha-runtimeCore "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/5.1.0-S202105111408/" {
 	org.polarsys.kitalpha.common.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.source.feature.group lazy
 }
 
 //kitalpha
-location Kitalpha-SDK "https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202104201726/" {
+location Kitalpha-SDK "https://download.eclipse.org/kitalpha/updates/stable/sdk/5.1.0-S202105111408/" {
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.source.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.feature.group lazy
