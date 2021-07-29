@@ -20,8 +20,8 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>2.0.0</tycho-version>
-		<tycho-extras-version>2.0.0</tycho-extras-version>
+		<tycho-version>2.2.0</tycho-version>
+		<tycho-extras-version>2.2.0</tycho-extras-version>
 		<tycho.scmUrl>scm:git:https://github.com/eclipse/kitalpha-addons.git/</tycho.scmUrl>
 		<antrun-version>1.8</antrun-version>
 		<jacoco-version>0.8.6</jacoco-version>
@@ -33,7 +33,7 @@
 		<tycho.testArgLine>-Xms256m -Xmx1024m</tycho.testArgLine>
 
 		<!-- for packaging -->
-		<platform-name>2019-06</platform-name>
+		<platform-name>2021-06</platform-name>
 		<eclipse-repo.url>http://download.eclipse.org/releases/${platform-name}</eclipse-repo.url>
 		<packagedAddonName>PDTTooling</packagedAddonName>
 	</properties>
@@ -125,6 +125,7 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<executionEnvironment>JavaSE-14</executionEnvironment>
 					<target>
 						<artifact>
 							<groupId>org.polarsys</groupId>
@@ -238,7 +239,7 @@
 					<artifactId>tycho-eclipserun-plugin</artifactId>
 					<version>${tycho-extras-version}</version>
 					<configuration>
-						<executionEnvironment>JavaSE-1.8</executionEnvironment>
+						<executionEnvironment>JavaSE-14</executionEnvironment>
 						<repositories>
 							<repository>
 								<id>eclipse-releases-${platform-name}</id>
