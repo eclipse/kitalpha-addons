@@ -16,7 +16,7 @@ pipeline {
 				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 					script {
 						def jacocoPrepareAgent = "-Djacoco.destFile=$JACOCO_EXEC_FILE_PATH -Djacoco.append=true org.jacoco:jacoco-maven-plugin:$JACOCO_VERSION:prepare-agent"
-						sh 'mvn  -Dmaven.test.failure.ignore=true ${jacocoPrepareAgent} clean verify -P introspector -e -f pom.xml'					    
+						sh 'mvn  -Dmaven.test.failure.ignore=true ${jacocoPrepareAgent} clean verify -P introspector -P sign -e -f pom.xml'					    
 					}					
 				}
 			}
