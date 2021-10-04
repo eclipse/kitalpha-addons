@@ -28,12 +28,13 @@
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+		<sourcePhase>package</sourcePhase>
 
 		<!-- for junit -->
 		<tycho.testArgLine>-Xms256m -Xmx1024m</tycho.testArgLine>
 
 		<!-- for packaging -->
-		<platform-name>2019-06</platform-name>
+		<platform-name>2020-06</platform-name>
 		<eclipse-repo.url>http://download.eclipse.org/releases/${platform-name}</eclipse-repo.url>
 		<packagedAddonName>PDTTooling</packagedAddonName>
 	</properties>
@@ -188,6 +189,7 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<targetDefinitionIncludeSource>honor</targetDefinitionIncludeSource>
 					<target>
 						<artifact>
 							<groupId>org.polarsys</groupId>
@@ -219,17 +221,20 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
 				<version>${tycho-version}</version>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
 				<executions>
 					<execution>
 						<id>plugin-source</id>
+						<phase>${sourcePhase}</phase>
 						<goals>
 							<goal>plugin-source</goal>
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<strictSrcIncludes>false</strictSrcIncludes>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
@@ -239,14 +244,6 @@
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 					</archive>
-					<excludes>
-						<feature id="org.polarsys.kitalpha.pdt.docgen.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.docgen.ui.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.introspector.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.introspector.ui.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.metamodel.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.modeler.feature"/>
-					</excludes>
 				</configuration>
 				<executions>
 					<execution>
