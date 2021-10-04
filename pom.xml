@@ -16,7 +16,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.kitalpha.addons</artifactId>
-	<version>5.1.0-SNAPSHOT</version>
+	<version>6.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -28,6 +28,7 @@
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+		<sourcePhase>package</sourcePhase>
 
 		<!-- for junit -->
 		<tycho.testArgLine>-Xms256m -Xmx1024m</tycho.testArgLine>
@@ -189,11 +190,12 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<executionEnvironment>JavaSE-14</executionEnvironment>
+					<targetDefinitionIncludeSource>honor</targetDefinitionIncludeSource>
 					<target>
 						<artifact>
 							<groupId>org.polarsys</groupId>
 							<artifactId>introspector</artifactId>
-							<version>5.1.0-SNAPSHOT</version>
+							<version>6.0.0-SNAPSHOT</version>
 							<classifier>introspector</classifier>
 						</artifact>
 					</target>
@@ -216,21 +218,25 @@
 					</environments>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
 				<version>${tycho-version}</version>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
 				<executions>
 					<execution>
 						<id>plugin-source</id>
+						<phase>${sourcePhase}</phase>
 						<goals>
 							<goal>plugin-source</goal>
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<strictSrcIncludes>false</strictSrcIncludes>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
@@ -240,14 +246,6 @@
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 					</archive>
-					<excludes>
-						<feature id="org.polarsys.kitalpha.pdt.docgen.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.docgen.ui.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.introspector.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.introspector.ui.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.metamodel.feature"/>
-						<feature id="org.polarsys.kitalpha.pdt.modeler.feature"/>
-					</excludes>
 				</configuration>
 				<executions>
 					<execution>

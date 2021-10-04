@@ -18,9 +18,28 @@
    <feature id="org.polarsys.kitalpha.pdt.modeler.feature" version="0.0.0">
       <category name="org.polarsys.kitalpha.pdt.all"/>
    </feature>
+   <feature id="org.polarsys.kitalpha.pdt.docgen.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.all.source"/>
+   </feature>
+   <feature id="org.polarsys.kitalpha.pdt.docgen.ui.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.all.source"/>
+   </feature>
+   <feature id="org.polarsys.kitalpha.pdt.introspector.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.all.source"/>
+   </feature>
+   <feature id="org.polarsys.kitalpha.pdt.introspector.ui.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.all.source"/>
+   </feature>
+   <feature id="org.polarsys.kitalpha.pdt.metamodel.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.all.source"/>
+   </feature>
+   <feature id="org.polarsys.kitalpha.pdt.modeler.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.all.source"/>
+   </feature>
    <category-def name="org.polarsys.kitalpha.pdt.all" label="PDT Tooling">
       <description>
          Installation of Models, Modeler, docGen and introspector
       </description>
    </category-def>
+   <category-def name="org.polarsys.kitalpha.pdt.all.source" label="PDT Tooling Source"/>
 </site>
