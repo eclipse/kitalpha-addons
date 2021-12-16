@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.3.202110291409
 package org.polarsys.kitalpha.pdt.docgen.index;
 
 import org.eclipse.egf.common.helper.*;
@@ -36,8 +36,6 @@ public class generalIndexBuilder extends org.polarsys.kitalpha.doc.gen.business.
 			+ "\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/generalindex.css\" />" + NL + "    </head>"
 			+ NL + "    " + NL + "    <body>" + NL + "    <ul class=\"generalIndex\">";
 	protected final String TEXT_9 = " ";
-	protected final String TEXT_10 = NL;
-	protected final String TEXT_11 = NL;
 
 	public generalIndexBuilder() {
 		//Here is the constructor
@@ -65,8 +63,8 @@ public class generalIndexBuilder extends org.polarsys.kitalpha.doc.gen.business.
 			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
-		stringBuffer.append(TEXT_10);
-		stringBuffer.append(TEXT_11);
+		stringBuffer.append(TEXT_6);
+		stringBuffer.append(TEXT_6);
 		return stringBuffer.toString();
 	}
 

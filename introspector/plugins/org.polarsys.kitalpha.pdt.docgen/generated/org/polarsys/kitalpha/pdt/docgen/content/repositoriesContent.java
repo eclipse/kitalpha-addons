@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.3.202110291409
 package org.polarsys.kitalpha.pdt.docgen.content;
 
 import java.util.*;
@@ -36,11 +36,7 @@ public class repositoriesContent extends org.polarsys.kitalpha.doc.gen.business.
 	protected final String TEXT_7 = "</h1>" + NL + "<hr style=\"width:98%; align : center; \" /> " + NL + "</div>" + NL
 			+ "" + NL + "<div style=\"position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;\">" + NL;
 	protected final String TEXT_8 = NL;
-	protected final String TEXT_9 = NL;
-	protected final String TEXT_10 = NL;
-	protected final String TEXT_11 = NL + NL + NL + NL;
-	protected final String TEXT_12 = NL;
-	protected final String TEXT_13 = NL;
+	protected final String TEXT_9 = NL + NL + NL + NL;
 
 	public repositoriesContent() {
 		//Here is the constructor
@@ -76,8 +72,8 @@ public class repositoriesContent extends org.polarsys.kitalpha.doc.gen.business.
 			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
-		stringBuffer.append(TEXT_12);
-		stringBuffer.append(TEXT_13);
+		stringBuffer.append(TEXT_8);
+		stringBuffer.append(TEXT_8);
 		return stringBuffer.toString();
 	}
 
@@ -171,10 +167,10 @@ public class repositoriesContent extends org.polarsys.kitalpha.doc.gen.business.
 		String repositoryPage = org.polarsys.kitalpha.pdt.docgen.helpers.RepositoryHelpers
 				.getRepositoryPage((Repository) element, projectName, outputFolder, 1);
 
-		stringBuffer.append(TEXT_9);
-		stringBuffer.append(TEXT_10);
+		stringBuffer.append(TEXT_8);
+		stringBuffer.append(TEXT_8);
 		stringBuffer.append(repositoryPage);
-		stringBuffer.append(TEXT_11);
+		stringBuffer.append(TEXT_9);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
 		new Node.DataLeaf(ictx.getNode(), getClass(), "content", stringBuffer.toString());
 	}

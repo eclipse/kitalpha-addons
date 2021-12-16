@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.3.202110291409
 package org.polarsys.kitalpha.pdt.docgen.sidebar;
 
 import java.util.*;
@@ -34,7 +34,6 @@ public class platformElementSideBar
 	protected final String TEXT_6 = ".html\" target=\"content\">";
 	protected final String TEXT_7 = "</a>" + NL + NL;
 	protected final String TEXT_8 = NL;
-	protected final String TEXT_9 = NL;
 
 	public platformElementSideBar() {
 		//Here is the constructor
@@ -71,7 +70,7 @@ public class platformElementSideBar
 		}
 
 		stringBuffer.append(TEXT_8);
-		stringBuffer.append(TEXT_9);
+		stringBuffer.append(TEXT_8);
 		return stringBuffer.toString();
 	}
 
