@@ -13,7 +13,7 @@ Contributors:
 -->
 <plugin>
    <extension
-         point="org.polarsys.kitalpha.common.sirius.extension.rotativeimage">
+         point="org.polarsys.kitalpha.sirius.rotativeimage">
       <imageid
             id="/org.polarsys.kitalpha.pdt.modeler.resources/icons/ports/ext_point_obj.gif"
             kind="4images">
