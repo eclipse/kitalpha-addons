@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.3.202110291409
 package org.polarsys.kitalpha.pdt.docgen.index;
 
 import org.eclipse.egf.common.helper.*;
@@ -35,7 +35,6 @@ public class indexBuilder extends org.polarsys.kitalpha.doc.gen.business.core.in
 			+ "document.write('Oops ! Your browser cannot display this page !');" + NL
 			+ "document.write('</noframes>');" + NL + "document.write('</frameset>');" + NL + "</script>" + NL;
 	protected final String TEXT_3 = NL;
-	protected final String TEXT_4 = NL;
 
 	public indexBuilder() {
 		//Here is the constructor
@@ -62,7 +61,7 @@ public class indexBuilder extends org.polarsys.kitalpha.doc.gen.business.core.in
 		}
 
 		stringBuffer.append(TEXT_3);
-		stringBuffer.append(TEXT_4);
+		stringBuffer.append(TEXT_3);
 		return stringBuffer.toString();
 	}
 

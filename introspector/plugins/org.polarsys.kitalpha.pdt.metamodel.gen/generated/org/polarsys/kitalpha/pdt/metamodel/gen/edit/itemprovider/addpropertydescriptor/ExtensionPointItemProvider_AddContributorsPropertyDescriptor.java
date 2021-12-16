@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.3.202110291409
 package org.polarsys.kitalpha.pdt.metamodel.gen.edit.itemprovider.addpropertydescriptor;
 
 import org.eclipse.egf.common.helper.*;
@@ -31,7 +31,6 @@ public class ExtensionPointItemProvider_AddContributorsPropertyDescriptor
 			+ "\t\t\t\t\t\ttrue, true, false, null, null," + NL + "\t\t\t\t\t\t// begin-extension-code" + NL
 			+ "\t\t\t\t\t\tnull));" + NL + "\t\t// end-extension-code";
 	protected final String TEXT_2 = NL;
-	protected final String TEXT_3 = NL;
 
 	public ExtensionPointItemProvider_AddContributorsPropertyDescriptor() {
 		//Here is the constructor
@@ -57,6 +56,12 @@ public class ExtensionPointItemProvider_AddContributorsPropertyDescriptor
 		//this pattern can only be called by another (i.e. it's not an entry point in execution)
 		List<Object> genModelList = null;
 		//this pattern can only be called by another (i.e. it's not an entry point in execution)
+		List<Object> isJDK50List = null;
+		//this pattern can only be called by another (i.e. it's not an entry point in execution)
+		List<Object> forceDefaultCaseList = null;
+		//this pattern can only be called by another (i.e. it's not an entry point in execution)
+		List<Object> indentDefaultCaseList = null;
+		//this pattern can only be called by another (i.e. it's not an entry point in execution)
 		List<Object> _ListList = null;
 		//this pattern can only be called by another (i.e. it's not an entry point in execution)
 
@@ -64,19 +69,28 @@ public class ExtensionPointItemProvider_AddContributorsPropertyDescriptor
 			for (Object genClassParameter : genClassList) {
 				for (Object genPackageParameter : genPackageList) {
 					for (Object genModelParameter : genModelList) {
-						for (Object _ListParameter : _ListList) {
+						for (Object isJDK50Parameter : isJDK50List) {
+							for (Object forceDefaultCaseParameter : forceDefaultCaseList) {
+								for (Object indentDefaultCaseParameter : indentDefaultCaseList) {
+									for (Object _ListParameter : _ListList) {
 
-							this.genFeature = (org.eclipse.emf.codegen.ecore.genmodel.GenFeature) genFeatureParameter;
-							this.genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) genClassParameter;
-							this.genPackage = (org.eclipse.emf.codegen.ecore.genmodel.GenPackage) genPackageParameter;
-							this.genModel = (org.eclipse.emf.codegen.ecore.genmodel.GenModel) genModelParameter;
-							this._List = (java.lang.String) _ListParameter;
+										this.genFeature = (org.eclipse.emf.codegen.ecore.genmodel.GenFeature) genFeatureParameter;
+										this.genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) genClassParameter;
+										this.genPackage = (org.eclipse.emf.codegen.ecore.genmodel.GenPackage) genPackageParameter;
+										this.genModel = (org.eclipse.emf.codegen.ecore.genmodel.GenModel) genModelParameter;
+										this.isJDK50 = (java.lang.Boolean) isJDK50Parameter;
+										this.forceDefaultCase = (java.lang.Boolean) forceDefaultCaseParameter;
+										this.indentDefaultCase = (java.lang.String) indentDefaultCaseParameter;
+										this._List = (java.lang.String) _ListParameter;
 
-							if (preCondition(ctx)) {
-								ctx.setNode(new Node.Container(currentNode, getClass()));
-								orchestration(ctx);
+										if (preCondition(ctx)) {
+											ctx.setNode(new Node.Container(currentNode, getClass()));
+											orchestration(ctx);
+										}
+
+									}
+								}
 							}
-
 						}
 					}
 				}
@@ -88,7 +102,7 @@ public class ExtensionPointItemProvider_AddContributorsPropertyDescriptor
 		}
 
 		stringBuffer.append(TEXT_2);
-		stringBuffer.append(TEXT_3);
+		stringBuffer.append(TEXT_2);
 		return stringBuffer.toString();
 	}
 
@@ -103,6 +117,9 @@ public class ExtensionPointItemProvider_AddContributorsPropertyDescriptor
 			parameterValues.put("genClass", this.genClass);
 			parameterValues.put("genPackage", this.genPackage);
 			parameterValues.put("genModel", this.genModel);
+			parameterValues.put("isJDK50", this.isJDK50);
+			parameterValues.put("forceDefaultCase", this.forceDefaultCase);
+			parameterValues.put("indentDefaultCase", this.indentDefaultCase);
 			parameterValues.put("_List", this._List);
 			String outputWithCallBack = OutputManager.computeLoopOutput(ictx);
 			String loop = OutputManager.computeLoopOutputWithoutCallback(ictx);
@@ -117,6 +134,9 @@ public class ExtensionPointItemProvider_AddContributorsPropertyDescriptor
 		parameters.put("genClass", this.genClass);
 		parameters.put("genPackage", this.genPackage);
 		parameters.put("genModel", this.genModel);
+		parameters.put("isJDK50", this.isJDK50);
+		parameters.put("forceDefaultCase", this.forceDefaultCase);
+		parameters.put("indentDefaultCase", this.indentDefaultCase);
 		parameters.put("_List", this._List);
 		return parameters;
 	}

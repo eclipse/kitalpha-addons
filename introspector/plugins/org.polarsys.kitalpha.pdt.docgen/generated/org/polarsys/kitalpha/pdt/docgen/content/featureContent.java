@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.3.202110291409
 package org.polarsys.kitalpha.pdt.docgen.content;
 
 import java.util.*;
@@ -36,19 +36,11 @@ public class featureContent extends org.polarsys.kitalpha.doc.gen.business.core.
 	protected final String TEXT_5 = NL + "<hr style=\"width:98%; align : center; \" /> " + NL + "</div>" + NL + "" + NL
 			+ "<div style=\"position: absolute; top: 160px; left: 1%; z-index: 1; width: 98%;\">" + NL;
 	protected final String TEXT_6 = NL;
-	protected final String TEXT_7 = NL;
-	protected final String TEXT_8 = NL;
-	protected final String TEXT_9 = NL + NL;
-	protected final String TEXT_10 = NL + "<h2>Representations</h2>";
-	protected final String TEXT_11 = NL;
-	protected final String TEXT_12 = NL + "<p><strong>";
-	protected final String TEXT_13 = "</strong></p>";
-	protected final String TEXT_14 = NL;
-	protected final String TEXT_15 = NL;
-	protected final String TEXT_16 = "</p>" + NL + NL;
-	protected final String TEXT_17 = NL;
-	protected final String TEXT_18 = NL;
-	protected final String TEXT_19 = NL;
+	protected final String TEXT_7 = NL + NL;
+	protected final String TEXT_8 = NL + "<h2>Representations</h2>";
+	protected final String TEXT_9 = NL + "<p><strong>";
+	protected final String TEXT_10 = "</strong></p>";
+	protected final String TEXT_11 = "</p>" + NL + NL;
 
 	public featureContent() {
 		//Here is the constructor
@@ -84,8 +76,8 @@ public class featureContent extends org.polarsys.kitalpha.doc.gen.business.core.
 			ctx.getReporter().executionFinished(OutputManager.computeExecutionOutput(ctx), ctx);
 		}
 
-		stringBuffer.append(TEXT_18);
-		stringBuffer.append(TEXT_19);
+		stringBuffer.append(TEXT_6);
+		stringBuffer.append(TEXT_6);
 		return stringBuffer.toString();
 	}
 
@@ -182,29 +174,29 @@ public class featureContent extends org.polarsys.kitalpha.doc.gen.business.core.
 		String featurePage = org.polarsys.kitalpha.pdt.docgen.helpers.FeatureHelpers.getFeaturePage((Feature) element,
 				projectName, outputFolder, 1);
 
-		stringBuffer.append(TEXT_7);
+		stringBuffer.append(TEXT_6);
 		stringBuffer.append(featurePage);
-		stringBuffer.append(TEXT_8);
+		stringBuffer.append(TEXT_6);
 
 		if (diagramsInclusion) {
 			diagramList = org.polarsys.kitalpha.pdt.docgen.services.GenerateDiagramsService
 					.generateDiagramsForTheGivenObject((Feature) element);
 		}
 
-		stringBuffer.append(TEXT_9);
+		stringBuffer.append(TEXT_7);
 
 		if (diagramList.size() >= 1) {
-			stringBuffer.append(TEXT_10);
+			stringBuffer.append(TEXT_8);
 		}
-		stringBuffer.append(TEXT_11);
+		stringBuffer.append(TEXT_6);
 		for (DRepresentation diagram : diagramList) {
 			if (diagram instanceof DSemanticDiagram
 					&& ((DSemanticDiagram) diagram).getDescription().getName().equals("Features and Plugins")) {
 				String generatedFolder = fileNameService.getFileName(((DSemanticDiagram) diagram).getTarget());
-				stringBuffer.append(TEXT_12);
+				stringBuffer.append(TEXT_9);
 				stringBuffer.append(((DSemanticDiagram) diagram).getDescription().getName());
-				stringBuffer.append(TEXT_13);
-				stringBuffer.append(TEXT_14);
+				stringBuffer.append(TEXT_10);
+				stringBuffer.append(TEXT_6);
 				{
 					//<%@ egf:patternCall patternId="platform:/plugin/org.polarsys.kitalpha.doc.gen.business.core/egf/HTMLDocGenCommon.fcore#LogicalName=org.polarsys.kitalpha.doc.gen.business.core.sirius.DiagramGenerator" args="diagram:diagram, outputFolder:outputFolder, projectName:projectName, generatedFolder:generatedFolder, fileNameService:fileNameService, helper:helper"%>
 
@@ -227,16 +219,16 @@ public class featureContent extends org.polarsys.kitalpha.doc.gen.business.core.
 
 			}
 		}
-		stringBuffer.append(TEXT_15);
+		stringBuffer.append(TEXT_6);
 
-		stringBuffer.append(TEXT_16);
+		stringBuffer.append(TEXT_11);
 
 		if (diagramsInclusion) {
 			AIRDHelpers.INSTANCE.clearCurrentAird();
 			AIRDHelpers.INSTANCE.cleanAllMaps();
 		}
 
-		stringBuffer.append(TEXT_17);
+		stringBuffer.append(TEXT_6);
 		InternalPatternContext ictx = (InternalPatternContext) ctx;
 		new Node.DataLeaf(ictx.getNode(), getClass(), "content", stringBuffer.toString());
 	}
