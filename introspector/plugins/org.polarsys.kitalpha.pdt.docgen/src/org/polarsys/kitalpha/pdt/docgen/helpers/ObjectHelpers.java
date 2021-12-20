@@ -21,8 +21,10 @@ import org.polarsys.kitalpha.pdt.metamodel.model.platform.EclipseModel;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.Extension;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.ExtensionPoint;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.Feature;
+import org.polarsys.kitalpha.pdt.metamodel.model.platform.Package;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.Plugin;
 import org.polarsys.kitalpha.pdt.metamodel.model.platform.Repository;
+import org.polarsys.kitalpha.pdt.metamodel.model.platform.util.PlatformSwitch;
 
 /**
  * 
@@ -113,10 +115,49 @@ public class ObjectHelpers implements IFileNameService {
 
 	@Override
 	public String getFileName(EObject eObject) {
-		String result = getFileName(eObject);
+		FileNameSwitch fileNameSwitch = new FileNameSwitch();
+		String result = fileNameSwitch.doSwitch(eObject);
 		if (result == null) {
 			result = "Object not found";
 		}
 		return result;
+	}
+	
+	class FileNameSwitch extends PlatformSwitch<String> {
+		
+		@Override
+		public String casePlugin(Plugin object) {
+			return getFileName(object);
+		}
+		
+		@Override
+		public String caseFeature(Feature object) {
+			return getFileName(object);
+		}
+		
+		@Override
+		public String caseExtensionPoint(ExtensionPoint object) {
+			return getFileName(object);
+		}
+		
+		@Override
+		public String caseExtension(Extension object) {
+			return getFileName(object);
+		}
+		
+		@Override
+		public String casePackage(Package object) {
+			return getFileName(object);
+		}
+		
+		@Override
+		public String caseRepository(Repository object) {
+			return getFileName(object);
+		}
+		
+		@Override
+		public String caseEclipseModel(EclipseModel object) {
+			return getFileName(object);
+		}
 	}
 }
