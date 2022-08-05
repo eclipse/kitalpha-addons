@@ -4,4 +4,8 @@
       <category name="org.polarsys.kitalpha.pdt.introspector.modeler"/>
    </feature>
    <category-def name="org.polarsys.kitalpha.pdt.introspector.modeler" label="Introspector Modeler"/>
+   <feature id="org.polarsys.kitalpha.pdt.modeler.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.introspector.modeler.source"/>
+   </feature>
+   <category-def name="org.polarsys.kitalpha.pdt.introspector.modeler.source" label="Introspector Modeler Source"/>
 </site>

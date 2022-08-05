@@ -4,4 +4,8 @@
       <category name="org.polarsys.kitalpha.pdt.model"/>
    </feature>
    <category-def name="org.polarsys.kitalpha.pdt.model" label="Model"/>
+   <feature id="org.polarsys.kitalpha.pdt.metamodel.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.model.source"/>
+   </feature>
+   <category-def name="org.polarsys.kitalpha.pdt.model.source" label="Model Source"/>
 </site>

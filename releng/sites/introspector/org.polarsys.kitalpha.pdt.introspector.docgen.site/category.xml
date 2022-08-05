@@ -7,4 +7,11 @@
       <category name="org.polarsys.kitalpha.pdt.docgen"/>
    </feature>
    <category-def name="org.polarsys.kitalpha.pdt.docgen" label="DocGen"/>
+   <feature id="org.polarsys.kitalpha.pdt.docgen.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.docgen.source"/>
+   </feature>
+   <feature id="org.polarsys.kitalpha.pdt.docgen.ui.feature.source" version="0.0.0">
+      <category name="org.polarsys.kitalpha.pdt.docgen.source"/>
+   </feature>
+   <category-def name="org.polarsys.kitalpha.pdt.docgen.source" label="DocGen Source"/>
 </site>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2021 Thales Global Services S.A.S.
+ * Copyright (c) 2018, 2022 Thales Global Services S.A.S.
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License 2.0 which is available at
  *  http://www.eclipse.org/legal/epl-2.0
@@ -15,18 +15,15 @@
 include "https://raw.githubusercontent.com/eclipse/kitalpha/master/releng/plugins/org.polarsys.kitalpha.releng.targets/kitalpha.targetplatform"
 
 //kitalpha core
-location kitalpha-runtime "https://download.eclipse.org/kitalpha/updates/release/runtime/5.1.0/" {
+location kitalpha-runtime "https://download.eclipse.org/kitalpha/updates/stable/runtime/6.0.0.S202207151131/" {
 	org.polarsys.kitalpha.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.runtime.feature.source.feature.group lazy
-}
-
-location kitalpha-runtimeCore "https://download.eclipse.org/kitalpha/updates/release/runtimecore/5.1.0/" {
 	org.polarsys.kitalpha.common.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.source.feature.group lazy
 }
 
 //kitalpha
-location Kitalpha-SDK "https://download.eclipse.org/kitalpha/updates/release/sdk/5.1.0/" {
+location Kitalpha-SDK "https://download.eclipse.org/kitalpha/updates/stable/sdk/6.0.0.S202207151131/" {
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.generation.feature.source.feature.group lazy
 	org.polarsys.kitalpha.ad.viewpoint.dsl.as.feature.feature.group lazy

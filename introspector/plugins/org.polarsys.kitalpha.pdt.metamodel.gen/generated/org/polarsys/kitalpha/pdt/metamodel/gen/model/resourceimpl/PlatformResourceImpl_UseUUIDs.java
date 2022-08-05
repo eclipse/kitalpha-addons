@@ -1,4 +1,4 @@
-//Generated with EGF 1.3.0.v20150924-1035
+//Generated with EGF 1.6.3.202110291409
 package org.polarsys.kitalpha.pdt.metamodel.gen.model.resourceimpl;
 
 import org.eclipse.egf.common.helper.*;
@@ -44,7 +44,6 @@ public class PlatformResourceImpl_UseUUIDs extends org.eclipse.egf.emf.pattern.m
 			+ "\t\tsuper.load(newOptions);" + NL + "\t}" + NL + "} // PlatformResourceImpl" + NL + "/**" + NL
 			+ " * CUSTOM_CODE_END : []" + NL + " **/";
 	protected final String TEXT_2 = NL;
-	protected final String TEXT_3 = NL;
 
 	public PlatformResourceImpl_UseUUIDs() {
 		//Here is the constructor
@@ -81,7 +80,7 @@ public class PlatformResourceImpl_UseUUIDs extends org.eclipse.egf.emf.pattern.m
 		}
 
 		stringBuffer.append(TEXT_2);
-		stringBuffer.append(TEXT_3);
+		stringBuffer.append(TEXT_2);
 		return stringBuffer.toString();
 	}
 
