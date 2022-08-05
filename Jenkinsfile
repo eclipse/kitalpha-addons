@@ -38,14 +38,15 @@ pipeline {
 							VERSION = VERSION.substring(1)
 						}
 						sh "echo 'deploy update site'"
-						def DST_DIR='/home/data/httpd/download.eclipse.org/kitalpha/addons/introspector/nightly/'+VERSION
+						def DROPIN_DIR='/home/data/httpd/download.eclipse.org/kitalpha/addons/introspector/dropins/nightly/'+VERSION
+						def UPDATE_DIR='/home/data/httpd/download.eclipse.org/kitalpha/addons/introspector/updates/nightly/'+VERSION
 						
-						sh "ssh genie.kitalpha@projects-storage.eclipse.org rm -rf ${DST_DIR}"
-						sh "ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${DST_DIR}"
-						sh "ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${DST_DIR}/updates/"
-						sh "ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${DST_DIR}/dropins/"
-						sh "scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/repository/* genie.kitalpha@projects-storage.eclipse.org:${DST_DIR}/updates/"
-						sh "scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/PDTTooling_All-dropins-*.zip genie.kitalpha@projects-storage.eclipse.org:${DST_DIR}/dropins/"
+						sh "ssh genie.kitalpha@projects-storage.eclipse.org rm -rf ${DROPIN_DIR}"
+						sh "ssh genie.kitalpha@projects-storage.eclipse.org rm -rf ${UPDATE_DIR}"
+						sh "ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${DROPIN_DIR}"
+						sh "ssh genie.kitalpha@projects-storage.eclipse.org mkdir -p ${UPDATE_DIR}"
+						sh "scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/repository/* genie.kitalpha@projects-storage.eclipse.org:${UPDATE_DIR}"
+						sh "scp -r releng/sites/introspector/org.polarsys.kitalpha.pdt.introspector.all.site/target/PDTTooling_All-dropins-*.zip genie.kitalpha@projects-storage.eclipse.org:${DROPIN_DIR}"
 					}
 				}
 			}
